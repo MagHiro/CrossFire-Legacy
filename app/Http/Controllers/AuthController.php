@@ -118,33 +118,33 @@ class AuthController extends Controller
         }
     }
 
-    // public function update(Request $request)
-    // {
-    //     //set validation
-    //     $validator = Validator::make($request->input(), [
-    //         'password'  => 'required|min:8|confirmed'
-    //     ]);
+    public function update(Request $request)
+    {
+        //set validation
+        $validator = Validator::make($request->input(), [
+            'password'  => 'required|min:8|confirmed'
+        ]);
 
-    //     //if validation fails
-    //     if ($validator->fails()) {
-    //         return response()->json($validator->errors(), 422);
-    //     }
+        //if validation fails
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
 
-    //     $user = JWTAuth::user();
-    //     //create user
-    //     $user->password = bcrypt($request['password']);
-    //     $user->save();
-    //     //return response JSON user is created
-    //     if($user) {
-    //         return response()->json([
-    //             'success' => true,
-    //             'user'    => $user,  
-    //         ], 201);
-    //     }
+        $user = JWTAuth::user();
+        //create user
+        $user->password = bcrypt($request['password']);
+        $user->save();
+        //return response JSON user is created
+        if($user) {
+            return response()->json([
+                'success' => true,
+                'user'    => $user,  
+            ], 201);
+        }
 
-    //     //return JSON process insert failed 
-    //     return response()->json([
-    //         'success' => false,
-    //     ], 409);
-    // }
+        //return JSON process insert failed 
+        return response()->json([
+            'success' => false,
+        ], 409);
+    }
 }
