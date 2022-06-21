@@ -1,0 +1,805 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;1,500&display=swap");
+
+/* Landing Page Backround */
+.pageBG {
+    background-color: #000000;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* Navigation bar Styling */
+.navbar {
+    background: linear-gradient(
+        90deg,
+        rgba(23, 23, 23, 1) 30%,
+        rgba(221, 124, 53, 1) 200%
+    );
+    position: sticky;
+    top: 0;
+    z-index: 3;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    font-size: 1em;
+    color: #ebebeb;
+    border-bottom: 3px solid transparent;
+    border-radius: 5px;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    transition-duration: 2ms;
+    color: #dd7c35;
+    border-bottom: 3px solid #dd7c35;
+    border-radius: 5px;
+}
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+    background: linear-gradient(
+        20deg,
+        rgba(23, 23, 23, 1) 10%,
+        rgba(221, 124, 53, 1) 200%
+    );
+}
+
+.btn-primary {
+    font-weight: 600;
+    font-size: 16px;
+    color: #ebebeb;
+    background-color: #dd7c35;
+    text-align: center;
+    border-color: #dd7c35;
+}
+
+.btn-primary:hover {
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    color: #ebebeb;
+    background-color: #dd7c35;
+    border-color: #dd7c35;
+}
+.btn-primary:active {
+    box-shadow: none;
+}
+.btn-primary:focus {
+    box-shadow: none;
+}
+
+.btn-outline-secondary {
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    color: #dd7c35;
+    background-color: #212121;
+    border-color: #212121;
+}
+
+.btn-outline-secondary:hover {
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    color: #dd7c35;
+    background-color: #212121;
+    border-color: #212121;
+}
+.btn-outline-secondary:active {
+    box-shadow: none;
+}
+.btn-outline-secondary:focus {
+    box-shadow: none;
+}
+
+/* First Parallax */
+
+.pageSize {
+    height: 560px;
+}
+
+.First-Parallax {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* First-Parallax-Leftside*/
+
+.h5,
+h5 {
+    margin-top: 40px;
+    color: #dd7c35;
+}
+
+.h2,
+h2 {
+    letter-spacing: 0.7px;
+    font-family: "Open Sans", sans-serif;
+    color: white;
+    font-size: 40px;
+}
+
+p {
+    font-family: "Open Sans", sans-serif;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: justify;
+    color: rgb(255, 255, 255);
+    width: 600px;
+}
+
+.btn-outline-light {
+    background-color: transparent;
+    font-weight: 600;
+    color: #dd7c35;
+    border-color: #dd7c35;
+    width: 600px;
+    height: 60px;
+    margin-top: 30px;
+    font-size: 40px;
+    font-style: italic;
+    padding-bottom: 72px;
+    transition-duration: 1ms;
+}
+
+.btn-outline-light:hover {
+    background-color: #dd7c35;
+    font-weight: 600;
+    color: #eaeaea;
+    border-color: #dd7c35;
+    width: 600px;
+    height: 60px;
+    margin-top: 30px;
+    font-size: 40px;
+    font-style: italic;
+    padding-bottom: 72px;
+}
+
+/* First-Parallax-Righside*/
+
+.First-Parallax-rightside img {
+    height: 500px;
+    width: 400px;
+    margin-top: 5px;
+    position: relative;
+    animation-name: example;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    border-bottom: 3px #dd7c35;
+}
+
+@keyframes example {
+    0% {
+        left: 0px;
+        top: 0px;
+    }
+    50% {
+        left: 0px;
+        top: 20px;
+    }
+    100% {
+        left: 0px;
+        top: 0px;
+    }
+}
+
+/* Second Parallax */
+
+.section-header {
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+}
+.section-header h1::before {
+    content: "/ ";
+    display: inline;
+    position: relative;
+    color: #dd7c35;
+    font-style: normal;
+    margin-right: 15px;
+}
+.section-header h1::after {
+    content: " /";
+    display: inline;
+    position: relative;
+    color: #dd7c35;
+    font-style: normal;
+    margin-left: 15px;
+}
+
+.section-header h1 {
+    display: flex;
+    font-family: "Open Sans", sans-serif;
+    font-style: italic;
+    justify-content: center;
+    color: #eaeaea;
+    font-size: 4.5rem;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    margin: auto;
+}
+
+.Second-Parallax {
+    margin-top: 30px;
+    height: 960px;
+}
+
+.col {
+    background: transparent;
+    border-radius: 10px;
+}
+
+.card {
+    border: none;
+
+    background: linear-gradient(
+        313deg,
+        rgba(23, 23, 23, 1) 30%,
+        rgba(221, 124, 53, 1) 200%
+    );
+}
+
+.card-title {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-body {
+    border: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.carousel-indicators button{
+    margin-top: 50px;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    display: none;
+}
+
+.h4,
+h4 {
+    margin-top: 10px;
+}
+
+/* FAQ Section */
+
+.FAQ {
+    margin-top: 40px ;
+    height: 800px;
+    z-index: 5;
+}
+
+.accordion-item {
+    background: transparent;
+}
+
+.accordion-button {
+    background: linear-gradient(
+        90deg,
+        rgba(23, 23, 23, 1) 30%,
+        rgba(221, 124, 53, 1) 200%
+    );
+    color: #eaeaea;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.accordion-body {
+    background: linear-gradient(
+        90deg,
+        rgba(23, 23, 23, 1) 30%,
+        rgba(221, 124, 53, 1) 200%
+    );
+    color: #eaeaea;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+}
+
+/* Footer Cus */
+
+.footerBG {
+    background: linear-gradient(
+        90deg,
+        rgba(23, 23, 23, 1) 30%,
+        rgba(221, 124, 53, 1) 200%
+    );
+    width: 100%;
+    position: static;
+    bottom: 0;
+    left: 0;
+}
+
+.footer-menu .nav-link {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #ebebeb;
+    border-bottom: 3px solid transparent;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+.footer-menu .nav-link:hover {
+    transition-duration: 2ms;
+    color: #dd7c35;
+    border-bottom: 3px solid #dd7c35;
+    border-radius: 5px;
+}
+
+.mt60 {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #dd7c35;
+    margin-left: 16px;
+}
+
+.cff-status {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    font-style: italic;
+    color: #ebebeb;
+    margin-top: 30px;
+    display: flex;
+    margin-left: 16px;
+}
+
+.cff-status-indicator {
+    background-color: #ff0000;
+    box-shadow: 0 0 25px #ff0000;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 0.9375rem;
+    margin: 0.1875rem 0.625rem 0;
+}
+
+.footer-line {
+    border-bottom: 3px solid #dd7c35;
+    border-radius: 5px;
+}
+
+.footer-under {
+    margin-top: 15px;
+}
+
+.footer-under .col {
+    color: #eaeaea;
+}
+
+/* Downloan Page */
+
+.download-head {
+    box-shadow: 2px 2px 15px 0.4px rgb(0, 0, 0);
+}
+
+.download-header h2 {
+    width: 100%;
+    font-size: 25px;
+    letter-spacing: 0;
+}
+
+.download-header .btn-primary {
+    padding: 20px 20px;
+    font-size: 20px;
+    border : none;
+    transition-duration: 1ms;
+    line-height: 60px;
+}
+
+.download-header .btn-primary:hover {
+    
+    padding: 20px 20px;
+    font-size: 20px;
+    color: black;
+    line-height: 60px;
+}
+
+.download-footer {
+    margin-top: 20px;
+    display: flex;
+    
+}
+
+.download-footer p {
+    font-size: 16px;
+    margin-left: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 0;
+}
+
+.Spec-Section .card-body {
+    height: 400px;
+}
+
+.Spec-Section .card-body {
+    font-family: "Open Sans", sans-serif;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    font-size: 16px;
+    font-weight: 600;
+    text-align: justify;
+    color: rgb(255, 255, 255);
+    overflow: scroll;
+    scroll-behavior: smooth;
+}
+
+.Spec-Section .card-body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Login Page or Register Page */
+label {
+    font-family: "Open Sans";
+    color: #eaeaea;
+}
+
+.Regis-Tab .card {
+    box-shadow: 2px 2px 15px 0.4px rgb(0, 0, 0);
+}
+
+.Regis-Tab .card h1 {
+    display: flex;
+    font-family: "Open Sans", sans-serif;
+    font-style: italic;
+    justify-content: center;
+    padding-left: 4vmin;
+    padding-right: 4vmin;
+    color: #eaeaea;
+    font-size: 4em;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    margin: auto;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+}
+
+.Login-Tab .card {
+    box-shadow: 2px 2px 15px 0.4px rgb(0, 0, 0);
+}
+
+.Login-Tab .card h1 {
+    display: flex;
+    font-family: "Open Sans", sans-serif;
+    font-style: italic;
+    justify-content: center;
+    padding-left: 4vmin;
+    padding-right: 4vmin;
+    color: #eaeaea;
+    font-size: 4em;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    margin: auto;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+}
+
+/* Dashboard Page */
+
+.user-nav {
+    box-shadow: 2px 2px 15px 0.4px rgb(0, 0, 0);
+}
+.user-nav h3 {
+    margin-top: 10px;
+    font-family: "Open Sans", sans-serif;
+    color: #dd7c35;
+    font-size: 20px;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+}
+.user-nav span {
+    font-family: "Open Sans", sans-serif;
+    color: #eaeaea;
+    font-size: 16px;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+}
+
+.user-nav .card-body img {
+    border-radius: 20px;
+}
+
+.user-nav .card-body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+.user-nav .card-body button {
+    margin-top: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    background-color: transparent;
+    color: #dd7c35;
+    border-color: #dd7c35;
+    font-style: italic;
+    transition-duration: 1ms;
+}
+.user-nav .card-body button:hover {
+    font-size: 16px;
+    margin-bottom: 10px;
+    background-color: #dd7c35;
+    color: #dd7c35;
+    border-color: #dd7c35;
+    font-style: italic;
+    color: #eaeaea;
+    border-color: #dd7c35;
+    font-style: italic;
+}
+.user-nav .card-body button:active {
+    box-shadow: none;
+}
+.user-nav .card-body button:focus {
+    box-shadow: none;
+}
+
+.dashboard-column .btn-group {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-column .btn-group .btn-outline-primary {
+    font-family: "Open Sans", sans-serif;
+    margin-bottom: 5px;
+    font-size: 15px;
+    text-transform: uppercase;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: transparent;
+    color: #dd7c35;
+    border-color: #dd7c35;
+    transition-duration: 0.4ms;
+}
+
+.dashboard-column .btn-group .btn-outline-primary:hover {
+    font-family: "Open Sans", sans-serif;
+    margin-bottom: 5px;
+    font-size: 15px;
+    text-transform: uppercase;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #dd7c35;
+    color: #eaeaea;
+    border-color: #dd7c35;
+    transition-duration: 1ms;
+}
+.dashboard-column .btn-group .btn-outline-primary:active {
+    box-shadow: none;
+}
+.dashboard-column .btn-group .btn-outline-primary:focus {
+    box-shadow: none;
+}
+
+.profile-tab {
+    box-shadow: 2px 2px 15px 0.4px rgb(0, 0, 0);
+}
+
+.profile-tab .card-body button {
+    font-family: "Open Sans", sans-serif;
+    margin-bottom: 5px;
+    font-size: 16px;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: #dd7c35;
+    border-color: #dd7c35;
+    transition-duration: 0.4ms;
+}
+
+.profile-tab .card-body button:hover {
+    font-family: "Open Sans", sans-serif;
+    margin-bottom: 5px;
+    font-size: 16px;
+    text-transform: uppercase;
+    background-color: #dd7c35;
+    color: #eaeaea;
+    border-color: #dd7c35;
+    transition-duration: 1ms;
+}
+
+.dashboard-right h4 {
+    font-family: "Open Sans", sans-serif;
+    color: #dd7c35;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin: auto;
+}
+
+.dashboard-right .informasi-dashboard p {
+    font-family: "Open Sans", sans-serif;
+    color: #eaeaea;
+    font-size: 16px;
+}
+.dashboard-right .informasi-dashboard p span {
+    font-style: oblique;
+}
+
+/* Karakter Page */
+
+.karakter-info tbody tr th {
+    font-family: "Open Sans", sans-serif;
+    color: #eaeaea;
+    font-size: 16px;
+    font-weight: 600;
+    font-style: bold;
+}
+.karakter-info tbody tr td {
+    font-family: "Open Sans", sans-serif;
+    color: #eaeaea;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
+    .pageSize {
+        height: 400px;
+    }
+    .First-Parallax{
+      margin-top: 0;
+      align-content: center;
+      width: 100%;
+    }
+    .First-Parallax-leftside img{
+      width: 100%;
+      height: 30%;
+      margin-top: 0;
+    }
+
+    .First-Parallax-leftside p {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .First-Parallax .btn-outline-light {
+        width: 100%;
+        margin-top: 30px;
+        font-size: 25px;
+        font-style: italic;
+        transition-duration: 1ms;
+        padding: 8px 1px;
+    }
+    
+    .btn-outline-light:hover {
+        width: 100%;
+        margin-top: 30px;
+        font-size: 25px;
+        font-style: italic;
+        padding: 8px 1px;
+        transition-duration: 1ms;   
+    }
+
+    .First-Parallax-rightside img {
+        display: none;
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: center;
+        height: 10vh;
+    }
+
+    .section-header h1{
+        font-size: 30px;
+    }
+    .section-header h1::before {
+        content: "/ ";
+        display: inline;
+        position: relative;
+        color: #dd7c35;
+        font-style: normal;
+        margin-right: 15px;
+    }
+    .section-header h1::after {
+        content: " /";
+        display: inline;
+        position: relative;
+        color: #dd7c35;
+        font-style: normal;
+        margin-left: 15px;
+    }
+
+    .carousel-itemslide .col{
+        width: 50%;
+    }
+
+    .FAQ {
+        height: 800px;
+        margin-top: 20px;
+        z-index: 5;
+    }
+
+    .nav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mt60 {
+        margin-top: 0;
+    }
+
+    .cff-status {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .download-header h2 {
+        width: 100%;
+        font-size: 16px;
+        letter-spacing: 0;
+    }
+
+    .download-header .btn-primary {
+        width: 100%;
+        padding: 0px 0px;
+        font-size: 20px;
+        border : none;
+        transition-duration: 1ms;
+        line-height: 60px;
+        margin-top: 10px;
+    }
+    
+    .download-header .btn-primary:hover {
+        width: 100%;
+        padding: 0px 0px;
+        font-size: 20px;
+        color: black;
+        line-height: 60px;
+        margin-top: 10px;
+    }
+    .download-footer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .download-footer p {
+        margin-left: 0;
+        font-size: 15px;
+        margin-top: 0;
+        margin-bottom: 0;
+        font-weight: 0;
+        width: 100%;
+    }
+
+    .Spec-Section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .Spec-Section .col{
+        margin-bottom: 10px;
+    }
+
+    .Spec-Section .card-body {
+        height: auto;
+    }
+    .Regis-Tab .card {
+        margin-left: 15px;
+        margin-right: 15px;
+        border-radius: 10px;
+    }
+
+    .Regis-Tab .card h1 {
+        font-size: 35px;   
+    }
+    .Login-Tab .card {
+        margin-left: 15px;
+        margin-right: 15px;
+        border-radius: 10px;
+    }
+
+    .Login-Tab .card h1 {
+        font-size: 35px;   
+    }
+
+    .dashboard-column {
+        width: 100%;
+    }
+
+    .dashboard-right .informasi-dashboard p {
+        width: 100%;
+    }
+  }
