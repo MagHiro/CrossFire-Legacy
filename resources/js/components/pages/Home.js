@@ -71,7 +71,7 @@ function Home() {
                 </Container>
             </Parallax>
             <Container className="section-header">
-                <h1> SIAPA DI BALIK KITA </h1>
+                <h1> DIBALIK CF LEGACY </h1>
             </Container>
             <Parallax
                 blur={4}
