@@ -19,11 +19,10 @@ export default function Login() {
     }, []);
 
     const submitForm = async (e) => {
-        e.preventDefault();
         // api call
         try {
             await axios
-                .post("http://localhost:8000/api/login", { username: username, password: password })
+                .post("https://cflegacyindonesia.herokuapp.com/api/login", { username: username, password: password })
                 .then((response) => {
                     sessionStorage.setItem("token", response.data.token);
                     navigate("/dashboard");
