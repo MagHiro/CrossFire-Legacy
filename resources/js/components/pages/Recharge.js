@@ -25,7 +25,7 @@ function Recharge () {
         //set axios header dengan type Authorization + Bearer token
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         //fetch user from Rest API
-        await axios.get("http://127.0.0.1:8000/api/user").then((response) => {
+        await axios.get("https://cflegacyindonesia.herokuapp.com/api/user").then((response) => {
             //set response user to state
             setUser(response.data);
         });
@@ -40,7 +40,7 @@ function Recharge () {
         //set axios header dengan type Authorization + Bearer token
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         //fetch Rest API
-        await axios.post("http://localhost:8000/api/logout").then(() => {
+        await axios.post("https://cflegacyindonesia.herokuapp.com/api/logout").then(() => {
             //remove token from localStorage
             sessionStorage.removeItem("token");
 
