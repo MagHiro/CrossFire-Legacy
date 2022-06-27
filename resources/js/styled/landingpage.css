@@ -426,24 +426,24 @@ a.btn.btn-primary:active {
 }
 
 .News2 ul li.page-item a{
-    font-family: 'helmet-regular', sans-serif;
+    font-family: 'helmetregular', sans-serif;
     color: #121212;
     font-size: rem(2);
 }
 .News2 ul li.page-item.active a{
-    font-family: 'helmet-regular', sans-serif;
+    font-family: 'helmetregular', sans-serif;
     background-color: #dd7c35;
     border-color: #dd7c35;
 }
 
 .page-item:first-child .page-link {
-    font-family: 'helmet-regular', sans-serif;
+    font-family: 'helmetregular', sans-serif;
     background-color: #dd7c35;
     border-color: #dd7c35;
 }
 
 .page-item:last-child .page-link {
-    font-family: 'helmet-regular', sans-serif;
+    font-family: 'helmetregular', sans-serif;
     background-color: #dd7c35;
     border-color: #dd7c35;
 }
@@ -510,17 +510,21 @@ a.btn.btn-primary:active {
 
 /* Download2 */
 
+.Download2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .Download2 nav .nav-tabs{
     border: none;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 20px;
 }
 
 .Download2 nav .nav-tabs button{
     padding: 1% 6%;
-    font-family: 'helmet-regular', sans-serif;
+    font-family: 'helmetregular', sans-serif;
     font-weight: bold;
     background-color: #dd7c35;
     color: #eaeaea;
@@ -534,11 +538,17 @@ a.btn.btn-primary:active {
 .Download2Element1 .card {
     display: flex;
     flex-direction: column;
+    border-radius: 0px;
+    background: linear-gradient(
+        313deg,
+        rgba(23, 23, 23, 1) 30%,
+        rgba(221, 124, 53, 1) 200%
+    );
 
 }
 
 .Download2Element1 .card h1 {
-    font-family: 'helmet-regular', sans-serif;
+    font-family: 'helmetregular', sans-serif;
     color: #dd7c35;
     font-size: 1.5rem;
     font-weight: bold;
@@ -552,20 +562,28 @@ a.btn.btn-primary:active {
     text-decoration: none;
     border-radius: 10px;
     background: #212121;
+    border: #212121;
+    box-shadow: 3px 3px 20px #212121;
 }
 
 .Download2Element1 .card section .col button:hover {
     background: #dd7c35;
-    border-color: #dd7c35;
+    border: #dd7c35;
+    color: #eaeaea;
     box-shadow: 3px 3px 20px #dd7c35;
+    transform: scaleY(1.2)
 }
 
 .Download2Element1 .card section .col button a {
     text-decoration: none;
-    color: #eaeaea;
-    font-family: 'helmet-regular', sans-serif;
-    font-weight: 400;
+    color: white;
+    font-family: 'helmetregular', sans-serif;
     letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.Download2Element1 .card section .col button a:hover {
+    color: #eaeaea;
 }
 
 .Download2Element1 .card section {
@@ -573,45 +591,33 @@ a.btn.btn-primary:active {
     flex-direction: row;
 }
 
-.Download2Element1 .card section h1 {
-    font-family: 'helmet-regular', sans-serif;
-    color: #dd7c35;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 10px 10px 10px 10px;
-}
-
-.Download2Element1 .card section p {
-    font-family: 'helmet-regular', sans-serif;
-    color: #dd7c35;
-    font-size: 16px;
-    margin: 10px 10px 10px 10px;
-    line-height: 10px;
-}
-
 .Download2Element1 .col {
-    padding: 2.5rem 2.5rem;
+    padding: 1.5rem 2.5rem;
 }
 
 .Download2Element1 table {
     width: 100%;
     margin-bottom: 2rem;
+    border-bottom: 1px solid #dd7c35;
 }
 
 .Download2Element1 table th {
     padding: 15px 0;
     font-weight: normal;
-    font-family: 'helmet-regular', sans-serif;
+    font-family: 'helmetregular', sans-serif;
     font-size: 1.2rem;
     text-align: left;
+    color: white;
 }
 
 .Download2Element1 table td {
     padding: 15px 0;
     font-weight: normal;
-    font-family: 'helmet-regular', sans-serif;
+    font-family: 'helmetregular', sans-serif;
+    color: #c87941;
     font-size: 1.2rem;
     text-align: right;
+    letter-spacing: 3px;
 }
 
 .Download2Element1 table tr {
@@ -622,7 +628,171 @@ a.btn.btn-primary:active {
     box-sizing: border-box;
 }
 
+/* Download2Element2 */
 
+.Download2Element2 .card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px;
+    background: linear-gradient(
+        313deg,
+        rgba(23, 23, 23, 1) 30%,
+        rgba(221, 124, 53, 1) 200%
+    );
+
+}
+
+.Download2Element2 .card h1 {
+    font-family: 'helmetregular', sans-serif;
+    color: #dd7c35;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 10px 10px 10px;
+}
+
+.Download2Element2 .card section .col button {
+    width: 100%;
+    padding: 10px 10px;
+    text-decoration: none;
+    border-radius: 10px;
+    background: #212121;
+    border: #212121;
+    box-shadow: 3px 3px 20px #212121;
+}
+
+.Download2Element2 .card section .col button:hover {
+    background: #dd7c35;
+    border: #dd7c35;
+    color: #eaeaea;
+    box-shadow: 3px 3px 20px #dd7c35;
+    transform: scaleY(1.2)
+}
+
+.Download2Element2 .card section .col button a {
+    text-decoration: none;
+    color: white;
+    font-family: 'helmetregular', sans-serif;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.Download2Element2 .card section .col button a:hover {
+    color: #eaeaea;
+}
+
+.Download2Element2 .card section {
+    display: flex;
+    flex-direction: row;
+}
+
+.Download2Element2 .col {
+    padding: 1.5rem 2.5rem;
+}
+
+.Download2Element2 table {
+    width: 100%;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #dd7c35;
+}
+
+.Download2Element2 table th {
+    padding: 15px 0;
+    font-weight: normal;
+    font-family: 'helmetregular', sans-serif;
+    font-size: 1.2rem;
+    text-align: left;
+    color: white;
+}
+
+.Download2Element2 table td {
+    padding: 15px 0;
+    font-weight: normal;
+    font-family: 'helmetregular', sans-serif;
+    color: #c87941;
+    font-size: 1.2rem;
+    text-align: right;
+    letter-spacing: 3px;
+}
+
+.Download2Element2 table tr {
+    border-top: 1px solid #dd7c35;
+}
+
+.Download2Element2 tbody {
+    box-sizing: border-box;
+}
+
+/* Download2Element3 */
+
+.Download2Element3 .card h1 {
+    font-family: 'helmetregular', sans-serif;
+    color: #dd7c35;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 10px 10px 10px;
+}
+
+.Download2Element3 .nav-pills{
+    font-family: 'helmetregular', sans-serif;
+    font-weight: bold;
+    background-color: #dd7c35;
+    color: #eaeaea;
+}
+
+.Download2Element3 .nav-pills .nav-link{
+    padding: 16% 26%;
+    font-family: 'helmetregular', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0px;
+    background-color: #dd7c35;
+    color: #eaeaea;
+    border: 2px solid #dd7c35;
+}
+
+.Download2Element3 .nav-pills .nav-link.active{
+    background-color: #eaeaea;
+    border: 2px solid #eaeaea;
+    color: #dd7c35;
+}
+
+.Download2Element3 .card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px;
+    background: linear-gradient(
+        313deg,
+        rgba(23, 23, 23, 1) 30%,
+        rgba(221, 124, 53, 1) 200%
+    );
+
+}
+
+.Download2Element3 .card .tab-pane {
+    margin: 10px 10px;
+}
+
+.Download2Element3 .card .tab-pane ul li:first-child {
+    font-family: 'helmetregular';
+    color: #dd7c35;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: left;
+    list-style-type: none;
+}
+
+.Download2Element3 .card .tab-pane ul li {
+    font-family: 'helmetregular';
+    color: #dd7c35;
+    font-size: 20px;
+    font-weight: normal;
+    text-align: left;
+    list-style-type: none;
+}
+
+    
 
 /* Footer Cus */
 
@@ -1069,24 +1239,24 @@ label {
     }
     
     .News2 ul li.page-item a{
-        font-family: 'helmet-regular', sans-serif;
+        font-family: 'helmetregular', sans-serif;
         color: #121212;
         font-size: rem(2);
     }
     .News2 ul li.page-item.active a{
-        font-family: 'helmet-regular', sans-serif;
+        font-family: 'helmetregular', sans-serif;
         background-color: #dd7c35;
         border-color: #dd7c35;
     }
     
     .page-item:first-child .page-link {
-        font-family: 'helmet-regular', sans-serif;
+        font-family: 'helmetregular', sans-serif;
         background-color: #dd7c35;
         border-color: #dd7c35;
     }
     
     .page-item:last-child .page-link {
-        font-family: 'helmet-regular', sans-serif;
+        font-family: 'helmetregular', sans-serif;
         background-color: #dd7c35;
         border-color: #dd7c35;
     }

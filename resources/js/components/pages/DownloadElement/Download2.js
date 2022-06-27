@@ -3,6 +3,8 @@ import { Container } from "react-bootstrap";
 import logowindows from "./../../../assets/windows-logo.png";
 import logoandroid from "./../../../assets/android-logo.png";
 import Download2Element1 from "./Download2Element1";
+import Download2Element2 from "./Download2Element2";
+import Download2Element3 from "./Download2Element3";
 
 function Download2() {
     return (
@@ -31,7 +33,7 @@ function Download2() {
                         aria-controls="nav-android"
                         aria-selected="false"
                     >
-                        DOWNLOAD FOR ANDROID<img className="mb-2"src={logoandroid} width={33} height={21}/>
+                        DOWNLOAD FOR PHONE<img className="mb-2"src={logoandroid} width={33} height={21}/>
                     </button>
                     <button
                         class="nav-link"
@@ -64,7 +66,7 @@ function Download2() {
                     aria-labelledby="nav-android-tab"
                     tabindex="0"
                 >
-                    ...
+                    <Download2Element2 />
                 </div>
                 <div
                     class="tab-pane fade"
@@ -73,7 +75,7 @@ function Download2() {
                     aria-labelledby="nav-system-tab"
                     tabindex="0"
                 >
-                    ...
+                    <Download2Element3 />
                 </div>
             </div>
         </Container>
