@@ -9,7 +9,8 @@
 .pageBG {
     background-color: #121212;
     background-size: fit-content;
-    height: 100%;
+    overflow: hidden;
+    max-height: 100%;
 }
 
 /* Spinner */
@@ -802,6 +803,47 @@ a.btn.btn-primary:active {
     list-style-type: none;
 }
 
+/* Register1 */
+
+.Register1 .card {
+    margin: 30px auto;
+    padding: 20px 30px;
+    width: 60%;
+    font-family: 'helmetregular', sans-serif;
+    background: linear-gradient(
+        90deg,
+        rgba(23, 23, 23, 1) 30%,
+        rgba(221, 124, 53, 1) 200%
+    );
+    border: none;
+}
+
+.Register1 .card h1 {
+    font-size: 3rem;
+    color: #d37c35;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.Register1 .card button {
+    margin: 3px;
+}
+
+.Register1 .card .form-control {
+    height: 3rem;
+    background: #eaeaea;
+}
+.Register1 .card .form-floating span{
+    margin-left: 3px;
+    margin-top: 2px;
+    color: #e21313;
+}
+
+
+.Register1 .card .form-floating label {
+    padding: 12px .75rem;
+}
+
 /* Footer Cus */
 
 .footerBG {
@@ -811,6 +853,8 @@ a.btn.btn-primary:active {
         rgba(221, 124, 53, 1) 200%
     );
     width: 100%;
+    position: static;
+    bottom: 0;
 }
 
 .footer-menu .nav-link {
@@ -871,52 +915,6 @@ a.btn.btn-primary:active {
 
 .footer-under .col {
     color: #eaeaea;
-}
-
-/* Login Page or Register Page */
-label {
-    font-family: "Open Sans";
-    color: #eaeaea;
-}
-
-.Regis-Tab .card {
-    box-shadow: 2px 2px 15px 0.4px rgb(0, 0, 0);
-}
-
-.Regis-Tab .card h1 {
-    display: flex;
-    font-family: "helmetregular", sans-serif;
-    font-style: italic;
-    justify-content: center;
-    padding-left: 4vmin;
-    padding-right: 4vmin;
-    color: #eaeaea;
-    font-size: 4em;
-    line-height: 1;
-    text-align: center;
-    text-transform: uppercase;
-    margin: auto;
-    text-shadow: 1px 1px 1px rgb(0, 0, 0);
-}
-
-.Login-Tab .card {
-    box-shadow: 2px 2px 15px 0.4px rgb(0, 0, 0);
-}
-
-.Login-Tab .card h1 {
-    display: flex;
-    font-family: "helmetregular", sans-serif;
-    font-style: italic;
-    justify-content: center;
-    padding-left: 4vmin;
-    padding-right: 4vmin;
-    color: #eaeaea;
-    font-size: 4em;
-    line-height: 1;
-    text-align: center;
-    text-transform: uppercase;
-    margin: auto;
-    text-shadow: 1px 1px 1px rgb(0, 0, 0);
 }
 
 /* Dashboard Page */

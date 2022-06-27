@@ -17,7 +17,9 @@ function Download() {
     return (
         <>
             <Download1 />
+            <div style={{height : '100%'}}>
             <Download2 />
+            </div>
         </>
     );
 }

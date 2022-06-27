@@ -32,6 +32,7 @@ export default function Login() {
                 });
         } catch (error) {
             console.log(error.response.data);
+            Promise.reject(error)
             SetMsg(error.response.data);
         }
     };

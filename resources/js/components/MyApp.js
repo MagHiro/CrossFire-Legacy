@@ -31,7 +31,7 @@ function MyApp() {
                     <Route path="/news" element={<News />} />
                     <Route path="/News/:id" element={<NewsIndex />} />
                     <Route path="/download" element={<Download />} />
-                    <Route path="/register" element={<Register />} />
+                    <Route path="/register" element={<Register title="Register"/>} />
                     <Route path="/signin" element={<Login />} />
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/dashboard/profile" element={<Dashboard />} />

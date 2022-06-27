@@ -25,8 +25,10 @@ function Navigasibar() {
         });
     };
     useEffect(() => {
-        //call function "fetchData"
-        fetchData();
+        if (Cookies.getItem("token")) {
+            //redirect page dashboard
+            fetchData();
+        }
     }, []);
 
     //function logout

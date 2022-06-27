@@ -143,16 +143,17 @@ function Login() {
               });
 
             case 4:
-              _context.next = 10;
+              _context.next = 11;
               break;
 
             case 6:
               _context.prev = 6;
               _context.t0 = _context["catch"](1);
               console.log(_context.t0.response.data);
+              Promise.reject(_context.t0);
               SetMsg(_context.t0.response.data);
 
-            case 10:
+            case 11:
             case "end":
               return _context.stop();
           }
