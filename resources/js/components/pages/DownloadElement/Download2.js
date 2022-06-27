@@ -45,7 +45,7 @@ function Download2() {
                         aria-controls="nav-system"
                         aria-selected="false"
                     >
-                        SYSTEM REQUIREMENTS
+                        SYSTEM REQUIREMENTS<img src={logowindows} width={44} height={32}/>
                     </button>
                 </div>
             </nav>

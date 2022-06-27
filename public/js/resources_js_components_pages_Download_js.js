@@ -165,7 +165,7 @@ function Download2() {
             width: 33,
             height: 21
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("button", {
           "class": "nav-link",
           id: "nav-system-tab",
           "data-bs-toggle": "tab",
@@ -174,7 +174,11 @@ function Download2() {
           role: "tab",
           "aria-controls": "nav-system",
           "aria-selected": "false",
-          children: "SYSTEM REQUIREMENTS"
+          children: ["SYSTEM REQUIREMENTS", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
+            src: _assets_windows_logo_png__WEBPACK_IMPORTED_MODULE_1__["default"],
+            width: 44,
+            height: 32
+          })]
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {

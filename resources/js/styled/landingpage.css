@@ -13,7 +13,7 @@
 }
 
 /* Spinner */
-.Puteran .spinner-border{
+.Puteran .spinner-border {
     width: 12rem;
     height: 12rem;
     position: absolute;
@@ -23,7 +23,7 @@
 
 .Puteran span {
     color: #dd7c35;
-    font-family: 'helmetregular';
+    font-family: "helmetregular";
     font-size: 2rem;
     position: absolute;
     top: 505px;
@@ -385,6 +385,7 @@ a.btn.btn-primary:active {
     border: none;
     margin: 15px 15px;
     border-radius: 10px;
+    box-shadow: 3px 3px 20px #212121;
 }
 .News2 .card img {
     width: 20%;
@@ -393,20 +394,20 @@ a.btn.btn-primary:active {
     border-top-left-radius: 10px;
 }
 
-.News2 .card section h2{
+.News2 .card section h2 {
     font-family: "helmetregular", sans-serif;
     font-size: 30px;
     font-weight: bold;
     text-align: left;
     color: #dd7c35;
-    margin-top:10px;
+    margin-top: 10px;
 }
-.News2 .card section h2 a{
+.News2 .card section h2 a {
     text-decoration: none;
     color: #dd7c35;
 }
 
-.News2 .card section p{
+.News2 .card section p {
     font-family: "helmetregular", sans-serif;
     font-size: 16px;
     text-align: left;
@@ -419,37 +420,43 @@ a.btn.btn-primary:active {
     width: 80%;
 }
 
-.News2 .card section span{
+.News2 .card section span {
     font-family: "helmetregular", sans-serif;
     text-align: left;
     color: #665f59;
 }
 
-.News2 ul li.page-item a{
-    font-family: 'helmetregular', sans-serif;
-    color: #121212;
-    font-size: rem(2);
+.News2 .pagination {
+    margin: 15px 15px 15px 15px
 }
-.News2 ul li.page-item.active a{
-    font-family: 'helmetregular', sans-serif;
+
+.News2 ul li.page-item a {
+    font-family: "helmetregular", sans-serif;
+    color: #121212;
+    font-size: 1em;
+}
+.News2 ul li.page-item.active a {
+    font-family: "helmetregular", sans-serif;
     background-color: #dd7c35;
-    border-color: #dd7c35;
+    color: #121212;
+    border: none;
 }
 
 .page-item:first-child .page-link {
-    font-family: 'helmetregular', sans-serif;
+    font-family: "helmetregular", sans-serif;
     background-color: #dd7c35;
-    border-color: #dd7c35;
+    border: none;
+    color: #ebebeb;
 }
 
 .page-item:last-child .page-link {
-    font-family: 'helmetregular', sans-serif;
+    font-family: "helmetregular", sans-serif;
     background-color: #dd7c35;
-    border-color: #dd7c35;
+    border: none;
+    color: #ebebeb;
 }
 
 /* NewsIndex */
-
 
 .NewsIndex .card {
     display: flex;
@@ -465,7 +472,6 @@ a.btn.btn-primary:active {
     color: #dd7c35;
     margin-left: 20px;
     margin-top: 10px;
-    
 }
 
 .NewsIndex .card img {
@@ -478,17 +484,16 @@ a.btn.btn-primary:active {
     border-radius: 10px;
 }
 
-.NewsIndex .card section article{
+.NewsIndex .card section article {
     font-family: "helmetregular", sans-serif;
     font-size: 20px;
     text-align: left;
     color: #c87941;
     margin-left: 20px;
     margin-right: 20px;
-
 }
 
-.NewsIndex .card section span{
+.NewsIndex .card section span {
     font-family: "helmetregular", sans-serif;
     font-size: 18px;
     text-align: left;
@@ -515,22 +520,27 @@ a.btn.btn-primary:active {
     margin-bottom: 20px;
 }
 
-.Download2 nav .nav-tabs{
+.Download2 nav .nav-tabs {
     border: none;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+    margin-bottom: 5px;
 }
 
-.Download2 nav .nav-tabs button{
+.Download2 nav .nav-tabs button {
     padding: 1% 6%;
-    font-family: 'helmetregular', sans-serif;
+    font-family: "helmetregular", sans-serif;
     font-weight: bold;
     background-color: #dd7c35;
+    border: none;
     color: #eaeaea;
+    border-radius: 20px;
 }
-.Download2 nav .nav-tabs button.active{
+.Download2 nav .nav-tabs button.active {
     color: #dd7c35;
+    border: none;
+    border-radius: 20px;
 }
 
 /* Download2Element1 */
@@ -538,17 +548,17 @@ a.btn.btn-primary:active {
 .Download2Element1 .card {
     display: flex;
     flex-direction: column;
-    border-radius: 0px;
+    border-radius: 15px;
     background: linear-gradient(
         313deg,
         rgba(23, 23, 23, 1) 30%,
         rgba(221, 124, 53, 1) 200%
     );
-
+    border: none;
 }
 
 .Download2Element1 .card h1 {
-    font-family: 'helmetregular', sans-serif;
+    font-family: "helmetregular", sans-serif;
     color: #dd7c35;
     font-size: 1.5rem;
     font-weight: bold;
@@ -571,13 +581,13 @@ a.btn.btn-primary:active {
     border: #dd7c35;
     color: #eaeaea;
     box-shadow: 3px 3px 20px #dd7c35;
-    transform: scaleY(1.2)
+    transform: scaleY(1.2);
 }
 
 .Download2Element1 .card section .col button a {
     text-decoration: none;
     color: white;
-    font-family: 'helmetregular', sans-serif;
+    font-family: "helmetregular", sans-serif;
     letter-spacing: 3px;
     font-weight: bold;
 }
@@ -604,7 +614,7 @@ a.btn.btn-primary:active {
 .Download2Element1 table th {
     padding: 15px 0;
     font-weight: normal;
-    font-family: 'helmetregular', sans-serif;
+    font-family: "helmetregular", sans-serif;
     font-size: 1.2rem;
     text-align: left;
     color: white;
@@ -613,7 +623,7 @@ a.btn.btn-primary:active {
 .Download2Element1 table td {
     padding: 15px 0;
     font-weight: normal;
-    font-family: 'helmetregular', sans-serif;
+    font-family: "helmetregular", sans-serif;
     color: #c87941;
     font-size: 1.2rem;
     text-align: right;
@@ -633,17 +643,17 @@ a.btn.btn-primary:active {
 .Download2Element2 .card {
     display: flex;
     flex-direction: column;
-    border-radius: 0px;
+    border-radius: 15px;
     background: linear-gradient(
         313deg,
         rgba(23, 23, 23, 1) 30%,
         rgba(221, 124, 53, 1) 200%
     );
-
+    border: none;
 }
 
 .Download2Element2 .card h1 {
-    font-family: 'helmetregular', sans-serif;
+    font-family: "helmetregular", sans-serif;
     color: #dd7c35;
     font-size: 1.5rem;
     font-weight: bold;
@@ -666,13 +676,13 @@ a.btn.btn-primary:active {
     border: #dd7c35;
     color: #eaeaea;
     box-shadow: 3px 3px 20px #dd7c35;
-    transform: scaleY(1.2)
+    transform: scaleY(1.2);
 }
 
 .Download2Element2 .card section .col button a {
     text-decoration: none;
     color: white;
-    font-family: 'helmetregular', sans-serif;
+    font-family: "helmetregular", sans-serif;
     letter-spacing: 3px;
     font-weight: bold;
 }
@@ -699,7 +709,7 @@ a.btn.btn-primary:active {
 .Download2Element2 table th {
     padding: 15px 0;
     font-weight: normal;
-    font-family: 'helmetregular', sans-serif;
+    font-family: "helmetregular", sans-serif;
     font-size: 1.2rem;
     text-align: left;
     color: white;
@@ -708,7 +718,7 @@ a.btn.btn-primary:active {
 .Download2Element2 table td {
     padding: 15px 0;
     font-weight: normal;
-    font-family: 'helmetregular', sans-serif;
+    font-family: "helmetregular", sans-serif;
     color: #c87941;
     font-size: 1.2rem;
     text-align: right;
@@ -726,7 +736,7 @@ a.btn.btn-primary:active {
 /* Download2Element3 */
 
 .Download2Element3 .card h1 {
-    font-family: 'helmetregular', sans-serif;
+    font-family: "helmetregular", sans-serif;
     color: #dd7c35;
     font-size: 1.5rem;
     font-weight: bold;
@@ -734,16 +744,16 @@ a.btn.btn-primary:active {
     margin: 10px 10px 10px 10px;
 }
 
-.Download2Element3 .nav-pills{
-    font-family: 'helmetregular', sans-serif;
+.Download2Element3 .nav-pills {
+    font-family: "helmetregular", sans-serif;
     font-weight: bold;
     background-color: #dd7c35;
     color: #eaeaea;
 }
 
-.Download2Element3 .nav-pills .nav-link{
+.Download2Element3 .nav-pills .nav-link {
     padding: 16% 26%;
-    font-family: 'helmetregular', sans-serif;
+    font-family: "helmetregular", sans-serif;
     font-weight: bold;
     font-size: 20px;
     border-radius: 0px;
@@ -752,7 +762,7 @@ a.btn.btn-primary:active {
     border: 2px solid #dd7c35;
 }
 
-.Download2Element3 .nav-pills .nav-link.active{
+.Download2Element3 .nav-pills .nav-link.active {
     background-color: #eaeaea;
     border: 2px solid #eaeaea;
     color: #dd7c35;
@@ -761,13 +771,13 @@ a.btn.btn-primary:active {
 .Download2Element3 .card {
     display: flex;
     flex-direction: column;
-    border-radius: 0px;
+    border-radius: 15px;
     background: linear-gradient(
         313deg,
         rgba(23, 23, 23, 1) 30%,
         rgba(221, 124, 53, 1) 200%
     );
-
+    border: none;
 }
 
 .Download2Element3 .card .tab-pane {
@@ -775,7 +785,7 @@ a.btn.btn-primary:active {
 }
 
 .Download2Element3 .card .tab-pane ul li:first-child {
-    font-family: 'helmetregular';
+    font-family: "helmetregular";
     color: #dd7c35;
     font-size: 25px;
     font-weight: bold;
@@ -784,15 +794,13 @@ a.btn.btn-primary:active {
 }
 
 .Download2Element3 .card .tab-pane ul li {
-    font-family: 'helmetregular';
+    font-family: "helmetregular";
     color: #dd7c35;
     font-size: 20px;
     font-weight: normal;
     text-align: left;
     list-style-type: none;
 }
-
-    
 
 /* Footer Cus */
 
@@ -863,27 +871,6 @@ a.btn.btn-primary:active {
 
 .footer-under .col {
     color: #eaeaea;
-}
-
-/* Downloan Page */
-
-.Spec-Section .card-body {
-    height: 400px;
-}
-
-.Spec-Section .card-body {
-    font-family: "helmetregular", sans-serif;
-    text-shadow: 1px 1px 1px rgb(0, 0, 0);
-    font-size: 16px;
-    font-weight: 600;
-    text-align: justify;
-    color: rgb(255, 255, 255);
-    overflow: scroll;
-    scroll-behavior: smooth;
-}
-
-.Spec-Section .card-body::-webkit-scrollbar {
-    display: none;
 }
 
 /* Login Page or Register Page */
@@ -1144,19 +1131,19 @@ label {
     }
 
     .Home2 section img:first-child {
-        top: 8px;
-        left: 10px;
+        top: 2rem;
+        left: 1rem;
     }
 
     .Home2 section img:last-child {
-        top: -90px;
-        left: 95px;
+        top: -5rem;
+        left: 3.5rem;
     }
 
     /* Home3 */
 
     .Home3 {
-        height: 500px;
+        height: 600px;
     }
     .Home3 h1 {
         font-size: 45px;
@@ -1198,12 +1185,13 @@ label {
     .News1 h1 {
         font-size: 50px;
     }
-    
+
     /* News2 */
-    
+
     .News2 .card {
         gap: 5px;
-        margin: 10px 10px;
+        margin: 20px 0px;
+        box-shadow: 3px 3px 20px #212121;
     }
     .News2 .card img {
         width: 35%;
@@ -1211,63 +1199,62 @@ label {
         border-top-left-radius: 10px;
     }
 
-    .News2 .card section{
+    .News2 .card section {
         line-height: 33px;
     }
-    
-    .News2 .card section h2{
+
+    .News2 .card section h2 {
         font-family: "helmetregular", sans-serif;
         font-size: 14px;
         font-weight: bold;
         text-align: left;
         color: #dd7c35;
-        margin-top:5px;
+        margin-top: 5px;
     }
-    .News2 .card section h2 a{
+    .News2 .card section h2 a {
         text-decoration: none;
         color: #dd7c35;
     }
-    
-    .News2 .card section p{
+
+    .News2 .card section p {
         display: none;
     }
-    
-    .News2 .card section span{
+
+    .News2 .card section span {
         font-family: "helmetregular", sans-serif;
         text-align: left;
         color: #665f59;
     }
-    
-    .News2 ul li.page-item a{
-        font-family: 'helmetregular', sans-serif;
+
+    .News2 ul li.page-item a {
+        font-family: "helmetregular", sans-serif;
         color: #121212;
         font-size: rem(2);
     }
-    .News2 ul li.page-item.active a{
-        font-family: 'helmetregular', sans-serif;
+    .News2 ul li.page-item.active a {
+        font-family: "helmetregular", sans-serif;
         background-color: #dd7c35;
         border-color: #dd7c35;
     }
-    
+
     .page-item:first-child .page-link {
-        font-family: 'helmetregular', sans-serif;
+        font-family: "helmetregular", sans-serif;
         background-color: #dd7c35;
         border-color: #dd7c35;
     }
-    
+
     .page-item:last-child .page-link {
-        font-family: 'helmetregular', sans-serif;
+        font-family: "helmetregular", sans-serif;
         background-color: #dd7c35;
         border-color: #dd7c35;
     }
 
     /* NewsIndex */
 
-
     .NewsIndex .card {
         display: flex;
         flex-direction: column;
-        margin: 15px 15px;
+        margin: 15px 0px;
     }
 
     .NewsIndex .card h1 {
@@ -1279,7 +1266,6 @@ label {
         margin-left: 10px;
         margin-right: 10px;
         margin-top: 20px;
-        
     }
 
     .NewsIndex .card img {
@@ -1292,7 +1278,7 @@ label {
         border-radius: 10px;
     }
 
-    .NewsIndex .card section article{
+    .NewsIndex .card section article {
         font-family: "helmetregular", sans-serif;
         font-size: 16px;
         text-align: left;
@@ -1301,7 +1287,7 @@ label {
         margin-right: 15px;
     }
 
-    .NewsIndex .card section span{
+    .NewsIndex .card section span {
         font-family: "helmetregular", sans-serif;
         font-size: 18px;
         text-align: left;
@@ -1309,6 +1295,68 @@ label {
         margin-right: 15px;
     }
 
+    /* Download Page */
+    /* Download1 */
+
+    .Download1 h1 {
+        font-family: "helmetregular", sans-serif;
+        font-size: 45px;
+        font-weight: bold;
+        text-align: center;
+        color: #dd7c35;
+    }
+
+    /* Download2 */
+
+    .Download2 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .Download2 nav .nav-tabs {
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+
+    .Download2 nav .nav-tabs button {
+        margin-bottom: 5px;
+        border-radius: 15px;
+    }
+
+    .Download2 nav .nav-tabs button:hover {
+        margin-bottom: 5px;
+        border-radius: 15px;
+    }
+
+    /* Download2Element1 */
+
+    .Download2Element1 .card h1 {
+        font-family: "helmetregular", sans-serif;
+        color: #dd7c35;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+        margin: 10px 10px 10px 10px;
+    }
+
+
+    .Download2Element1 .card section {
+        flex-direction: column;
+    }
+
+
+    /* Download2Element2 */
+
+    .Download2Element2 .card h1 {
+        font-size: 1.5rem;
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+
+    .Download2Element2 .card section {
+        display: flex;
+        flex-direction: column;
+    }
 
     .nav {
         display: flex;
