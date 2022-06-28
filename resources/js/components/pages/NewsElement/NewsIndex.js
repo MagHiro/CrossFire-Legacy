@@ -2,8 +2,8 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Card, Container } from "react-bootstrap";
-import newstest from "./../../../assets/news-test.webp";
 import News1 from "./News1"
+import {Helmet} from "react-helmet";
 
 function NewsIndex() {
     const [judul, setJudul] = useState('');
@@ -34,7 +34,9 @@ function NewsIndex() {
 
     return (
         <>
-            
+            <Helmet>
+                <title>CFL | {judul}</title>
+            </Helmet>
             <News1 />
             <Container className="NewsIndex">
                 <Card>

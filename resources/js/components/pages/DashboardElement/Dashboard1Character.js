@@ -66,7 +66,7 @@ function Dashboard1Character() {
                 </ul>
                 <div className="card profile-tab">
                     <div className="card-body">
-                        <table class="table karakter-info">
+                        <table className="table karakter-info">
                             <tbody>
                                 <tr>
                                     <th scope="row">Rank</th>

@@ -38,7 +38,7 @@ export default function Login1() {
     };
 
     return (
-        <Parallax className="Login1" blur={4} bgImage={RegisterParallax} bgImageStyle={{ opacity: ".5" }}>
+        <Parallax className="Login1" blur={4} bgStyle ={{height : '100vh'}}bgImage={RegisterParallax} bgImageStyle={{ opacity: ".5" }}>
             <Card>
                 <h1 className="text-center mb-3">LOGIN PAGE</h1>
                 <form className="row justify-content-center mb-1" noValidate>
@@ -74,7 +74,7 @@ export default function Login1() {
                     </div>
                 </form>
 
-                <section className="col-sm-6 mb-1 ">
+                <section className="col mb-1 ">
                     <p>Do not have an account ? <a href="/register">Sign here</a></p>
                     <span>{Msg.message}</span>
                     <button onClick={submitForm} className="btn btn-primary">Login</button>

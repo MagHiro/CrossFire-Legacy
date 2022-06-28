@@ -24,24 +24,24 @@ function MyApp() {
                     <Spinner />
                 }
             >
-                <Navbar />
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/news" element={<News />} />
-                    <Route path="/News/:id" element={<NewsIndex />} />
-                    <Route path="/download" element={<Download />} />
-                    <Route path="/register" element={<Register title="Register"/>} />
-                    <Route path="/signin" element={<Login />} />
-                    <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/dashboard/profile" element={<Dashboard />} />
-                    <Route
-                        path="/dashboard/character"
-                        element={<Character />}
-                    />
-                    <Route path="/dashboard/topup" element={<Recharge />} />
-                </Routes>
+                    <Navbar />
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/news" element={<News />} />
+                        <Route path="/News/:id" element={<NewsIndex />} />
+                        <Route path="/download" element={<Download />} />
+                        <Route path="/register" element={<Register title="Register"/>} />
+                        <Route path="/signin" element={<Login />} />
+                        <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/dashboard/profile" element={<Dashboard />} />
+                        <Route
+                            path="/dashboard/character"
+                            element={<Character />}
+                        />
+                        <Route path="/dashboard/topup" element={<Recharge />} />
+                    </Routes>
 
-                <Footer />
+                    <Footer />  
             </React.Suspense>
         </div>
     );

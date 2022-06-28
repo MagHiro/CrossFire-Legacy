@@ -193,6 +193,9 @@ function Login1() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_parallax__WEBPACK_IMPORTED_MODULE_1__.Parallax, {
     className: "Login1",
     blur: 4,
+    bgStyle: {
+      height: '100vh'
+    },
     bgImage: _assets_Register_Parallax_jpg__WEBPACK_IMPORTED_MODULE_2__["default"],
     bgImageStyle: {
       opacity: ".5"
@@ -248,7 +251,7 @@ function Login1() {
           })
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("section", {
-        className: "col-sm-6 mb-1 ",
+        className: "col mb-1 ",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
           children: ["Do not have an account ? ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
             href: "/register",
