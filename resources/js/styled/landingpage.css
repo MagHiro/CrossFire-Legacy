@@ -100,7 +100,11 @@
     transform: scale(1.1);
 }
 
-a.btn.btn-primary:active {
+.btn.btn-primary:active:focus {
+    box-shadow: 3px 3px 20px #dd7c35;
+}
+
+a.btn.btn-primary:active:focus {
     box-shadow: 3px 3px 20px #dd7c35;
 }
 
@@ -135,7 +139,7 @@ a.btn.btn-primary:active {
     filter: drop-shadow(2px 5px 30px #212121);
     transform: scale(1.1);
 }
-.btn-outline-secondary:active {
+.btn-outline-secondary:active:focus  {
     box-shadow: none;
 }
 .btn-outline-secondary:focus {
@@ -827,12 +831,20 @@ a.btn.btn-primary:active {
 
 .Register1 .card button {
     margin: 3px;
+    padding: 2px 25px;
 }
 
 .Register1 .card .form-control {
     height: 3rem;
     background: #eaeaea;
 }
+
+.Register1 .card .form-control:focus {
+    height: 3rem;
+    background: #eaeaea;
+    box-shadow: 0 0 0 0.25rem #dd7c35;
+}
+
 .Register1 .card .form-floating span{
     margin-left: 3px;
     margin-top: 2px;
@@ -842,6 +854,76 @@ a.btn.btn-primary:active {
 
 .Register1 .card .form-floating label {
     padding: 12px .75rem;
+}
+
+.Register1 section p{
+    color: darkgrey;
+    font-size: 16px     ;
+}
+
+.Register1 section p a{
+    color: #dd7c35;   ;
+}
+
+/* Login1 */
+
+.Login1 .card {
+    margin: 30px auto;
+    padding: 20px 30px;
+    width: 40%;
+    font-family: 'helmetregular', sans-serif;
+    background: linear-gradient(
+        90deg,
+        rgba(23, 23, 23, 1) 30%,
+        rgba(221, 124, 53, 1) 200%
+    );
+    border: none;
+}
+
+.Login1 .card h1 {
+    font-size: 3rem;
+    color: #d37c35;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.Login1 .card button {
+    margin: 3px;
+    padding: 2px 25px;
+}
+
+.Login1 .card .form-control {
+    height: 3rem;
+    background: #eaeaea;
+}
+
+.Login1 .card .form-control:focus {
+    box-shadow: 0 0 0 0.25rem #dd7c35;
+}
+
+.Login1 .card .form-floating span{
+    margin-left: 3px;
+    margin-top: 2px;
+    color: #e21313;
+}
+
+
+.Login1 .card .form-floating label {
+    padding: 12px .75rem;
+}
+
+.Login1 section p{
+    color: darkgrey;
+    font-size: 16px     ;
+}
+
+.Login1 section p a{
+    color: #dd7c35;   ;
+}
+
+.Login1 section span{
+    margin-left: 3px;
+    color: #e21313;
 }
 
 /* Footer Cus */
@@ -1356,6 +1438,17 @@ a.btn.btn-primary:active {
         flex-direction: column;
     }
 
+    /* Register1 */
+
+    .Register1 .card {
+        width: 95%;
+    }
+    /* Login1 */
+
+    .Login1 .card {
+        width: 90%;
+    }
+
     .nav {
         display: flex;
         flex-direction: column;
@@ -1419,24 +1512,6 @@ a.btn.btn-primary:active {
 
     .Spec-Section .card-body {
         height: auto;
-    }
-    .Regis-Tab .card {
-        margin-left: 15px;
-        margin-right: 15px;
-        border-radius: 10px;
-    }
-
-    .Regis-Tab .card h1 {
-        font-size: 35px;
-    }
-    .Login-Tab .card {
-        margin-left: 15px;
-        margin-right: 15px;
-        border-radius: 10px;
-    }
-
-    .Login-Tab .card h1 {
-        font-size: 35px;
     }
 
     .dashboard-column {

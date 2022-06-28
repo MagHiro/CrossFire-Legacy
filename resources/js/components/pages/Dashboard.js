@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import { Parallax } from "react-parallax";
 import { useNavigate } from "react-router-dom";
 import Cookies from "../Cookies";
+import Foto from './../../assets/cfbrss-02.jpg';
+import Foto1 from './../../assets/cfl2.gif';
 
 function Dashboard () {
 
@@ -60,7 +62,7 @@ function Dashboard () {
     return(
         <Parallax
             blur={4}
-            bgImage={require('./../../assets/cfbrss-02.jpg').default}
+            bgImage={Foto}
             bgImageStyle={{ opacity: ".5" }}
         >    
             <div className="container pt-5 mb-5">
@@ -68,8 +70,8 @@ function Dashboard () {
                     <div className="col-4 dashboard-column">
                         <div className="card user-nav">
                             <div className="card-body">
-                                <img src={ require('./../../assets/cfl2.gif').default} width={100} height={100}/>
-                                <h3>{user.nickname} ID {user.id}</h3>
+                                <img src={Foto1} width={100} height={100}/>
+                                <h3>{user.nickname  || ''} ID {user.id  || ''}</h3>
                                 <button type="button" className="btn btn-outline-primary">PLAYER</button>
                                 <span>Player Since 06 March 2022</span>
                             </div>
@@ -97,19 +99,19 @@ function Dashboard () {
                                 <div className="card-body">
                                     <div className="mb-3">
                                         <label className="form-label">Nama</label>
-                                        <input type="text" className="form-control" value={user.firstname} disabled readOnly/>
+                                        <input type="text" className="form-control" value ={user.firstname || ''} disabled readOnly/>
                                     </div>
                                     <div className="mb-3">
                                         <label className="form-label">Username</label>
-                                        <input type="text" className="form-control" value={user.username} disabled readOnly/>
+                                        <input type="text" className="form-control" value={user.username  || ''} disabled readOnly/>
                                     </div>
                                     <div className="mb-3">
                                         <label className="form-label">Email Addres</label>
-                                        <input type="text" className="form-control" value={user.email} disabled readonly/>
+                                        <input type="text" className="form-control" value={user.email  || ''} disabled readOnly/>
                                     </div>
                                     <div className="mb-3">
                                         <label className="form-label">Discord ID</label>
-                                        <input type="text" className="form-control" value="" disabled readonly/>
+                                        <input type="text" className="form-control" value="" disabled readOnly/>
                                     </div>
                                     <button type="button" style={{marginRight : '10px'}} onClick={fetchData} className="btn btn-outline-primary">Verify Account</button>
                                     <button type="button" onClick={directUpdate} className="btn btn-outline-primary">Change Password</button>

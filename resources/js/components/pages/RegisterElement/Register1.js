@@ -50,7 +50,7 @@ export default function Register1() {
         <Parallax className="Register1" blur={4} bgImage={RegisterParallax} bgImageStyle={{ opacity: ".5" }}>
             <Card>
                 <h1 className="text-center mb-3">REGISTER PAGE</h1>
-                <form className="row justify-content-center mb-1" novalidate>
+                <form className="row justify-content-center mb-1" noValidate>
                     <div className="col">
                         <div className="form-floating mb-1">
                             <input
@@ -60,7 +60,7 @@ export default function Register1() {
                                 placeholder="First name"
                                 onChange={(e) => setFirstname(e.target.value)}
                             />
-                            <label for="floatingInput">First name</label>
+                            <label htmlFor="floatingInput">First name</label>
                             <span>{Msg.firstname}</span>
                         </div>
                     </div>
@@ -73,7 +73,7 @@ export default function Register1() {
                                 placeholder="Last name"
                                 onChange={(e) => setLastname(e.target.value)}
                             />
-                            <label for="floatingLastname">Last name</label>
+                            <label htmlFor="floatingLastname">Last name</label>
                             <span>{Msg.lastname}</span>
                         </div>
                     </div>
@@ -90,7 +90,7 @@ export default function Register1() {
                                 onChange={(e) => setUsername(e.target.value)}
                                 required
                             />
-                            <label for="floatingUsername">Username</label>
+                            <label htmlFor="floatingUsername">Username</label>
                             <span>{Msg.username}</span>
                         </div>
                     </div>
@@ -103,7 +103,7 @@ export default function Register1() {
                                 placeholder="Email Address"
                                 onChange={(e) => setEmail(e.target.value)}
                             />
-                            <label for="floatingEmail">Email Address</label>
+                            <label htmlFor="floatingEmail">Email Address</label>
                             <span>{Msg.email}</span>
                         </div>
                     </div>
@@ -119,7 +119,7 @@ export default function Register1() {
                                 placeholder="Password"
                                 onChange={(e) => setPassword(e.target.value)}
                             />
-                            <label for="floatingPassword">Password</label>
+                            <label htmlFor="floatingPassword">Password</label>
                             <span>{Msg.password}</span>
                         </div>
                     </div>
@@ -132,13 +132,11 @@ export default function Register1() {
                                 placeholder="Confirm"
                                 onChange={(e) => setPassword_confirmation(e.target.value)}
                             />
-                            <label for="floatingConfirm">Confirm</label>
+                            <label htmlFor="floatingConfirm">Confirm</label>
                             <span>{Msg.password}</span>
                         </div>
                     </div>
-                </form>
-                <form className="row justify-content-center mb-1">
-                    <div className="col-sm-6 Regis-Tab">
+                    <div className="col">
                         <div className="form-floating mb-1">
                             <input
                                 type="password"
@@ -147,14 +145,15 @@ export default function Register1() {
                                 placeholder="Pin"
                                 onChange={(e) => setPin(e.target.value)}
                             />
-                            <label for="floatingPin">Pin</label>
+                            <label htmlFor="floatingPin">Pin</label>
                             <span>{Msg.pin}</span>
                         </div>
                     </div>
-                    <div className="col-sm-6 Regis-Tab">
-                        <button onClick={submitForm} className="btn btn-primary">Register</button>
-                    </div>
                 </form>
+                <section className="mb-1 ">
+                    <p>Already have an account ? <a href="/signin">Sign here</a></p>
+                    <button onClick={submitForm} className="btn btn-primary">Register</button>
+                </section>
             </Card>
         </Parallax>
     );
