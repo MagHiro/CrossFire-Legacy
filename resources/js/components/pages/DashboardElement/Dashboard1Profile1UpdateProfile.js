@@ -4,7 +4,7 @@ import { Parallax } from "react-parallax";
 import { useNavigate } from "react-router-dom";
 import Cookies from "../Cookies";
 
-function UpdateProfile () {
+function Dashboard1Profile1UpdateProfile () {
 
 
     const directProfile = (e) => {
@@ -74,29 +74,6 @@ function UpdateProfile () {
     }
 
     return(
-        <Parallax
-            blur={4}
-            bgImage={require('./../../assets/cfbrss-02.jpg').default}
-            bgImageStyle={{ opacity: ".5" }}
-        >    
-            <div className="container pt-5 mb-5">
-                <div className="row">
-                    <div className="col-4 dashboard-column">
-                        <div className="card user-nav">
-                            <div className="card-body">
-                                <img src={ require('./../../assets/cfl2.gif').default} width={100} height={100}/>
-                                <h3>{user.nickname} ID {user.id}</h3>
-                                <button type="button" className="btn btn-outline-primary">PLAYER</button>
-                                <span>{user.CreatedAt}</span>
-                            </div>
-                        </div>
-                        <div className="btn-group" role="group" aria-label="Basic outlined example">
-                            <button type="submit" onClick={directProfile} className="btn btn-outline-primary">Profile</button>
-                            <button type="button" onClick={directCharacter}className="btn btn-outline-primary">Character</button>
-                            <button type="button" onClick={directTopup}className="btn btn-outline-primary">Top Up</button>
-                            <button type="button" onClick={logoutHandler}className="btn btn-outline-primary">Logout</button>
-                        </div>
-                    </div>
                     <div className="col dashboard-right">
                         <h4>&#8883;  Dashboard</h4>
                         <div className="informasi-dashboard">
@@ -125,11 +102,8 @@ function UpdateProfile () {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>  
-            </div>
-        </Parallax>    
+                    </div>  
     )
 }
 
-export default UpdateProfile;
+export default Dashboard1Profile1UpdateProfile;

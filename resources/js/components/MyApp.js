@@ -11,7 +11,6 @@ const Register = React.lazy(() => import("./pages/Register"));
 const Login = React.lazy(() => import("./pages/Login"));
 const Dashboard = React.lazy(() => import("./pages/Dashboard"));
 const Character = React.lazy(() => import("./pages/Character"));
-const UpdateProfile = React.lazy(() => import("./pages/UpdateProfile"));
 const NewsIndex = React.lazy(() => import("./pages/NewsElement/NewsIndex"));
 const Recharge = React.lazy(() => import("./pages/Recharge"));
 const Navbar = React.lazy(() => import("./Navigasibar"));
@@ -38,10 +37,6 @@ function MyApp() {
                     <Route
                         path="/dashboard/character"
                         element={<Character />}
-                    />
-                    <Route
-                        path="dashboard/profile/edit/:id"
-                        element={<UpdateProfile />}
                     />
                     <Route path="/dashboard/topup" element={<Recharge />} />
                 </Routes>
