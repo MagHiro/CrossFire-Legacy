@@ -5459,9 +5459,6 @@ var Login = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
 var Dashboard = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_components_pages_Dashboard_js").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/Dashboard */ "./resources/js/components/pages/Dashboard.js"));
 });
-var Character = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
-  return __webpack_require__.e(/*! import() */ "resources_js_components_pages_Character_js").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/Character */ "./resources/js/components/pages/Character.js"));
-});
 var NewsIndex = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_components_pages_NewsElement_NewsIndex_js").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/NewsElement/NewsIndex */ "./resources/js/components/pages/NewsElement/NewsIndex.js"));
 });
@@ -5507,9 +5504,6 @@ function MyApp() {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
           path: "/dashboard/profile",
           element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Dashboard, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
-          path: "/dashboard/character",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Character, {})
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
           path: "/dashboard/topup",
           element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Recharge, {})
@@ -62056,7 +62050,7 @@ function _extends() {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_pages_Home_js":1,"resources_js_components_pages_News_js":1,"resources_js_components_pages_Download_js":1,"resources_js_components_pages_Register_js":1,"resources_js_components_pages_Login_js":1,"resources_js_components_pages_Dashboard_js":1,"resources_js_components_pages_Character_js":1,"resources_js_components_pages_NewsElement_NewsIndex_js":1,"resources_js_components_pages_Recharge_js":1,"resources_js_components_Navigasibar_js":1,"resources_js_components_Footer_js":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_pages_Home_js":1,"resources_js_components_pages_News_js":1,"resources_js_components_pages_Download_js":1,"resources_js_components_pages_Register_js":1,"resources_js_components_pages_Login_js":1,"resources_js_components_pages_Dashboard_js":1,"resources_js_components_pages_NewsElement_NewsIndex_js":1,"resources_js_components_pages_Recharge_js":1,"resources_js_components_Navigasibar_js":1,"resources_js_components_Footer_js":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

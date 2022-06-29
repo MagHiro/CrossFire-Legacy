@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Container, Carousel, Row, Col, Card } from "react-bootstrap";
+import { Container, Carousel, Card } from "react-bootstrap";
 import fototest from "./../../../assets/BannerCrossfire1.jpg";
 import discordlogo from "./../../../assets/ds-logo.png";
 
 function Home3() {
-    const [isDesktop, setDesktop] = useState(window.innerWidth > 768);
+    const [isDesktop, setDesktop] = useState(window.innerWidth > 767 );
 
     const updateMedia = () => {
-        setDesktop(window.innerWidth > 768);
+        setDesktop(window.innerWidth > 767);
     };
 
     useEffect(() => {

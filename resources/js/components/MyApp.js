@@ -10,7 +10,6 @@ const Download = React.lazy(() => import("./pages/Download"));
 const Register = React.lazy(() => import("./pages/Register"));
 const Login = React.lazy(() => import("./pages/Login"));
 const Dashboard = React.lazy(() => import("./pages/Dashboard"));
-const Character = React.lazy(() => import("./pages/Character"));
 const NewsIndex = React.lazy(() => import("./pages/NewsElement/NewsIndex"));
 const Recharge = React.lazy(() => import("./pages/Recharge"));
 const Navbar = React.lazy(() => import("./Navigasibar"));
@@ -34,10 +33,6 @@ function MyApp() {
                         <Route path="/signin" element={<Login />} />
                         <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/dashboard/profile" element={<Dashboard />} />
-                        <Route
-                            path="/dashboard/character"
-                            element={<Character />}
-                        />
                         <Route path="/dashboard/topup" element={<Recharge />} />
                     </Routes>
 

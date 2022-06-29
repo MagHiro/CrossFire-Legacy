@@ -21,7 +21,7 @@ function Download2() {
                         aria-controls="nav-download"
                         aria-selected="true"
                     >
-                        DOWNLOAD FOR WINDOWS<img src={logowindows} width={44} height={32}/>
+                        DOWNLOAD FOR WINDOWS
                     </button>
                     <button
                         class="nav-link"
@@ -33,7 +33,7 @@ function Download2() {
                         aria-controls="nav-android"
                         aria-selected="false"
                     >
-                        DOWNLOAD FOR PHONE<img className="mb-2"src={logoandroid} width={33} height={21}/>
+                        DOWNLOAD FOR PHONE
                     </button>
                     <button
                         class="nav-link"
@@ -45,7 +45,7 @@ function Download2() {
                         aria-controls="nav-system"
                         aria-selected="false"
                     >
-                        SYSTEM REQUIREMENTS<img src={logowindows} width={44} height={32}/>
+                        SYSTEM REQUIREMENTS
                     </button>
                 </div>
             </nav>

@@ -147,7 +147,7 @@ function Download2() {
         "class": "nav nav-tabs",
         id: "nav-tab",
         role: "tablist",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("button", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
           "class": "nav-link active",
           id: "nav-download-tab",
           "data-bs-toggle": "tab",
@@ -156,12 +156,8 @@ function Download2() {
           role: "tab",
           "aria-controls": "nav-download",
           "aria-selected": "true",
-          children: ["DOWNLOAD FOR WINDOWS", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
-            src: _assets_windows_logo_png__WEBPACK_IMPORTED_MODULE_1__["default"],
-            width: 44,
-            height: 32
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("button", {
+          children: "DOWNLOAD FOR WINDOWS"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
           "class": "nav-link",
           id: "nav-android-tab",
           "data-bs-toggle": "tab",
@@ -170,13 +166,8 @@ function Download2() {
           role: "tab",
           "aria-controls": "nav-android",
           "aria-selected": "false",
-          children: ["DOWNLOAD FOR PHONE", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
-            className: "mb-2",
-            src: _assets_android_logo_png__WEBPACK_IMPORTED_MODULE_2__["default"],
-            width: 33,
-            height: 21
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("button", {
+          children: "DOWNLOAD FOR PHONE"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
           "class": "nav-link",
           id: "nav-system-tab",
           "data-bs-toggle": "tab",
@@ -185,11 +176,7 @@ function Download2() {
           role: "tab",
           "aria-controls": "nav-system",
           "aria-selected": "false",
-          children: ["SYSTEM REQUIREMENTS", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
-            src: _assets_windows_logo_png__WEBPACK_IMPORTED_MODULE_1__["default"],
-            width: 44,
-            height: 32
-          })]
+          children: "SYSTEM REQUIREMENTS"
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {

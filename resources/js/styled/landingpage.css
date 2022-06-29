@@ -34,10 +34,6 @@
 }
 /* Navigation bar Styling */
 
-/* .container {
-    max-width: 1300px;
-} */
-
 .navbar {
     background: linear-gradient(
         90deg,
@@ -47,7 +43,6 @@
     position: sticky;
     top: 0;
     z-index: 3;
-    height: 70px;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -323,8 +318,7 @@ a.btn.btn-primary:active:focus {
 }
 
 .carousel-indicators {
-    position: relative;
-    bottom: -340px;
+    margin: -5rem auto;
 }
 
 .carousel-control-next,
@@ -531,23 +525,23 @@ a.btn.btn-primary:active:focus {
     border: none;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    margin-bottom: 5px;
+    justify-content: center;
 }
 
 .Download2 nav .nav-tabs button {
-    padding: 1% 6%;
     font-family: "helmetregular", sans-serif;
     font-weight: bold;
     background-color: #dd7c35;
     border: none;
     color: #eaeaea;
-    border-radius: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 .Download2 nav .nav-tabs button.active {
     color: #dd7c35;
     border: none;
-    border-radius: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 /* Download2Element1 */
@@ -1018,10 +1012,6 @@ a.btn.btn-primary:active:focus {
     font-style: oblique;
 }
 
-.Dashboard1Profile .nav-tabs {
-    
-}
-
 .Dashboard1Profile ul li button {
     color: #dd7c35;
 }
@@ -1108,7 +1098,68 @@ a.btn.btn-primary:active:focus {
    
 }
 
+/* Dashboard1Character */
 
+.Dashboard1Character h4 {
+    color: #d37c35
+}
+
+.Dashboard1Character p {
+    color: #eaeaea;
+}
+
+.Dashboard1Character p span {
+    font-style: oblique;
+}
+
+.Dashboard1Character ul li button {
+    color: #dd7c35;
+}
+
+.Dashboard1Character ul li button:hover {
+    color: #dd7c35;;
+}
+
+.Dashboard1Character .tab-content {
+    width: 100%;
+}
+
+/* Dashboard1Character1 */
+
+.Dashboard1Character1 .card {
+    padding: 30px 30px;
+    background: linear-gradient(
+         250deg,
+         rgba(23, 23, 23, 1) 30%,
+         rgba(221, 124, 53, 1) 200%
+     );
+     border: none;
+ }
+ 
+ .Dashboard1Character1 .card>* {
+     color: #dd7c35;
+     margin-bottom: 10px;
+    
+ }
+ 
+ .Dashboard1Character1 .card button {
+     border: 1px solid #dd7c35;
+     width: 50%;
+     margin: 0 auto;
+    
+ }
+ 
+ .Dashboard1Character1 .card button:focus {
+     box-shadow: 0 0 0 1px #dd7c35;
+    
+ }
+ 
+ .Dashboard1Character1 .card button:hover {
+     border: 1px solid #dd7c35;
+     color: #eaeaea;
+     background: #dd7c35;
+    
+ }
 
 /* Footer Cus */
 
@@ -1183,23 +1234,7 @@ a.btn.btn-primary:active:focus {
     color: #eaeaea;
 }
 
-/* Karakter Page */
-
-.karakter-info tbody tr th {
-    font-family: "helmetregular", sans-serif;
-    color: #eaeaea;
-    font-size: 16px;
-    font-weight: 600;
-    font-style: bold;
-}
-.karakter-info tbody tr td {
-    font-family: "helmetregular", sans-serif;
-    color: #eaeaea;
-    font-size: 16px;
-    font-weight: 400;
-}
-
-@media screen and (max-width: 768px) {
+@media (max-width: 480px) {
     .navbar {
         height: auto;
     }
@@ -1281,10 +1316,6 @@ a.btn.btn-primary:active:focus {
         margin-top: 20px;
         font-size: 18px;
         width: 100%;
-    }
-
-    .Home3 .carousel {
-        top: -35px;
     }
 
     .Home3 .card {
@@ -1495,6 +1526,30 @@ a.btn.btn-primary:active:focus {
         width: 90%;
     }
 
+    /* Dashboard1 */
+
+    .Dashboard1 {
+        display: flex;
+        flex-direction: column;
+        font-family: 'helmetregular', sans-serif;
+        gap: 1rem;
+    }
+
+    .Dashboard1 .nav-pills {
+        width: 100%;
+    }
+
+    .Dashboard1 .tab-content {
+        width: 100%;
+    }
+
+    /* Dashboard1Character1 */
+
+    .Dashboard1Character1 .card {
+    padding: 10px 10px;
+
+    }
+
     .nav {
         display: flex;
         flex-direction: column;
@@ -1508,63 +1563,337 @@ a.btn.btn-primary:active:focus {
         margin-top: 10px;
         margin-bottom: 20px;
     }
+}
 
-    .download-header h2 {
-        width: 100%;
-        font-size: 16px;
-        letter-spacing: 0;
+@media (min-width: 768px) and (max-width: 1024px) {
+    .Home1 h1 {
+        font-size: 70px;
+        line-height: 3.5rem;
     }
 
-    .download-header .btn-primary {
-        width: 100%;
-        padding: 0px 0px;
+    /* Home1 */
+
+    .Home1 p {
+        margin-top: 15px;
         font-size: 20px;
-        border: none;
+    }
+
+    .btn-outline-light {
+        width: 80%;
+        margin-top: 20px;
+        font-size: 20px;
+        font-style: italic;
         transition-duration: 1ms;
-        line-height: 60px;
-        margin-top: 10px;
     }
 
-    .download-header .btn-primary:hover {
-        width: 100%;
-        padding: 0px 0px;
+    .btn-outline-light:hover {
+        width: 80%;
+        margin-top: 20px;
         font-size: 20px;
-        color: black;
-        line-height: 60px;
-        margin-top: 10px;
-    }
-    .download-footer {
-        display: flex;
-        flex-direction: column;
+        font-style: italic;
+        filter: drop-shadow(2px 2px 10px #dd7c35);
     }
 
-    .download-footer p {
-        margin-left: 0;
-        font-size: 15px;
-        margin-top: 0;
-        margin-bottom: 0;
-        font-weight: 0;
+    /* Home2 */
+
+    .Home2 {
+        height: 700px;
+    }
+    .Home2 h1 {
+        font-size: 50px;
+        line-height: 2.5rem;
         width: 100%;
     }
 
-    .Spec-Section {
-        display: flex;
-        flex-direction: column;
+    .Home2 p {
+        margin-top: 20px;
+        font-size: 20px;
+        width: 100%;
     }
 
-    .Spec-Section .col {
+    .Home2 section img {
+        width: 70%;
+        height: 35%;
+    }
+
+    .Home2 section img:first-child {
+        top: 2rem;
+        left: 1rem;
+    }
+
+    .Home2 section img:last-child {
+        top: -15rem;
+        left: 7.5rem;
+    }
+
+    /* Home3 */
+
+    .Home3 {
+        height: 500px;
+    }
+    .Home3 h1 {
+        font-size: 50px;
+        line-height: 2.5rem;
+    }
+
+    .Home3 p {
+        margin-top: 20px;
+        font-size: 20px;
+    }
+
+    .Home3 .card {
+        width: 90%;
+    }
+
+    /* Home4 */
+
+    .Home4 h1 {
+        margin: 2rem auto;
+        font-family: "helmetregular", sans-serif;
+        font-size: 45px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .accordion-button {
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    /* Register1 */
+
+    .Register1 .card {
+    margin: 30px auto;
+    padding: 20px 30px;
+    width: 80%;
+    font-family: 'helmetregular', sans-serif;
+    background: linear-gradient(
+        90deg,
+        rgba(23, 23, 23, 1) 30%,
+        rgba(221, 124, 53, 1) 200%
+    );
+    border: none;
+    }
+
+    /* Login1 */
+
+    .Login1 .card {
+    margin: 30px auto;
+    padding: 20px 30px;
+    width: 80%;
+    font-family: 'helmetregular', sans-serif;
+    background: linear-gradient(
+        90deg,
+        rgba(23, 23, 23, 1) 30%,
+        rgba(221, 124, 53, 1) 200%
+    );
+    border: none;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .Home1 h1 {
+        font-size: 70px;
+        line-height: 3.5rem;
+    }
+
+    /* Home1 */
+
+    .Home1 p {
+        margin-top: 15px;
+        font-size: 20px;
+    }
+
+    .btn-outline-light {
+        width: 80%;
+        margin-top: 20px;
+        font-size: 20px;
+        font-style: italic;
+        transition-duration: 1ms;
+    }
+
+    .btn-outline-light:hover {
+        width: 80%;
+        margin-top: 20px;
+        font-size: 20px;
+        font-style: italic;
+        filter: drop-shadow(2px 2px 10px #dd7c35);
+    }
+
+    /* Home2 */
+
+    .Home2 {
+        height: 600px;
+    }
+    .Home2 h1 {
+        font-size: 50px;
+        line-height: 2.5rem;
+        width: 100%;
+    }
+
+    .Home2 p {
+        margin-top: 20px;
+        font-size: 20px;
+        width: 100%;
+    }
+
+    .Home2 section img {
+        width: 70%;
+        height: 35%;
+    }
+
+    .Home2 section img:first-child {
+        top: 2rem;
+        left: 1rem;
+    }
+
+    .Home2 section img:last-child {
+        top: -5rem;
+        left: 4.5rem;
+    }
+
+    /* Home3 */
+
+    .Home3 {
+        height: 600px;
+    }
+    .Home3 h1 {
+        font-size: 50px;
+        line-height: 2.5rem;
+    }
+
+    .Home3 p {
+        margin-top: 20px;
+        font-size: 20px;
+    }
+
+    .Home3 .card {
+        width: 90%;
+    }
+
+    /* Home4 */
+
+    .Home4 h1 {
+        margin: 2rem auto;
+        font-family: "helmetregular", sans-serif;
+        font-size: 45px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .accordion-button {
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    /* Download1 */
+
+    .Download1 h1 {
+        font-family: "helmetregular", sans-serif;
+        font-size: 40px;
+        font-weight: bold;
+        text-align: center;
+        color: #dd7c35;
+    }
+
+    /* Download2 */
+
+    .Download2 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .Download2 nav .nav-tabs {
+        flex-direction: column;
         margin-bottom: 10px;
     }
 
-    .Spec-Section .card-body {
-        height: auto;
+    .Download2 nav .nav-tabs button {
+        margin-bottom: 5px;
+        border-radius: 15px;
     }
 
-    .dashboard-column {
+    .Download2 nav .nav-tabs button:hover {
+        margin-bottom: 5px;
+        border-radius: 15px;
+    }
+
+    /* Download2Element1 */
+
+    .Download2Element1 .card h1 {
+        font-size: 1.5rem;
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+
+    .Download2Element1 .card section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Download2Element2 */
+
+    .Download2Element2 .card h1 {
+        font-size: 1.5rem;
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+
+    .Download2Element2 .card section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Register1 */
+
+    .Register1 .card {
+    margin: 30px auto;
+    padding: 20px 30px;
+    width: 80%;
+    font-family: 'helmetregular', sans-serif;
+    background: linear-gradient(
+        90deg,
+        rgba(23, 23, 23, 1) 30%,
+        rgba(221, 124, 53, 1) 200%
+    );
+    border: none;
+    }
+
+    /* Login1 */
+
+    .Login1 .card {
+    margin: 30px auto;
+    padding: 20px 30px;
+    width: 80%;
+    font-family: 'helmetregular', sans-serif;
+    background: linear-gradient(
+        90deg,
+        rgba(23, 23, 23, 1) 30%,
+        rgba(221, 124, 53, 1) 200%
+    );
+    border: none;
+    }
+
+     /* Dashboard1 */
+
+     .Dashboard1 {
+        display: flex;
+        flex-direction: column;
+        font-family: 'helmetregular', sans-serif;
+        gap: 1rem;
+    }
+
+    .Dashboard1 .nav-pills {
         width: 100%;
     }
 
-    .dashboard-right .informasi-dashboard p {
+    .Dashboard1 .tab-content {
         width: 100%;
+    }
+
+    /* Dashboard1Character1 */
+
+    .Dashboard1Character1 .card {
+    padding: 10px 10px;
     }
 }

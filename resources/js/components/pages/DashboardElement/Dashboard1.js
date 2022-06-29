@@ -69,7 +69,7 @@ function Dashboard1() {
                         </Card>
                         <button className="nav-link active" id="v-pills-Profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Profile" type="button" role="tab" aria-controls="v-pills-Profile" aria-selected="true">Profile</button>
                         <button className="nav-link" id="v-pills-Character-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Character" type="button" role="tab" aria-controls="v-pills-Character" aria-selected="false">Character</button>
-                        <button className="nav-link" id="v-pills-Recharge-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Recharge" type="button" role="tab" aria-controls="v-pills-Recharge" aria-selected="false">Recharge</button>
+                        <button className="nav-link" id="v-pills-Recharge-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Recharge" type="button" role="tab" aria-controls="v-pills-Recharge" aria-selected="false" disabled>Recharge</button>
                         <button className="nav-link" type="submit" onClick={logoutHandler} aria-selected="false">Logout</button>
                     </div>
 

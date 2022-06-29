@@ -1395,13 +1395,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Home3() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(window.innerWidth > 768),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(window.innerWidth > 767),
       _useState2 = _slicedToArray(_useState, 2),
       isDesktop = _useState2[0],
       setDesktop = _useState2[1];
 
   var updateMedia = function updateMedia() {
-    setDesktop(window.innerWidth > 768);
+    setDesktop(window.innerWidth > 767);
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
