@@ -19,16 +19,15 @@
 .Puteran .spinner-border {
     width: 12rem;
     height: 12rem;
-    position: absolute;
-    top: 300px;
-    left: 664px;
+    position: relative;
+    margin: 200px auto;
 }
 
 .Puteran span {
     color: #dd7c35;
     font-family: "helmetregular";
     font-size: 2rem;
-    position: absolute;
+    position: re;
     top: 505px;
     left: 666px;
 }
