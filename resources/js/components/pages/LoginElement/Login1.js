@@ -25,7 +25,7 @@ export default function Login1() {
         // api call
         try {
             await axios
-                .post("https://cflegacyindonesia.herokuapp.com/api/login", { username: username, password: password })
+                .post("http://localhost:8000/api/login", { username: username, password: password })
                 .then((response) => {
                     Cookies.setItem("token", response.data.token);
                     navigate("/dashboard");

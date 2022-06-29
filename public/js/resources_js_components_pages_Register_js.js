@@ -184,7 +184,7 @@ function Register1() {
 
               _context.prev = 1;
               _context.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_3___default().post("https://cflegacyindonesia.herokuapp.com/api/register", {
+              return axios__WEBPACK_IMPORTED_MODULE_3___default().post("http://localhost:8000/api/register", {
                 email: email,
                 password: password,
                 password_confirmation: password_confirmation,

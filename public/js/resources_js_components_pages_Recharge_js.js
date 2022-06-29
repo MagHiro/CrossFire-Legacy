@@ -160,7 +160,7 @@ function Recharge() {
               axios.defaults.headers.common["Authorization"] = "Bearer ".concat(token); //fetch Rest API
 
               _context2.next = 3;
-              return axios.post("https://cflegacyindonesia.herokuapp.com/api/logout").then(function () {
+              return axios.post("http://localhost:8000/api/logout").then(function () {
                 //remove token from localStorage
                 _Cookies__WEBPACK_IMPORTED_MODULE_2__["default"].removeItem("token"); //redirect halaman login
 

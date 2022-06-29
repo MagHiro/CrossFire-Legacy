@@ -9,7 +9,7 @@ export default function Dashboard1Profile1() {
 
     const fetchData = async () => {
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-        await axios.get("https://cflegacyindonesia.herokuapp.com/api/user").then((response) => {
+        await axios.get("http://localhost:8000/api/user").then((response) => {
             setUser(response.data);
         });
     };

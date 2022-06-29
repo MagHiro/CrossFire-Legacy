@@ -3460,7 +3460,7 @@ function Navigasibar() {
               (axios__WEBPACK_IMPORTED_MODULE_3___default().defaults.headers.common.Authorization) = "Bearer ".concat(token); //fetch user from Rest API
 
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_3___default().get("https://cflegacyindonesia.herokuapp.com/api/user").then(function (response) {
+              return axios__WEBPACK_IMPORTED_MODULE_3___default().get("http://localhost:8000/api/user").then(function (response) {
                 //set response user to state
                 setUser(response.data);
               });
@@ -3495,7 +3495,7 @@ function Navigasibar() {
               (axios__WEBPACK_IMPORTED_MODULE_3___default().defaults.headers.common.Authorization) = "Bearer ".concat(token); //fetch Rest API
 
               _context2.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_3___default().post("https://cflegacyindonesia.herokuapp.com/api/logout").then(function () {
+              return axios__WEBPACK_IMPORTED_MODULE_3___default().post("http://localhost:8000/api/logout").then(function () {
                 //remove token from localStorage
                 _Cookies__WEBPACK_IMPORTED_MODULE_4__["default"].removeItem("token"); //redirect halaman login
 

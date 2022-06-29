@@ -18,7 +18,7 @@ function NewsIndex() {
 
     const getNews = async () => {
         await axios
-            .get(`https://cflegacyindonesia.herokuapp.com/api/News/${id}`)
+            .get(`http://localhost:8000/api/News/${id}`)
             .then((response) => {
                 (response.data.posts.id);
                 setJudul(response.data.posts.judul);
@@ -41,7 +41,7 @@ function NewsIndex() {
             <Container className="NewsIndex">
                 <Card>
                 <h1>{judul}</h1>
-                    <img src={ "https://cflegacyindonesia.herokuapp.com/uploads/" + image_name } />
+                    <img src={ "http://localhost:8000/uploads/" + image_name } />
                     <section>
                         <article dangerouslySetInnerHTML={{__html: berita}}></article>
                         <span>{getDate(Date(tanggal))}</span>

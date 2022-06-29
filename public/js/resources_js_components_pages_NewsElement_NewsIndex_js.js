@@ -125,7 +125,7 @@ function NewsIndex() {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://cflegacyindonesia.herokuapp.com/api/News/".concat(id)).then(function (response) {
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:8000/api/News/".concat(id)).then(function (response) {
                 response.data.posts.id;
                 setJudul(response.data.posts.judul);
                 setBerita(response.data.posts.berita);
@@ -161,7 +161,7 @@ function NewsIndex() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
           children: judul
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-          src: "https://cflegacyindonesia.herokuapp.com/uploads/" + image_name
+          src: "http://localhost:8000/uploads/" + image_name
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("section", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("article", {
             dangerouslySetInnerHTML: {

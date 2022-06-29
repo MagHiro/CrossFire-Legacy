@@ -146,7 +146,7 @@ function News2() {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://cflegacyindonesia.herokuapp.com/api/index?page=1").then(function (response) {
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:8000/api/index?page=1").then(function (response) {
                 setPageCount(Math.ceil(response.data.total / response.data.per_page));
                 setNews(response.data.data);
               });
@@ -173,7 +173,7 @@ function News2() {
             case 0:
               currentPage = data.selected + 1;
               _context2.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://cflegacyindonesia.herokuapp.com/api/index?page=".concat(currentPage)).then(function (response) {
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:8000/api/index?page=".concat(currentPage)).then(function (response) {
                 setNews(response.data.data);
               });
 
@@ -199,7 +199,7 @@ function News2() {
     children: [news.map(function (news) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-          src: "https://cflegacyindonesia.herokuapp.com/uploads/" + news.image_name
+          src: "http://localhost:8000/uploads/" + news.image_name
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("section", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
