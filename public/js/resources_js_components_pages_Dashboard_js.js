@@ -150,7 +150,7 @@ function Dashboard1() {
             case 0:
               axios.defaults.headers.common["Authorization"] = "Bearer ".concat(token);
               _context.next = 3;
-              return axios.get("http://localhost:8000/api/user").then(function (response) {
+              return axios.get("https://cflegacyindonesia.herokuapp.com/api/user").then(function (response) {
                 setUser(response.data);
               });
 
@@ -197,7 +197,7 @@ function Dashboard1() {
             case 0:
               axios.defaults.headers.common["Authorization"] = "Bearer ".concat(token);
               _context2.next = 3;
-              return axios.post("http://localhost:8000/api/logout").then(function () {
+              return axios.post("https://cflegacyindonesia.herokuapp.com/api/logout").then(function () {
                 _Cookies__WEBPACK_IMPORTED_MODULE_2__["default"].removeItem("token");
                 navigate("/");
               });
@@ -440,7 +440,7 @@ function Dashboard1Character1() {
             case 0:
               axios.defaults.headers.common["Authorization"] = "Bearer ".concat(token);
               _context.next = 3;
-              return axios.get("http://localhost:8000/api/user").then(function (response) {
+              return axios.get("https://cflegacyindonesia.herokuapp.com/api/user").then(function (response) {
                 setUser(response.data);
               });
 
@@ -675,7 +675,7 @@ function Dashboard1Profile1() {
             case 0:
               axios.defaults.headers.common["Authorization"] = "Bearer ".concat(token);
               _context.next = 3;
-              return axios.get("http://localhost:8000/api/user").then(function (response) {
+              return axios.get("https://cflegacyindonesia.herokuapp.com/api/user").then(function (response) {
                 setUser(response.data);
               });
 
@@ -828,7 +828,7 @@ function Dashboard1Profile1UpdateProfile() {
             case 0:
               (axios__WEBPACK_IMPORTED_MODULE_0___default().defaults.headers.common.Authorization) = "Bearer ".concat(token);
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:8000/api/user").then(function (response) {
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://cflegacyindonesia.herokuapp.com/api/user").then(function (response) {
                 setUser(response.data);
               });
 
@@ -859,7 +859,7 @@ function Dashboard1Profile1UpdateProfile() {
               (axios__WEBPACK_IMPORTED_MODULE_0___default().defaults.headers.common.Authorization) = "Bearer ".concat(token);
               _context2.prev = 2;
               _context2.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost:8000/api/update", {
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().post("https://cflegacyindonesia.herokuapp.com/api/update", {
                 password: password,
                 password_confirmation: password_confirmation
               });
@@ -872,7 +872,7 @@ function Dashboard1Profile1UpdateProfile() {
             case 8:
               _context2.prev = 8;
               _context2.t0 = _context2["catch"](2);
-              console.log(response.data);
+              response.data;
 
             case 11:
             case "end":
@@ -1027,7 +1027,7 @@ function Dashboard1Recharge() {
               axios.defaults.headers.common["Authorization"] = "Bearer ".concat(token); //fetch Rest API
 
               _context2.next = 3;
-              return axios.post("http://localhost:8000/api/logout").then(function () {
+              return axios.post("https://cflegacyindonesia.herokuapp.com/api/logout").then(function () {
                 //remove token from localStorage
                 _Cookies__WEBPACK_IMPORTED_MODULE_2__["default"].removeItem("token"); //redirect halaman login
 

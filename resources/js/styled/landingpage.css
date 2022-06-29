@@ -32,14 +32,13 @@
     top: 505px;
     left: 666px;
 }
+
 /* Navigation bar Styling */
 
 .navbar {
-    background: linear-gradient(
-        90deg,
-        rgba(23, 23, 23, 1) 30%,
-        rgba(221, 124, 53, 1) 200%
-    );
+    background: linear-gradient(90deg,
+            rgba(23, 23, 23, 1) 30%,
+            rgba(221, 124, 53, 1) 200%);
     position: sticky;
     top: 0;
     z-index: 3;
@@ -62,12 +61,11 @@
     border-radius: 4px;
     filter: drop-shadow(2px 5px 30px #dd7c35);
 }
+
 .navbar .navbar-nav .dropdown-menu {
-    background: linear-gradient(
-        20deg,
-        rgba(23, 23, 23, 1) 10%,
-        rgba(221, 124, 53, 1) 200%
-    );
+    background: linear-gradient(20deg,
+            rgba(23, 23, 23, 1) 10%,
+            rgba(221, 124, 53, 1) 200%);
 }
 
 .btn-primary {
@@ -136,9 +134,11 @@ a.btn.btn-primary:active:focus {
     filter: drop-shadow(2px 5px 30px #212121);
     transform: scale(1.1);
 }
-.btn-outline-secondary:active:focus  {
+
+.btn-outline-secondary:active:focus {
     box-shadow: none;
 }
+
 .btn-outline-secondary:focus {
     box-shadow: none;
 }
@@ -226,6 +226,7 @@ a.btn.btn-primary:active:focus {
     border-radius: 10px;
     width: 80%;
 }
+
 .Home2 section img:active {
     filter: drop-shadow(2px 2px 10px #dd7c35);
     transform: scale(1.05);
@@ -238,6 +239,7 @@ a.btn.btn-primary:active:focus {
     left: 270px;
     width: 80%;
 }
+
 .Home2 section img:last-child:active {
     filter: drop-shadow(2px 2px 10px #dd7c35);
     transform: scale(1.05);
@@ -246,6 +248,7 @@ a.btn.btn-primary:active:focus {
 .gambar {
     z-index: 1;
 }
+
 /* Home3 */
 
 .Home3 {
@@ -291,11 +294,9 @@ a.btn.btn-primary:active:focus {
 .Home3 .card {
     border: none;
     width: 40%;
-    background: linear-gradient(
-        313deg,
-        rgba(23, 23, 23, 1) 30%,
-        rgba(221, 124, 53, 1) 200%
-    );
+    background: linear-gradient(313deg,
+            rgba(23, 23, 23, 1) 30%,
+            rgba(221, 124, 53, 1) 200%);
     height: max-content;
     border-radius: 20px;
 }
@@ -325,6 +326,7 @@ a.btn.btn-primary:active:focus {
 .carousel-control-prev {
     display: none;
 }
+
 /* Home4 */
 
 .Home4 {
@@ -343,11 +345,9 @@ a.btn.btn-primary:active:focus {
 }
 
 .accordion-button {
-    background: linear-gradient(
-        90deg,
-        rgba(23, 23, 23, 1) 30%,
-        rgba(221, 124, 53, 1) 200%
-    );
+    background: linear-gradient(90deg,
+            rgba(23, 23, 23, 1) 30%,
+            rgba(221, 124, 53, 1) 200%);
     color: #eaeaea;
     font-family: "helmetregular", sans-serif;
     font-size: 20px;
@@ -355,11 +355,9 @@ a.btn.btn-primary:active:focus {
 }
 
 .accordion-body {
-    background: linear-gradient(
-        90deg,
-        rgba(23, 23, 23, 1) 30%,
-        rgba(221, 124, 53, 1) 200%
-    );
+    background: linear-gradient(90deg,
+            rgba(23, 23, 23, 1) 30%,
+            rgba(221, 124, 53, 1) 200%);
     color: #eaeaea;
     font-family: "helmetregular", sans-serif;
     font-size: 18px;
@@ -388,6 +386,7 @@ a.btn.btn-primary:active:focus {
     border-radius: 10px;
     box-shadow: 3px 3px 20px #212121;
 }
+
 .News2 .card img {
     width: 20%;
     margin: 0;
@@ -403,6 +402,7 @@ a.btn.btn-primary:active:focus {
     color: #dd7c35;
     margin-top: 10px;
 }
+
 .News2 .card section h2 a {
     text-decoration: none;
     color: #dd7c35;
@@ -436,6 +436,7 @@ a.btn.btn-primary:active:focus {
     color: #121212;
     font-size: 1em;
 }
+
 .News2 ul li.page-item.active a {
     font-family: "helmetregular", sans-serif;
     background-color: #dd7c35;
@@ -537,6 +538,7 @@ a.btn.btn-primary:active:focus {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
+
 .Download2 nav .nav-tabs button.active {
     color: #dd7c35;
     border: none;
@@ -550,11 +552,9 @@ a.btn.btn-primary:active:focus {
     display: flex;
     flex-direction: column;
     border-radius: 15px;
-    background: linear-gradient(
-        313deg,
-        rgba(23, 23, 23, 1) 30%,
-        rgba(221, 124, 53, 1) 200%
-    );
+    background: linear-gradient(313deg,
+            rgba(23, 23, 23, 1) 30%,
+            rgba(221, 124, 53, 1) 200%);
     border: none;
 }
 
@@ -645,11 +645,9 @@ a.btn.btn-primary:active:focus {
     display: flex;
     flex-direction: column;
     border-radius: 15px;
-    background: linear-gradient(
-        313deg,
-        rgba(23, 23, 23, 1) 30%,
-        rgba(221, 124, 53, 1) 200%
-    );
+    background: linear-gradient(313deg,
+            rgba(23, 23, 23, 1) 30%,
+            rgba(221, 124, 53, 1) 200%);
     border: none;
 }
 
@@ -773,11 +771,9 @@ a.btn.btn-primary:active:focus {
     display: flex;
     flex-direction: column;
     border-radius: 15px;
-    background: linear-gradient(
-        313deg,
-        rgba(23, 23, 23, 1) 30%,
-        rgba(221, 124, 53, 1) 200%
-    );
+    background: linear-gradient(313deg,
+            rgba(23, 23, 23, 1) 30%,
+            rgba(221, 124, 53, 1) 200%);
     border: none;
 }
 
@@ -810,11 +806,9 @@ a.btn.btn-primary:active:focus {
     padding: 20px 30px;
     width: 60%;
     font-family: 'helmetregular', sans-serif;
-    background: linear-gradient(
-        90deg,
-        rgba(23, 23, 23, 1) 30%,
-        rgba(221, 124, 53, 1) 200%
-    );
+    background: linear-gradient(90deg,
+            rgba(23, 23, 23, 1) 30%,
+            rgba(221, 124, 53, 1) 200%);
     border: none;
 }
 
@@ -841,7 +835,7 @@ a.btn.btn-primary:active:focus {
     box-shadow: 0 0 0 0.25rem #dd7c35;
 }
 
-.Register1 .card .form-floating span{
+.Register1 .card .form-floating span {
     margin-left: 3px;
     margin-top: 2px;
     color: #e21313;
@@ -852,13 +846,14 @@ a.btn.btn-primary:active:focus {
     padding: 12px .75rem;
 }
 
-.Register1 section p{
+.Register1 section p {
     color: darkgrey;
-    font-size: 16px     ;
+    font-size: 16px;
 }
 
-.Register1 section p a{
-    color: #dd7c35;   ;
+.Register1 section p a {
+    color: #dd7c35;
+    ;
 }
 
 /* Login1 */
@@ -868,11 +863,9 @@ a.btn.btn-primary:active:focus {
     padding: 20px 30px;
     width: 40%;
     font-family: 'helmetregular', sans-serif;
-    background: linear-gradient(
-        90deg,
-        rgba(23, 23, 23, 1) 30%,
-        rgba(221, 124, 53, 1) 200%
-    );
+    background: linear-gradient(90deg,
+            rgba(23, 23, 23, 1) 30%,
+            rgba(221, 124, 53, 1) 200%);
     border: none;
 }
 
@@ -897,7 +890,7 @@ a.btn.btn-primary:active:focus {
     box-shadow: 0 0 0 0.25rem #dd7c35;
 }
 
-.Login1 .card .form-floating span{
+.Login1 .card .form-floating span {
     margin-left: 3px;
     margin-top: 2px;
     color: #e21313;
@@ -908,16 +901,16 @@ a.btn.btn-primary:active:focus {
     padding: 12px .75rem;
 }
 
-.Login1 section p{
+.Login1 section p {
     color: darkgrey;
     font-size: 16px;
 }
 
-.Login1 section p a{
-    color: #dd7c35;   
+.Login1 section p a {
+    color: #dd7c35;
 }
 
-.Login1 section span{
+.Login1 section span {
     margin-left: 3px;
     color: #e21313;
 }
@@ -933,63 +926,61 @@ a.btn.btn-primary:active:focus {
     gap: 1rem;
 }
 
-.Dashboard1 .nav-pills{
+.Dashboard1 .nav-pills {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     width: 30%;
 }
 
-.Dashboard1 .nav-pills .card{
+.Dashboard1 .nav-pills .card {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px 20px;
-    background: linear-gradient(
-        90deg,
-        rgba(23, 23, 23, 1) 30%,
-        rgba(221, 124, 53, 1) 200%
-    );
+    background: linear-gradient(90deg,
+            rgba(23, 23, 23, 1) 30%,
+            rgba(221, 124, 53, 1) 200%);
     border: none;
     color: #dd7c35;
 }
 
-.Dashboard1 .nav-pills .card>*  {
+.Dashboard1 .nav-pills .card>* {
     margin-bottom: 5px;
 }
 
-.Dashboard1 .nav-pills .card img  {
+.Dashboard1 .nav-pills .card img {
     border-radius: 10px;
 }
 
-.Dashboard1 .nav-pills button  {
+.Dashboard1 .nav-pills button {
     padding: 15px;
     border: 1px solid #d37c35;
     color: #d37c35;
 }
 
-.Dashboard1 .nav-pills button.active  {
+.Dashboard1 .nav-pills button.active {
     background: #d37c35;
     color: #eaeaea;
 }
 
-.Dashboard1 .nav-pills button:hover  {
+.Dashboard1 .nav-pills button:hover {
     background: #d37c35;
     color: #eaeaea;
 }
 
-.Dashboard1 .nav-pills .card button  {
+.Dashboard1 .nav-pills .card button {
     padding: 5px 30px;
     border: 1px solid #d37c35;
     color: #d37c35;
 }
 
-.Dashboard1 .nav-pills .card button:hover  {
+.Dashboard1 .nav-pills .card button:hover {
     background: #d37c35;
     color: #eaeaea;
 }
 
-.Dashboard1 .nav-pills .card span  {
+.Dashboard1 .nav-pills .card span {
     margin-top: 10px;
     font-size: 1.05rem;
 }
@@ -1017,7 +1008,8 @@ a.btn.btn-primary:active:focus {
 }
 
 .Dashboard1Profile ul li button:hover {
-    color: #dd7c35;;
+    color: #dd7c35;
+    ;
 }
 
 .Dashboard1Profile .tab-content {
@@ -1027,75 +1019,71 @@ a.btn.btn-primary:active:focus {
 /* Dashboard1Profile1 */
 
 .Dashboard1Profile1 .card {
-   padding: 15px 20px;
-   background: linear-gradient(
-        250deg,
-        rgba(23, 23, 23, 1) 30%,
-        rgba(221, 124, 53, 1) 200%
-    );
+    padding: 15px 20px;
+    background: linear-gradient(250deg,
+            rgba(23, 23, 23, 1) 30%,
+            rgba(221, 124, 53, 1) 200%);
     border: none;
 }
 
 .Dashboard1Profile1 .card>* {
     color: #dd7c35;
     margin-bottom: 10px;
-   
+
 }
 
 .Dashboard1Profile1 .card button {
     border: 1px solid #dd7c35;
     width: 50%;
     margin: 0 auto;
-   
+
 }
 
 .Dashboard1Profile1 .card button:focus {
     box-shadow: 0 0 0 1px #dd7c35;
-   
+
 }
 
 .Dashboard1Profile1 .card button:hover {
     border: 1px solid #dd7c35;
     color: #eaeaea;
     background: #dd7c35;
-   
+
 }
 
 /* Dashboard1Profile1Update */
 
 .Dashboard1Profile1Update .card {
-   padding: 15px 20px;
-   background: linear-gradient(
-        250deg,
-        rgba(23, 23, 23, 1) 30%,
-        rgba(221, 124, 53, 1) 200%
-    );
+    padding: 15px 20px;
+    background: linear-gradient(250deg,
+            rgba(23, 23, 23, 1) 30%,
+            rgba(221, 124, 53, 1) 200%);
     border: none;
 }
 
 .Dashboard1Profile1Update .card>* {
     color: #dd7c35;
     margin-bottom: 10px;
-   
+
 }
 
 .Dashboard1Profile1Update .card button {
     border: 1px solid #dd7c35;
     width: 50%;
     margin: 0 auto;
-   
+
 }
 
 .Dashboard1Profile1Update .card button:focus {
     box-shadow: 0 0 0 1px #dd7c35;
-   
+
 }
 
 .Dashboard1Profile1Update .card button:hover {
     border: 1px solid #dd7c35;
     color: #eaeaea;
     background: #dd7c35;
-   
+
 }
 
 /* Dashboard1Character */
@@ -1117,7 +1105,8 @@ a.btn.btn-primary:active:focus {
 }
 
 .Dashboard1Character ul li button:hover {
-    color: #dd7c35;;
+    color: #dd7c35;
+    ;
 }
 
 .Dashboard1Character .tab-content {
@@ -1128,47 +1117,43 @@ a.btn.btn-primary:active:focus {
 
 .Dashboard1Character1 .card {
     padding: 30px 30px;
-    background: linear-gradient(
-         250deg,
-         rgba(23, 23, 23, 1) 30%,
-         rgba(221, 124, 53, 1) 200%
-     );
-     border: none;
- }
- 
- .Dashboard1Character1 .card>* {
-     color: #dd7c35;
-     margin-bottom: 10px;
-    
- }
- 
- .Dashboard1Character1 .card button {
-     border: 1px solid #dd7c35;
-     width: 50%;
-     margin: 0 auto;
-    
- }
- 
- .Dashboard1Character1 .card button:focus {
-     box-shadow: 0 0 0 1px #dd7c35;
-    
- }
- 
- .Dashboard1Character1 .card button:hover {
-     border: 1px solid #dd7c35;
-     color: #eaeaea;
-     background: #dd7c35;
-    
- }
+    background: linear-gradient(250deg,
+            rgba(23, 23, 23, 1) 30%,
+            rgba(221, 124, 53, 1) 200%);
+    border: none;
+}
+
+.Dashboard1Character1 .card>* {
+    color: #dd7c35;
+    margin-bottom: 10px;
+
+}
+
+.Dashboard1Character1 .card button {
+    border: 1px solid #dd7c35;
+    width: 50%;
+    margin: 0 auto;
+
+}
+
+.Dashboard1Character1 .card button:focus {
+    box-shadow: 0 0 0 1px #dd7c35;
+
+}
+
+.Dashboard1Character1 .card button:hover {
+    border: 1px solid #dd7c35;
+    color: #eaeaea;
+    background: #dd7c35;
+
+}
 
 /* Footer Cus */
 
 .footerBG {
-    background: linear-gradient(
-        90deg,
-        rgba(23, 23, 23, 1) 30%,
-        rgba(221, 124, 53, 1) 200%
-    );
+    background: linear-gradient(90deg,
+            rgba(23, 23, 23, 1) 30%,
+            rgba(221, 124, 53, 1) 200%);
     width: 100%;
     position: static;
     bottom: 0;
@@ -1183,6 +1168,7 @@ a.btn.btn-primary:active:focus {
     border-radius: 4px;
     letter-spacing: 0.5px;
 }
+
 .footer-menu .nav-link:hover {
     transition-duration: 2ms;
     color: #dd7c35;
@@ -1234,6 +1220,40 @@ a.btn.btn-primary:active:focus {
     color: #eaeaea;
 }
 
+/* Term And Conditions */
+.TNC h1{
+    font-family: "helmetregular", sans-serif;
+    font-size: 90px;
+    font-weight: bold;
+    text-align: center;
+    color: #dd7c35;
+}
+
+#terms-conditions-page {
+    margin: 30px auto;
+    font-family: 'helmetregular', sans-serif;
+    font-size: large;
+    color: #dd7c35;
+    text-align: justify;
+}
+
+/* Privacy */
+.Privacy h1{
+    font-family: "helmetregular", sans-serif;
+    font-size: 90px;
+    font-weight: bold;
+    text-align: center;
+    color: #dd7c35;
+}
+
+#privacy-policy-page {
+    margin: 30px auto;
+    font-family: 'helmetregular', sans-serif;
+    font-size: large;
+    color: #dd7c35;
+    text-align: justify;
+}
+
 @media (max-width: 480px) {
     .navbar {
         height: auto;
@@ -1274,6 +1294,7 @@ a.btn.btn-primary:active:focus {
     .Home2 {
         height: 500px;
     }
+
     .Home2 h1 {
         font-size: 45px;
         line-height: 2.5rem;
@@ -1306,6 +1327,7 @@ a.btn.btn-primary:active:focus {
     .Home3 {
         height: 600px;
     }
+
     .Home3 h1 {
         font-size: 45px;
         line-height: 2.5rem;
@@ -1350,6 +1372,7 @@ a.btn.btn-primary:active:focus {
         margin: 20px 0px;
         box-shadow: 3px 3px 20px #212121;
     }
+
     .News2 .card img {
         width: 35%;
         border-bottom-left-radius: 10px;
@@ -1368,6 +1391,7 @@ a.btn.btn-primary:active:focus {
         color: #dd7c35;
         margin-top: 5px;
     }
+
     .News2 .card section h2 a {
         text-decoration: none;
         color: #dd7c35;
@@ -1388,6 +1412,7 @@ a.btn.btn-primary:active:focus {
         color: #121212;
         font-size: rem(2);
     }
+
     .News2 ul li.page-item.active a {
         font-family: "helmetregular", sans-serif;
         background-color: #dd7c35;
@@ -1520,6 +1545,7 @@ a.btn.btn-primary:active:focus {
     .Register1 .card {
         width: 95%;
     }
+
     /* Login1 */
 
     .Login1 .card {
@@ -1546,7 +1572,7 @@ a.btn.btn-primary:active:focus {
     /* Dashboard1Character1 */
 
     .Dashboard1Character1 .card {
-    padding: 10px 10px;
+        padding: 10px 10px;
 
     }
 
@@ -1599,6 +1625,7 @@ a.btn.btn-primary:active:focus {
     .Home2 {
         height: 700px;
     }
+
     .Home2 h1 {
         font-size: 50px;
         line-height: 2.5rem;
@@ -1631,6 +1658,7 @@ a.btn.btn-primary:active:focus {
     .Home3 {
         height: 500px;
     }
+
     .Home3 h1 {
         font-size: 50px;
         line-height: 2.5rem;
@@ -1663,31 +1691,27 @@ a.btn.btn-primary:active:focus {
     /* Register1 */
 
     .Register1 .card {
-    margin: 30px auto;
-    padding: 20px 30px;
-    width: 80%;
-    font-family: 'helmetregular', sans-serif;
-    background: linear-gradient(
-        90deg,
-        rgba(23, 23, 23, 1) 30%,
-        rgba(221, 124, 53, 1) 200%
-    );
-    border: none;
+        margin: 30px auto;
+        padding: 20px 30px;
+        width: 80%;
+        font-family: 'helmetregular', sans-serif;
+        background: linear-gradient(90deg,
+                rgba(23, 23, 23, 1) 30%,
+                rgba(221, 124, 53, 1) 200%);
+        border: none;
     }
 
     /* Login1 */
 
     .Login1 .card {
-    margin: 30px auto;
-    padding: 20px 30px;
-    width: 80%;
-    font-family: 'helmetregular', sans-serif;
-    background: linear-gradient(
-        90deg,
-        rgba(23, 23, 23, 1) 30%,
-        rgba(221, 124, 53, 1) 200%
-    );
-    border: none;
+        margin: 30px auto;
+        padding: 20px 30px;
+        width: 80%;
+        font-family: 'helmetregular', sans-serif;
+        background: linear-gradient(90deg,
+                rgba(23, 23, 23, 1) 30%,
+                rgba(221, 124, 53, 1) 200%);
+        border: none;
     }
 }
 
@@ -1725,6 +1749,7 @@ a.btn.btn-primary:active:focus {
     .Home2 {
         height: 600px;
     }
+
     .Home2 h1 {
         font-size: 50px;
         line-height: 2.5rem;
@@ -1757,6 +1782,7 @@ a.btn.btn-primary:active:focus {
     .Home3 {
         height: 600px;
     }
+
     .Home3 h1 {
         font-size: 50px;
         line-height: 2.5rem;
@@ -1847,36 +1873,32 @@ a.btn.btn-primary:active:focus {
     /* Register1 */
 
     .Register1 .card {
-    margin: 30px auto;
-    padding: 20px 30px;
-    width: 80%;
-    font-family: 'helmetregular', sans-serif;
-    background: linear-gradient(
-        90deg,
-        rgba(23, 23, 23, 1) 30%,
-        rgba(221, 124, 53, 1) 200%
-    );
-    border: none;
+        margin: 30px auto;
+        padding: 20px 30px;
+        width: 80%;
+        font-family: 'helmetregular', sans-serif;
+        background: linear-gradient(90deg,
+                rgba(23, 23, 23, 1) 30%,
+                rgba(221, 124, 53, 1) 200%);
+        border: none;
     }
 
     /* Login1 */
 
     .Login1 .card {
-    margin: 30px auto;
-    padding: 20px 30px;
-    width: 80%;
-    font-family: 'helmetregular', sans-serif;
-    background: linear-gradient(
-        90deg,
-        rgba(23, 23, 23, 1) 30%,
-        rgba(221, 124, 53, 1) 200%
-    );
-    border: none;
+        margin: 30px auto;
+        padding: 20px 30px;
+        width: 80%;
+        font-family: 'helmetregular', sans-serif;
+        background: linear-gradient(90deg,
+                rgba(23, 23, 23, 1) 30%,
+                rgba(221, 124, 53, 1) 200%);
+        border: none;
     }
 
-     /* Dashboard1 */
+    /* Dashboard1 */
 
-     .Dashboard1 {
+    .Dashboard1 {
         display: flex;
         flex-direction: column;
         font-family: 'helmetregular', sans-serif;
@@ -1894,6 +1916,6 @@ a.btn.btn-primary:active:focus {
     /* Dashboard1Character1 */
 
     .Dashboard1Character1 .card {
-    padding: 10px 10px;
+        padding: 10px 10px;
     }
 }

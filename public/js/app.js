@@ -5450,6 +5450,12 @@ var News = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
 var Download = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_components_pages_Download_js").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/Download */ "./resources/js/components/pages/Download.js"));
 });
+var Privacy = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_pages_Privacy_js").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/Privacy */ "./resources/js/components/pages/Privacy.js"));
+});
+var TNC = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_pages_TNC_js").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/TNC */ "./resources/js/components/pages/TNC.js"));
+});
 var Register = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_components_pages_Register_js").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/Register */ "./resources/js/components/pages/Register.js"));
 });
@@ -5492,9 +5498,13 @@ function MyApp() {
           element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Download, {})
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
           path: "/register",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Register, {
-            title: "Register"
-          })
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Register, {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+          path: "/privacy",
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Privacy, {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+          path: "/term-condition",
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(TNC, {})
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
           path: "/signin",
           element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Login, {})
@@ -62050,7 +62060,7 @@ function _extends() {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_pages_Home_js":1,"resources_js_components_pages_News_js":1,"resources_js_components_pages_Download_js":1,"resources_js_components_pages_Register_js":1,"resources_js_components_pages_Login_js":1,"resources_js_components_pages_Dashboard_js":1,"resources_js_components_pages_NewsElement_NewsIndex_js":1,"resources_js_components_pages_Recharge_js":1,"resources_js_components_Navigasibar_js":1,"resources_js_components_Footer_js":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_pages_Home_js":1,"resources_js_components_pages_News_js":1,"resources_js_components_pages_Download_js":1,"resources_js_components_pages_Privacy_js":1,"resources_js_components_pages_TNC_js":1,"resources_js_components_pages_Register_js":1,"resources_js_components_pages_Login_js":1,"resources_js_components_pages_Dashboard_js":1,"resources_js_components_pages_NewsElement_NewsIndex_js":1,"resources_js_components_pages_Recharge_js":1,"resources_js_components_Navigasibar_js":1,"resources_js_components_Footer_js":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

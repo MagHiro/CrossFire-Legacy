@@ -13,7 +13,7 @@ function Dashboard1Profile1UpdateProfile() {
 
     const fetchData = async () => {
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-        await axios.get("http://localhost:8000/api/user").then((response) => {
+        await axios.get("https://cflegacyindonesia.herokuapp.com/api/user").then((response) => {
             setUser(response.data);
         });
     };
@@ -26,13 +26,13 @@ function Dashboard1Profile1UpdateProfile() {
         e.preventDefault();
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         try {
-            await axios.post("http://localhost:8000/api/update", {
+            await axios.post("https://cflegacyindonesia.herokuapp.com/api/update", {
                 password: password,
                 password_confirmation: password_confirmation,
             });
             navigate("/dashboard/profile");
         } catch (error) {
-            console.log(response.data);
+            (response.data);
         }
     };
 

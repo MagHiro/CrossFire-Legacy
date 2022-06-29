@@ -36,10 +36,10 @@ function Footer() {
                                     <Nav className="footer-menu me-auto">
                                         <Nav.Link href="/">Homepage</Nav.Link>
                                         <Nav.Link href="#">Contact Us</Nav.Link>
-                                        <Nav.Link href="#">
+                                        <Nav.Link href="/privacy">
                                             Privacy Policy
                                         </Nav.Link>
-                                        <Nav.Link href="#">
+                                        <Nav.Link href="/term-condition">
                                             Term and Conditions
                                         </Nav.Link>
                                     </Nav>
@@ -82,10 +82,10 @@ function Footer() {
                                     <Nav className="footer-menu">
                                         <Nav.Link href="/">Homepage</Nav.Link>
                                         <Nav.Link href="#">Contact Us</Nav.Link>
-                                        <Nav.Link href="#">
+                                        <Nav.Link href="/privacy">
                                             Privacy Policy
                                         </Nav.Link>
-                                        <Nav.Link href="#">
+                                        <Nav.Link href="/term-condition">
                                             Term and Conditions
                                         </Nav.Link>
                                     </Nav>

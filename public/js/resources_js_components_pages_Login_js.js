@@ -158,7 +158,7 @@ function Login1() {
 
               _context.prev = 1;
               _context.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_3___default().post("http://localhost:8000/api/login", {
+              return axios__WEBPACK_IMPORTED_MODULE_3___default().post("https://cflegacyindonesia.herokuapp.com/api/login", {
                 username: username,
                 password: password
               }).then(function (response) {
@@ -174,7 +174,7 @@ function Login1() {
             case 6:
               _context.prev = 6;
               _context.t0 = _context["catch"](1);
-              console.log(_context.t0.response.data);
+              _context.t0.response.data;
               SetMsg(_context.t0.response.data);
 
             case 10:

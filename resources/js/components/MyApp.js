@@ -7,6 +7,8 @@ import Spinner from './Spinnner';
 const Home = React.lazy(() => import("./pages/Home"));
 const News = React.lazy(() => import("./pages/News"));
 const Download = React.lazy(() => import("./pages/Download"));
+const Privacy = React.lazy(() => import("./pages/Privacy"));
+const TNC = React.lazy(() => import("./pages/TNC"));
 const Register = React.lazy(() => import("./pages/Register"));
 const Login = React.lazy(() => import("./pages/Login"));
 const Dashboard = React.lazy(() => import("./pages/Dashboard"));
@@ -29,7 +31,9 @@ function MyApp() {
                         <Route path="/news" element={<News />} />
                         <Route path="/News/:id" element={<NewsIndex />} />
                         <Route path="/download" element={<Download />} />
-                        <Route path="/register" element={<Register title="Register"/>} />
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/privacy" element={<Privacy />} />
+                        <Route path="/term-condition" element={<TNC />} />
                         <Route path="/signin" element={<Login />} />
                         <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/dashboard/profile" element={<Dashboard />} />

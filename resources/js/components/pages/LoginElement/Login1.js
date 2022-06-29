@@ -25,14 +25,14 @@ export default function Login1() {
         // api call
         try {
             await axios
-                .post("http://localhost:8000/api/login", { username: username, password: password })
+                .post("https://cflegacyindonesia.herokuapp.com/api/login", { username: username, password: password })
                 .then((response) => {
                     Cookies.setItem("token", response.data.token);
                     navigate("/dashboard");
                     navigate(0);
                 });
         } catch (error) {
-            console.log(error.response.data);
+            (error.response.data);
             SetMsg(error.response.data);
         }
     };

@@ -29,7 +29,7 @@ export default function Register1() {
         e.preventDefault();
         // api call
         try {
-            await axios.post("http://localhost:8000/api/register", {
+            await axios.post("https://cflegacyindonesia.herokuapp.com/api/register", {
                 email: email,
                 password: password,
                 password_confirmation: password_confirmation,
