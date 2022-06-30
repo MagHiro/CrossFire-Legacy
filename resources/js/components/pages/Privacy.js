@@ -1,10 +1,14 @@
 import React from "react";
 import { Parallax } from "react-parallax";
 import newsfoto from "./../../assets/news-header.webp";
+import { Helmet } from "react-helmet";
 
 export default function Privacy() {
     return (
         <>
+            <Helmet>
+                <title>Privacy Policy</title>
+            </Helmet>
             <Parallax
                 className="Privacy"
                 blur={4}

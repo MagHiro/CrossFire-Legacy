@@ -1,10 +1,14 @@
 import React from "react";
 import { Parallax } from "react-parallax";
 import newsfoto from "./../../assets/news-header.webp";
+import {Helmet} from "react-helmet";
 
 export default function TNC() {
     return (
         <>
+        <Helmet>
+            <title>Term and Conditions</title>
+        </Helmet>
         <Parallax className="TNC" blur={4} bgImage={newsfoto} bgImageStyle={{ opacity: ".5" }} strength={0}>
             <h1>Term And Conditions</h1>
         </Parallax>

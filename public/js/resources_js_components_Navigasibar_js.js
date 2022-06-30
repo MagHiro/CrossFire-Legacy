@@ -2704,15 +2704,15 @@ function useNavItem({
   }
 
   if (props.role === 'tab') {
+    props['aria-selected'] = isActive;
+
+    if (!isActive) {
+      props.tabIndex = -1;
+    }
+
     if (disabled) {
       props.tabIndex = -1;
       props['aria-disabled'] = true;
-    }
-
-    if (isActive) {
-      props['aria-selected'] = isActive;
-    } else {
-      props.tabIndex = -1;
     }
   }
 
@@ -3581,6 +3581,215 @@ function Navigasibar() {
 
 /***/ }),
 
+/***/ "./node_modules/cookie/index.js":
+/*!**************************************!*\
+  !*** ./node_modules/cookie/index.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+/*!
+ * cookie
+ * Copyright(c) 2012-2014 Roman Shtylman
+ * Copyright(c) 2015 Douglas Christopher Wilson
+ * MIT Licensed
+ */
+
+
+
+/**
+ * Module exports.
+ * @public
+ */
+
+exports.parse = parse;
+exports.serialize = serialize;
+
+/**
+ * Module variables.
+ * @private
+ */
+
+var decode = decodeURIComponent;
+var encode = encodeURIComponent;
+var pairSplitRegExp = /; */;
+
+/**
+ * RegExp to match field-content in RFC 7230 sec 3.2
+ *
+ * field-content = field-vchar [ 1*( SP / HTAB ) field-vchar ]
+ * field-vchar   = VCHAR / obs-text
+ * obs-text      = %x80-FF
+ */
+
+var fieldContentRegExp = /^[\u0009\u0020-\u007e\u0080-\u00ff]+$/;
+
+/**
+ * Parse a cookie header.
+ *
+ * Parse the given cookie header string into an object
+ * The object has the various cookies as keys(names) => values
+ *
+ * @param {string} str
+ * @param {object} [options]
+ * @return {object}
+ * @public
+ */
+
+function parse(str, options) {
+  if (typeof str !== 'string') {
+    throw new TypeError('argument str must be a string');
+  }
+
+  var obj = {}
+  var opt = options || {};
+  var pairs = str.split(pairSplitRegExp);
+  var dec = opt.decode || decode;
+
+  for (var i = 0; i < pairs.length; i++) {
+    var pair = pairs[i];
+    var eq_idx = pair.indexOf('=');
+
+    // skip things that don't look like key=value
+    if (eq_idx < 0) {
+      continue;
+    }
+
+    var key = pair.substr(0, eq_idx).trim()
+    var val = pair.substr(++eq_idx, pair.length).trim();
+
+    // quoted values
+    if ('"' == val[0]) {
+      val = val.slice(1, -1);
+    }
+
+    // only assign once
+    if (undefined == obj[key]) {
+      obj[key] = tryDecode(val, dec);
+    }
+  }
+
+  return obj;
+}
+
+/**
+ * Serialize data into a cookie header.
+ *
+ * Serialize the a name value pair into a cookie string suitable for
+ * http headers. An optional options object specified cookie parameters.
+ *
+ * serialize('foo', 'bar', { httpOnly: true })
+ *   => "foo=bar; httpOnly"
+ *
+ * @param {string} name
+ * @param {string} val
+ * @param {object} [options]
+ * @return {string}
+ * @public
+ */
+
+function serialize(name, val, options) {
+  var opt = options || {};
+  var enc = opt.encode || encode;
+
+  if (typeof enc !== 'function') {
+    throw new TypeError('option encode is invalid');
+  }
+
+  if (!fieldContentRegExp.test(name)) {
+    throw new TypeError('argument name is invalid');
+  }
+
+  var value = enc(val);
+
+  if (value && !fieldContentRegExp.test(value)) {
+    throw new TypeError('argument val is invalid');
+  }
+
+  var str = name + '=' + value;
+
+  if (null != opt.maxAge) {
+    var maxAge = opt.maxAge - 0;
+    if (isNaN(maxAge)) throw new Error('maxAge should be a Number');
+    str += '; Max-Age=' + Math.floor(maxAge);
+  }
+
+  if (opt.domain) {
+    if (!fieldContentRegExp.test(opt.domain)) {
+      throw new TypeError('option domain is invalid');
+    }
+
+    str += '; Domain=' + opt.domain;
+  }
+
+  if (opt.path) {
+    if (!fieldContentRegExp.test(opt.path)) {
+      throw new TypeError('option path is invalid');
+    }
+
+    str += '; Path=' + opt.path;
+  }
+
+  if (opt.expires) {
+    if (typeof opt.expires.toUTCString !== 'function') {
+      throw new TypeError('option expires is invalid');
+    }
+
+    str += '; Expires=' + opt.expires.toUTCString();
+  }
+
+  if (opt.httpOnly) {
+    str += '; HttpOnly';
+  }
+
+  if (opt.secure) {
+    str += '; Secure';
+  }
+
+  if (opt.sameSite) {
+    var sameSite = typeof opt.sameSite === 'string'
+      ? opt.sameSite.toLowerCase() : opt.sameSite;
+
+    switch (sameSite) {
+      case true:
+        str += '; SameSite=Strict';
+        break;
+      case 'lax':
+        str += '; SameSite=Lax';
+        break;
+      case 'strict':
+        str += '; SameSite=Strict';
+        break;
+      case 'none':
+        str += '; SameSite=None';
+        break;
+      default:
+        throw new TypeError('option sameSite is invalid');
+    }
+  }
+
+  return str;
+}
+
+/**
+ * Try decoding a string using a decoding function.
+ *
+ * @param {string} str
+ * @param {function} decode
+ * @private
+ */
+
+function tryDecode(str, decode) {
+  try {
+    return decode(str);
+  } catch (e) {
+    return str;
+  }
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/styled/landingpage.css":
 /*!*******************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/styled/landingpage.css ***!
@@ -3607,7 +3816,7 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_helmet_regular_webfont_woff2__WEBPACK_IMPORTED_MODULE_2__["default"]);
 var ___CSS_LOADER_URL_REPLACEMENT_1___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_helmet_regular_webfont_woff__WEBPACK_IMPORTED_MODULE_3__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@font-face {\r\n    font-family: \"helmetregular\";\r\n    src: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") format(\"woff2\"),\r\n        url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ") format(\"woff\");\r\n    font-weight: normal;\r\n    font-style: normal;\r\n}\r\n\r\n\r\n/* Standart Page Backround */\r\n.pageBG {\r\n    background-color: #121212;\r\n    background-size: fit-content;\r\n    overflow: hidden;\r\n    max-height: 100%;\r\n}\r\n\r\n/* Spinner */\r\n.Puteran .spinner-border {\r\n    width: 12rem;\r\n    height: 12rem;\r\n    position: relative;\r\n    margin: 200px auto;\r\n}\r\n\r\n.Puteran span {\r\n    color: #dd7c35;\r\n    font-family: \"helmetregular\";\r\n    font-size: 2rem;\r\n    position: re;\r\n    top: 505px;\r\n    left: 666px;\r\n}\r\n\r\n/* Navigation bar Styling */\r\n\r\n.navbar {\r\n    background: linear-gradient(90deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    position: -webkit-sticky;\r\n    position: sticky;\r\n    top: 0;\r\n    z-index: 3;\r\n}\r\n\r\n.navbar-light .navbar-nav .nav-link {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-weight: normal;\r\n    font-size: 19px;\r\n    color: #ebebeb;\r\n    border-bottom: 4px groove transparent;\r\n    border-radius: 4px;\r\n    letter-spacing: 0.5px;\r\n}\r\n\r\n.navbar-light .navbar-nav .nav-link:hover {\r\n    transition-duration: 2ms;\r\n    color: #dd7c35;\r\n    border-bottom: 4px groove #dd7c35;\r\n    border-radius: 4px;\r\n    filter: drop-shadow(2px 5px 30px #dd7c35);\r\n}\r\n\r\n.navbar .navbar-nav .dropdown-menu {\r\n    background: linear-gradient(20deg,\r\n            rgba(23, 23, 23, 1) 10%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n}\r\n\r\n.btn-primary {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-weight: 400;\r\n    font-size: 18px;\r\n    color: #ebebeb;\r\n    background-color: #dd7c35;\r\n    text-align: center;\r\n    border-color: #dd7c35;\r\n    box-shadow: none;\r\n    padding: 3px 30px;\r\n    line-height: 2;\r\n}\r\n\r\n.btn-primary:hover {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-weight: 400;\r\n    font-size: 18px;\r\n    text-align: center;\r\n    color: #ebebeb;\r\n    background-color: #dd7c35;\r\n    border-color: #dd7c35;\r\n    padding: 3px 30px;\r\n    line-height: 2;\r\n    filter: drop-shadow(2px 5px 30px #dd7c35);\r\n    transform: scale(1.1);\r\n}\r\n\r\n.btn.btn-primary:active:focus {\r\n    box-shadow: 3px 3px 20px #dd7c35;\r\n}\r\n\r\na.btn.btn-primary:active:focus {\r\n    box-shadow: 3px 3px 20px #dd7c35;\r\n}\r\n\r\n.btn-primary:focus {\r\n    box-shadow: 3px 3px 20px #dd7c35;\r\n    background-color: #dd7c35;\r\n    border-color: #dd7c35;\r\n}\r\n\r\n.btn-outline-secondary {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-weight: 400;\r\n    font-size: 18px;\r\n    text-align: center;\r\n    color: #dd7c35;\r\n    background-color: #212121;\r\n    border-color: #212121;\r\n    padding: 3px 25px;\r\n    line-height: 2;\r\n}\r\n\r\n.btn-outline-secondary:hover {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-weight: 400;\r\n    font-size: 18px;\r\n    text-align: center;\r\n    color: #dd7c35;\r\n    background-color: #212121;\r\n    border-color: #212121;\r\n    padding: 3px 25px;\r\n    line-height: 2;\r\n    filter: drop-shadow(2px 5px 30px #212121);\r\n    transform: scale(1.1);\r\n}\r\n\r\n.btn-outline-secondary:active:focus {\r\n    box-shadow: none;\r\n}\r\n\r\n.btn-outline-secondary:focus {\r\n    box-shadow: none;\r\n}\r\n\r\n/* Home1 */\r\n\r\n.Home1 {\r\n    margin-top: 60px;\r\n    align-items: center;\r\n    display: flex;\r\n    flex-direction: column;\r\n    height: 600px;\r\n}\r\n\r\n.Home1 h1 {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 110px;\r\n    font-weight: bold;\r\n    text-align: center;\r\n    display: flex;\r\n    flex-direction: column;\r\n    line-height: 6rem;\r\n}\r\n\r\n.Home1 p {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    text-shadow: 1px 1px 1px rgb(14, 13, 13);\r\n    margin-top: 20px;\r\n    font-size: 25px;\r\n    font-weight: 400;\r\n    text-align: center;\r\n    color: rgb(236, 232, 232);\r\n    width: 100%;\r\n}\r\n\r\n.btn-outline-light {\r\n    background-color: white;\r\n    font-weight: 600;\r\n    color: #dd7c35;\r\n    width: 40%;\r\n    margin-top: 30px;\r\n    font-size: 40px;\r\n    font-style: italic;\r\n    transition-duration: 1ms;\r\n}\r\n\r\n.btn-outline-light:hover {\r\n    background-color: #dd7c35;\r\n    font-weight: 600;\r\n    color: #eaeaea;\r\n    border-color: #dd7c35;\r\n    width: 40%;\r\n    margin-top: 30px;\r\n    font-size: 40px;\r\n    font-style: italic;\r\n    filter: drop-shadow(2px 2px 10px #dd7c35);\r\n}\r\n\r\n/* Home2 */\r\n\r\n.Home2 {\r\n    height: 840px;\r\n}\r\n\r\n.Home2 h1 {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 90px;\r\n    font-weight: bold;\r\n    text-align: center;\r\n}\r\n\r\n.Home2 p {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    text-shadow: 1px 1px 1px rgb(14, 13, 13);\r\n    margin-top: 5px;\r\n    font-size: 25px;\r\n    font-weight: 400;\r\n    text-align: center;\r\n    color: rgb(236, 232, 232);\r\n    width: 100%;\r\n}\r\n\r\n.Home2 section img:first-child {\r\n    position: relative;\r\n    border-radius: 10px;\r\n    width: 80%;\r\n}\r\n\r\n.Home2 section img:active {\r\n    filter: drop-shadow(2px 2px 10px #dd7c35);\r\n    transform: scale(1.05);\r\n}\r\n\r\n.Home2 section img:last-child {\r\n    border-radius: 10px;\r\n    position: relative;\r\n    top: -400px;\r\n    left: 270px;\r\n    width: 80%;\r\n}\r\n\r\n.Home2 section img:last-child:active {\r\n    filter: drop-shadow(2px 2px 10px #dd7c35);\r\n    transform: scale(1.05);\r\n}\r\n\r\n.gambar {\r\n    z-index: 1;\r\n}\r\n\r\n/* Home3 */\r\n\r\n.Home3 {\r\n    height: 580px;\r\n}\r\n\r\n.Home3 h1 {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 90px;\r\n    font-weight: bold;\r\n    text-align: center;\r\n}\r\n\r\n.Home3 p {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    text-shadow: 1px 1px 1px rgb(14, 13, 13);\r\n    margin-top: 5px;\r\n    font-size: 25px;\r\n    font-weight: 400;\r\n    text-align: center;\r\n    color: rgb(236, 232, 232);\r\n    width: 100%;\r\n}\r\n\r\n.carousel-item {\r\n    -webkit-backface-visibility: visible;\r\n            backface-visibility: visible;\r\n    position: relative;\r\n    display: none;\r\n    float: left;\r\n    width: 100%;\r\n    margin-right: -100%;\r\n    -webkit-backface-visibility: hidden;\r\n    backface-visibility: hidden;\r\n    transition: transform 0.6s ease-in-out;\r\n}\r\n\r\n.carousel-item.active {\r\n    -webkit-backface-visibility: visible;\r\n            backface-visibility: visible;\r\n    display: flex;\r\n    justify-content: space-around;\r\n}\r\n\r\n.Home3 .card {\r\n    border: none;\r\n    width: 40%;\r\n    background: linear-gradient(313deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    height: -webkit-max-content;\r\n    height: -moz-max-content;\r\n    height: max-content;\r\n    border-radius: 20px;\r\n}\r\n\r\n.Home3 .card img {\r\n    border-top-left-radius: 20px;\r\n    border-top-right-radius: 20px;\r\n}\r\n\r\n.Home3 .card section {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n    margin: 15px 15px;\r\n}\r\n\r\n.Home3 .card section h4 {\r\n    font-size: 25px;\r\n    color: #dd7c35;\r\n}\r\n\r\n.carousel-indicators {\r\n    margin: -5rem auto;\r\n}\r\n\r\n.carousel-control-next,\r\n.carousel-control-prev {\r\n    display: none;\r\n}\r\n\r\n/* Home4 */\r\n\r\n.Home4 {\r\n    margin-bottom: 30px;\r\n}\r\n\r\n.Home4 h1 {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 90px;\r\n    font-weight: bold;\r\n    text-align: center;\r\n}\r\n\r\n.accordion-item {\r\n    background: transparent;\r\n}\r\n\r\n.accordion-button {\r\n    background: linear-gradient(90deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    color: #eaeaea;\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 20px;\r\n    font-weight: 400;\r\n}\r\n\r\n.accordion-body {\r\n    background: linear-gradient(90deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    color: #eaeaea;\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 18px;\r\n}\r\n\r\n/* NewsPage */\r\n/* News1 */\r\n\r\n.News1 h1 {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 90px;\r\n    font-weight: bold;\r\n    text-align: center;\r\n    color: #dd7c35;\r\n}\r\n\r\n/* News2 */\r\n\r\n.News2 .card {\r\n    display: flex;\r\n    flex-direction: row;\r\n    gap: 20px;\r\n    background-color: #eaeaea;\r\n    border: none;\r\n    margin: 15px 15px;\r\n    border-radius: 10px;\r\n    box-shadow: 3px 3px 20px #212121;\r\n}\r\n\r\n.News2 .card img {\r\n    width: 20%;\r\n    margin: 0;\r\n    border-bottom-left-radius: 10px;\r\n    border-top-left-radius: 10px;\r\n}\r\n\r\n.News2 .card section h2 {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 30px;\r\n    font-weight: bold;\r\n    text-align: left;\r\n    color: #dd7c35;\r\n    margin-top: 10px;\r\n}\r\n\r\n.News2 .card section h2 a {\r\n    text-decoration: none;\r\n    color: #dd7c35;\r\n}\r\n\r\n.News2 .card section p {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 16px;\r\n    text-align: left;\r\n    color: #c87941;\r\n    text-overflow: ellipsis;\r\n    word-wrap: break-word;\r\n    overflow: hidden;\r\n    max-height: 2em;\r\n    line-height: 1.8em;\r\n    width: 80%;\r\n}\r\n\r\n.News2 .card section span {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    text-align: left;\r\n    color: #665f59;\r\n}\r\n\r\n.News2 .pagination {\r\n    margin: 15px 15px 15px 15px\r\n}\r\n\r\n.News2 ul li.page-item a {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    color: #121212;\r\n    font-size: 1em;\r\n}\r\n\r\n.News2 ul li.page-item.active a {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    background-color: #dd7c35;\r\n    color: #121212;\r\n    border: none;\r\n}\r\n\r\n.page-item:first-child .page-link {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    background-color: #dd7c35;\r\n    border: none;\r\n    color: #ebebeb;\r\n}\r\n\r\n.page-item:last-child .page-link {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    background-color: #dd7c35;\r\n    border: none;\r\n    color: #ebebeb;\r\n}\r\n\r\n/* NewsIndex */\r\n\r\n.NewsIndex .card {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin: 15px 15px;\r\n}\r\n\r\n.NewsIndex .card h1 {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 40px;\r\n    font-weight: bold;\r\n    text-align: left;\r\n    color: #dd7c35;\r\n    margin-left: 20px;\r\n    margin-top: 10px;\r\n}\r\n\r\n.NewsIndex .card img {\r\n    width: 50%;\r\n    height: 20%;\r\n    align-items: center;\r\n    margin: 15px 10px 20px 20px;\r\n    position: relative;\r\n    left: 25%;\r\n    border-radius: 10px;\r\n}\r\n\r\n.NewsIndex .card section article {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 20px;\r\n    text-align: left;\r\n    color: #c87941;\r\n    margin-left: 20px;\r\n    margin-right: 20px;\r\n}\r\n\r\n.NewsIndex .card section span {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 18px;\r\n    text-align: left;\r\n    margin-left: 20px;\r\n    width: 100%;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n/* Download Page */\r\n/* Download1 */\r\n\r\n.Download1 h1 {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 90px;\r\n    font-weight: bold;\r\n    text-align: center;\r\n    color: #dd7c35;\r\n}\r\n\r\n/* Download2 */\r\n\r\n.Download2 {\r\n    margin-top: 20px;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.Download2 nav .nav-tabs {\r\n    border: none;\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: center;\r\n}\r\n\r\n.Download2 nav .nav-tabs button {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-weight: bold;\r\n    background-color: #dd7c35;\r\n    border: none;\r\n    color: #eaeaea;\r\n    border-top-left-radius: 10px;\r\n    border-top-right-radius: 10px;\r\n}\r\n\r\n.Download2 nav .nav-tabs button.active {\r\n    color: #dd7c35;\r\n    border: none;\r\n    border-top-left-radius: 10px;\r\n    border-top-right-radius: 10px;\r\n}\r\n\r\n/* Download2Element1 */\r\n\r\n.Download2Element1 .card {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-radius: 15px;\r\n    background: linear-gradient(313deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    border: none;\r\n}\r\n\r\n.Download2Element1 .card h1 {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    color: #dd7c35;\r\n    font-size: 1.5rem;\r\n    font-weight: bold;\r\n    text-align: center;\r\n    margin: 10px 10px 10px 10px;\r\n}\r\n\r\n.Download2Element1 .card section .col button {\r\n    width: 100%;\r\n    padding: 10px 10px;\r\n    text-decoration: none;\r\n    border-radius: 10px;\r\n    background: #212121;\r\n    border: #212121;\r\n    box-shadow: 3px 3px 20px #212121;\r\n}\r\n\r\n.Download2Element1 .card section .col button:hover {\r\n    background: #dd7c35;\r\n    border: #dd7c35;\r\n    color: #eaeaea;\r\n    box-shadow: 3px 3px 20px #dd7c35;\r\n    transform: scaleY(1.2);\r\n}\r\n\r\n.Download2Element1 .card section .col button a {\r\n    text-decoration: none;\r\n    color: white;\r\n    font-family: \"helmetregular\", sans-serif;\r\n    letter-spacing: 3px;\r\n    font-weight: bold;\r\n}\r\n\r\n.Download2Element1 .card section .col button a:hover {\r\n    color: #eaeaea;\r\n}\r\n\r\n.Download2Element1 .card section {\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.Download2Element1 .col {\r\n    padding: 1.5rem 2.5rem;\r\n}\r\n\r\n.Download2Element1 table {\r\n    width: 100%;\r\n    margin-bottom: 2rem;\r\n    border-bottom: 1px solid #dd7c35;\r\n}\r\n\r\n.Download2Element1 table th {\r\n    padding: 15px 0;\r\n    font-weight: normal;\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 1.2rem;\r\n    text-align: left;\r\n    color: white;\r\n}\r\n\r\n.Download2Element1 table td {\r\n    padding: 15px 0;\r\n    font-weight: normal;\r\n    font-family: \"helmetregular\", sans-serif;\r\n    color: #c87941;\r\n    font-size: 1.2rem;\r\n    text-align: right;\r\n    letter-spacing: 3px;\r\n}\r\n\r\n.Download2Element1 table tr {\r\n    border-top: 1px solid #dd7c35;\r\n}\r\n\r\n.Download2Element1 tbody {\r\n    box-sizing: border-box;\r\n}\r\n\r\n/* Download2Element2 */\r\n\r\n.Download2Element2 .card {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-radius: 15px;\r\n    background: linear-gradient(313deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    border: none;\r\n}\r\n\r\n.Download2Element2 .card h1 {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    color: #dd7c35;\r\n    font-size: 1.5rem;\r\n    font-weight: bold;\r\n    text-align: center;\r\n    margin: 10px 10px 10px 10px;\r\n}\r\n\r\n.Download2Element2 .card section .col button {\r\n    width: 100%;\r\n    padding: 10px 10px;\r\n    text-decoration: none;\r\n    border-radius: 10px;\r\n    background: #212121;\r\n    border: #212121;\r\n    box-shadow: 3px 3px 20px #212121;\r\n}\r\n\r\n.Download2Element2 .card section .col button:hover {\r\n    background: #dd7c35;\r\n    border: #dd7c35;\r\n    color: #eaeaea;\r\n    box-shadow: 3px 3px 20px #dd7c35;\r\n    transform: scaleY(1.2);\r\n}\r\n\r\n.Download2Element2 .card section .col button a {\r\n    text-decoration: none;\r\n    color: white;\r\n    font-family: \"helmetregular\", sans-serif;\r\n    letter-spacing: 3px;\r\n    font-weight: bold;\r\n}\r\n\r\n.Download2Element2 .card section .col button a:hover {\r\n    color: #eaeaea;\r\n}\r\n\r\n.Download2Element2 .card section {\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.Download2Element2 .col {\r\n    padding: 1.5rem 2.5rem;\r\n}\r\n\r\n.Download2Element2 table {\r\n    width: 100%;\r\n    margin-bottom: 2rem;\r\n    border-bottom: 1px solid #dd7c35;\r\n}\r\n\r\n.Download2Element2 table th {\r\n    padding: 15px 0;\r\n    font-weight: normal;\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 1.2rem;\r\n    text-align: left;\r\n    color: white;\r\n}\r\n\r\n.Download2Element2 table td {\r\n    padding: 15px 0;\r\n    font-weight: normal;\r\n    font-family: \"helmetregular\", sans-serif;\r\n    color: #c87941;\r\n    font-size: 1.2rem;\r\n    text-align: right;\r\n    letter-spacing: 3px;\r\n}\r\n\r\n.Download2Element2 table tr {\r\n    border-top: 1px solid #dd7c35;\r\n}\r\n\r\n.Download2Element2 tbody {\r\n    box-sizing: border-box;\r\n}\r\n\r\n/* Download2Element3 */\r\n\r\n.Download2Element3 .card h1 {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    color: #dd7c35;\r\n    font-size: 1.5rem;\r\n    font-weight: bold;\r\n    text-align: center;\r\n    margin: 10px 10px 10px 10px;\r\n}\r\n\r\n.Download2Element3 .nav-pills {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-weight: bold;\r\n    background-color: #dd7c35;\r\n    color: #eaeaea;\r\n}\r\n\r\n.Download2Element3 .nav-pills .nav-link {\r\n    padding: 16% 26%;\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-weight: bold;\r\n    font-size: 20px;\r\n    border-radius: 0px;\r\n    background-color: #dd7c35;\r\n    color: #eaeaea;\r\n    border: 2px solid #dd7c35;\r\n}\r\n\r\n.Download2Element3 .nav-pills .nav-link.active {\r\n    background-color: #eaeaea;\r\n    border: 2px solid #eaeaea;\r\n    color: #dd7c35;\r\n}\r\n\r\n.Download2Element3 .card {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-radius: 15px;\r\n    background: linear-gradient(313deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    border: none;\r\n}\r\n\r\n.Download2Element3 .card .tab-pane {\r\n    margin: 10px 10px;\r\n}\r\n\r\n.Download2Element3 .card .tab-pane ul li:first-child {\r\n    font-family: \"helmetregular\";\r\n    color: #dd7c35;\r\n    font-size: 25px;\r\n    font-weight: bold;\r\n    text-align: left;\r\n    list-style-type: none;\r\n}\r\n\r\n.Download2Element3 .card .tab-pane ul li {\r\n    font-family: \"helmetregular\";\r\n    color: #dd7c35;\r\n    font-size: 20px;\r\n    font-weight: normal;\r\n    text-align: left;\r\n    list-style-type: none;\r\n}\r\n\r\n/* Register1 */\r\n\r\n.Register1 .card {\r\n    margin: 30px auto;\r\n    padding: 20px 30px;\r\n    width: 60%;\r\n    font-family: 'helmetregular', sans-serif;\r\n    background: linear-gradient(90deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    border: none;\r\n}\r\n\r\n.Register1 .card h1 {\r\n    font-size: 3rem;\r\n    color: #d37c35;\r\n    font-weight: bold;\r\n    letter-spacing: 1px;\r\n}\r\n\r\n.Register1 .card button {\r\n    margin: 3px;\r\n    padding: 2px 25px;\r\n}\r\n\r\n.Register1 .card .form-control {\r\n    height: 3rem;\r\n    background: #eaeaea;\r\n}\r\n\r\n.Register1 .card .form-control:focus {\r\n    height: 3rem;\r\n    background: #eaeaea;\r\n    box-shadow: 0 0 0 0.25rem #dd7c35;\r\n}\r\n\r\n.Register1 .card .form-floating span {\r\n    margin-left: 3px;\r\n    margin-top: 2px;\r\n    color: #e21313;\r\n}\r\n\r\n\r\n.Register1 .card .form-floating label {\r\n    padding: 12px .75rem;\r\n}\r\n\r\n.Register1 section p {\r\n    color: darkgrey;\r\n    font-size: 16px;\r\n}\r\n\r\n.Register1 section p a {\r\n    color: #dd7c35;\r\n    ;\r\n}\r\n\r\n/* Login1 */\r\n\r\n.Login1 .card {\r\n    margin: 50px auto;\r\n    padding: 20px 30px;\r\n    width: 40%;\r\n    font-family: 'helmetregular', sans-serif;\r\n    background: linear-gradient(90deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    border: none;\r\n}\r\n\r\n.Login1 .card h1 {\r\n    font-size: 3rem;\r\n    color: #d37c35;\r\n    font-weight: bold;\r\n    letter-spacing: 1px;\r\n}\r\n\r\n.Login1 .card button {\r\n    margin: 3px;\r\n    padding: 2px 25px;\r\n}\r\n\r\n.Login1 .card .form-control {\r\n    height: 3rem;\r\n    background: #eaeaea;\r\n}\r\n\r\n.Login1 .card .form-control:focus {\r\n    box-shadow: 0 0 0 0.25rem #dd7c35;\r\n}\r\n\r\n.Login1 .card .form-floating span {\r\n    margin-left: 3px;\r\n    margin-top: 2px;\r\n    color: #e21313;\r\n}\r\n\r\n\r\n.Login1 .card .form-floating label {\r\n    padding: 12px .75rem;\r\n}\r\n\r\n.Login1 section p {\r\n    color: darkgrey;\r\n    font-size: 16px;\r\n}\r\n\r\n.Login1 section p a {\r\n    color: #dd7c35;\r\n}\r\n\r\n.Login1 section span {\r\n    margin-left: 3px;\r\n    color: #e21313;\r\n}\r\n\r\n\r\n/* Dashboard1 */\r\n\r\n.Dashboard1 {\r\n    display: flex;\r\n    flex-direction: row;\r\n    font-family: 'helmetregular', sans-serif;\r\n    padding: 2rem 2rem;\r\n    gap: 1rem;\r\n}\r\n\r\n.Dashboard1 .nav-pills {\r\n    display: flex;\r\n    flex-direction: column;\r\n    gap: 1rem;\r\n    width: 30%;\r\n}\r\n\r\n.Dashboard1 .nav-pills .card {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    padding: 20px 20px;\r\n    background: linear-gradient(90deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    border: none;\r\n    color: #dd7c35;\r\n}\r\n\r\n.Dashboard1 .nav-pills .card>* {\r\n    margin-bottom: 5px;\r\n}\r\n\r\n.Dashboard1 .nav-pills .card img {\r\n    border-radius: 10px;\r\n}\r\n\r\n.Dashboard1 .nav-pills button {\r\n    padding: 15px;\r\n    border: 1px solid #d37c35;\r\n    color: #d37c35;\r\n}\r\n\r\n.Dashboard1 .nav-pills button.active {\r\n    background: #d37c35;\r\n    color: #eaeaea;\r\n}\r\n\r\n.Dashboard1 .nav-pills button:hover {\r\n    background: #d37c35;\r\n    color: #eaeaea;\r\n}\r\n\r\n.Dashboard1 .nav-pills .card button {\r\n    padding: 5px 30px;\r\n    border: 1px solid #d37c35;\r\n    color: #d37c35;\r\n}\r\n\r\n.Dashboard1 .nav-pills .card button:hover {\r\n    background: #d37c35;\r\n    color: #eaeaea;\r\n}\r\n\r\n.Dashboard1 .nav-pills .card span {\r\n    margin-top: 10px;\r\n    font-size: 1.05rem;\r\n}\r\n\r\n.Dashboard1 .tab-content {\r\n    width: 70%;\r\n}\r\n\r\n/* Dashboard1Profile */\r\n\r\n.Dashboard1Profile h4 {\r\n    color: #d37c35\r\n}\r\n\r\n.Dashboard1Profile p {\r\n    color: #eaeaea;\r\n}\r\n\r\n.Dashboard1Profile p span {\r\n    font-style: oblique;\r\n}\r\n\r\n.Dashboard1Profile ul li button {\r\n    color: #dd7c35;\r\n}\r\n\r\n.Dashboard1Profile ul li button:hover {\r\n    color: #dd7c35;\r\n    ;\r\n}\r\n\r\n.Dashboard1Profile .tab-content {\r\n    width: 100%;\r\n}\r\n\r\n/* Dashboard1Profile1 */\r\n\r\n.Dashboard1Profile1 .card {\r\n    padding: 15px 20px;\r\n    background: linear-gradient(250deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    border: none;\r\n}\r\n\r\n.Dashboard1Profile1 .card>* {\r\n    color: #dd7c35;\r\n    margin-bottom: 10px;\r\n\r\n}\r\n\r\n.Dashboard1Profile1 .card button {\r\n    border: 1px solid #dd7c35;\r\n    width: 50%;\r\n    margin: 0 auto;\r\n\r\n}\r\n\r\n.Dashboard1Profile1 .card button:focus {\r\n    box-shadow: 0 0 0 1px #dd7c35;\r\n\r\n}\r\n\r\n.Dashboard1Profile1 .card button:hover {\r\n    border: 1px solid #dd7c35;\r\n    color: #eaeaea;\r\n    background: #dd7c35;\r\n\r\n}\r\n\r\n/* Dashboard1Profile1Update */\r\n\r\n.Dashboard1Profile1Update .card {\r\n    padding: 15px 20px;\r\n    background: linear-gradient(250deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    border: none;\r\n}\r\n\r\n.Dashboard1Profile1Update .card>* {\r\n    color: #dd7c35;\r\n    margin-bottom: 10px;\r\n\r\n}\r\n\r\n.Dashboard1Profile1Update .card button {\r\n    border: 1px solid #dd7c35;\r\n    width: 50%;\r\n    margin: 0 auto;\r\n\r\n}\r\n\r\n.Dashboard1Profile1Update .card button:focus {\r\n    box-shadow: 0 0 0 1px #dd7c35;\r\n\r\n}\r\n\r\n.Dashboard1Profile1Update .card button:hover {\r\n    border: 1px solid #dd7c35;\r\n    color: #eaeaea;\r\n    background: #dd7c35;\r\n\r\n}\r\n\r\n/* Dashboard1Character */\r\n\r\n.Dashboard1Character h4 {\r\n    color: #d37c35\r\n}\r\n\r\n.Dashboard1Character p {\r\n    color: #eaeaea;\r\n}\r\n\r\n.Dashboard1Character p span {\r\n    font-style: oblique;\r\n}\r\n\r\n.Dashboard1Character ul li button {\r\n    color: #dd7c35;\r\n}\r\n\r\n.Dashboard1Character ul li button:hover {\r\n    color: #dd7c35;\r\n    ;\r\n}\r\n\r\n.Dashboard1Character .tab-content {\r\n    width: 100%;\r\n}\r\n\r\n/* Dashboard1Character1 */\r\n\r\n.Dashboard1Character1 .card {\r\n    padding: 30px 30px;\r\n    background: linear-gradient(250deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    border: none;\r\n}\r\n\r\n.Dashboard1Character1 .card>* {\r\n    color: #dd7c35;\r\n    margin-bottom: 10px;\r\n\r\n}\r\n\r\n.Dashboard1Character1 .card button {\r\n    border: 1px solid #dd7c35;\r\n    width: 50%;\r\n    margin: 0 auto;\r\n\r\n}\r\n\r\n.Dashboard1Character1 .card button:focus {\r\n    box-shadow: 0 0 0 1px #dd7c35;\r\n\r\n}\r\n\r\n.Dashboard1Character1 .card button:hover {\r\n    border: 1px solid #dd7c35;\r\n    color: #eaeaea;\r\n    background: #dd7c35;\r\n\r\n}\r\n\r\n/* Footer Cus */\r\n\r\n.footerBG {\r\n    background: linear-gradient(90deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    width: 100%;\r\n    position: static;\r\n    bottom: 0;\r\n}\r\n\r\n.footer-menu .nav-link {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-weight: normal;\r\n    font-size: 19px;\r\n    color: #ebebeb;\r\n    border-bottom: 4px groove transparent;\r\n    border-radius: 4px;\r\n    letter-spacing: 0.5px;\r\n}\r\n\r\n.footer-menu .nav-link:hover {\r\n    transition-duration: 2ms;\r\n    color: #dd7c35;\r\n    border-bottom: 4px groove #dd7c35;\r\n    border-radius: 4px;\r\n    filter: drop-shadow(2px 5px 30px #dd7c35);\r\n}\r\n\r\n.mt60 {\r\n    margin-top: 10px;\r\n    font-size: 17px;\r\n    color: #dd7c35;\r\n    margin-left: 16px;\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-weight: 200;\r\n    width: 100%;\r\n}\r\n\r\n.cff-status {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-weight: 600;\r\n    font-size: 20px;\r\n    font-style: italic;\r\n    color: #ebebeb;\r\n    margin-top: 30px;\r\n    display: flex;\r\n    margin-left: 16px;\r\n}\r\n\r\n.cff-status-indicator {\r\n    background-color: #ff0000;\r\n    box-shadow: 0 0 25px #ff0000;\r\n    width: 1.5rem;\r\n    height: 1.5rem;\r\n    border-radius: 0.9375rem;\r\n    margin: 0.1875rem 0.625rem 0;\r\n}\r\n\r\n.footer-line {\r\n    border-bottom: 3px solid #dd7c35;\r\n    border-radius: 5px;\r\n}\r\n\r\n.footer-under {\r\n    margin-top: 15px;\r\n}\r\n\r\n.footer-under .col {\r\n    color: #eaeaea;\r\n}\r\n\r\n/* Term And Conditions */\r\n.TNC h1{\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 90px;\r\n    font-weight: bold;\r\n    text-align: center;\r\n    color: #dd7c35;\r\n}\r\n\r\n#terms-conditions-page {\r\n    margin: 30px auto;\r\n    font-family: 'helmetregular', sans-serif;\r\n    font-size: large;\r\n    color: #dd7c35;\r\n    text-align: justify;\r\n}\r\n\r\n/* Privacy */\r\n.Privacy h1{\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 90px;\r\n    font-weight: bold;\r\n    text-align: center;\r\n    color: #dd7c35;\r\n}\r\n\r\n#privacy-policy-page {\r\n    margin: 30px auto;\r\n    font-family: 'helmetregular', sans-serif;\r\n    font-size: large;\r\n    color: #dd7c35;\r\n    text-align: justify;\r\n}\r\n\r\n@media (max-width: 480px) {\r\n    .navbar {\r\n        height: auto;\r\n    }\r\n\r\n    .Home1 h1 {\r\n        font-size: 45px;\r\n        line-height: 2.5rem;\r\n        width: 100%;\r\n    }\r\n\r\n    /* Home1 */\r\n\r\n    .Home1 p {\r\n        margin-top: 10px;\r\n        font-size: 18px;\r\n        width: 100%;\r\n    }\r\n\r\n    .btn-outline-light {\r\n        width: 80%;\r\n        margin-top: 20px;\r\n        font-size: 20px;\r\n        font-style: italic;\r\n        transition-duration: 1ms;\r\n    }\r\n\r\n    .btn-outline-light:hover {\r\n        width: 80%;\r\n        margin-top: 20px;\r\n        font-size: 20px;\r\n        font-style: italic;\r\n        filter: drop-shadow(2px 2px 10px #dd7c35);\r\n    }\r\n\r\n    /* Home2 */\r\n\r\n    .Home2 {\r\n        height: 500px;\r\n    }\r\n\r\n    .Home2 h1 {\r\n        font-size: 45px;\r\n        line-height: 2.5rem;\r\n        width: 100%;\r\n    }\r\n\r\n    .Home2 p {\r\n        margin-top: 20px;\r\n        font-size: 18px;\r\n        width: 100%;\r\n    }\r\n\r\n    .Home2 section img {\r\n        width: 70%;\r\n        height: 35%;\r\n    }\r\n\r\n    .Home2 section img:first-child {\r\n        top: 2rem;\r\n        left: 1rem;\r\n    }\r\n\r\n    .Home2 section img:last-child {\r\n        top: -5rem;\r\n        left: 3.5rem;\r\n    }\r\n\r\n    /* Home3 */\r\n\r\n    .Home3 {\r\n        height: 600px;\r\n    }\r\n\r\n    .Home3 h1 {\r\n        font-size: 45px;\r\n        line-height: 2.5rem;\r\n        width: 100%;\r\n    }\r\n\r\n    .Home3 p {\r\n        margin-top: 20px;\r\n        font-size: 18px;\r\n        width: 100%;\r\n    }\r\n\r\n    .Home3 .card {\r\n        width: 90%;\r\n    }\r\n\r\n    /* Home4 */\r\n\r\n    .Home4 h1 {\r\n        margin-top: 20px;\r\n        font-family: \"helmetregular\", sans-serif;\r\n        font-size: 45px;\r\n        font-weight: bold;\r\n        text-align: center;\r\n    }\r\n\r\n    .accordion-button {\r\n        font-size: 18px;\r\n        font-weight: 400;\r\n    }\r\n\r\n    /* News1 */\r\n\r\n    .News1 h1 {\r\n        font-size: 50px;\r\n    }\r\n\r\n    /* News2 */\r\n\r\n    .News2 .card {\r\n        gap: 5px;\r\n        margin: 20px 0px;\r\n        box-shadow: 3px 3px 20px #212121;\r\n    }\r\n\r\n    .News2 .card img {\r\n        width: 35%;\r\n        border-bottom-left-radius: 10px;\r\n        border-top-left-radius: 10px;\r\n    }\r\n\r\n    .News2 .card section {\r\n        line-height: 33px;\r\n    }\r\n\r\n    .News2 .card section h2 {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        font-size: 14px;\r\n        font-weight: bold;\r\n        text-align: left;\r\n        color: #dd7c35;\r\n        margin-top: 5px;\r\n    }\r\n\r\n    .News2 .card section h2 a {\r\n        text-decoration: none;\r\n        color: #dd7c35;\r\n    }\r\n\r\n    .News2 .card section p {\r\n        display: none;\r\n    }\r\n\r\n    .News2 .card section span {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        text-align: left;\r\n        color: #665f59;\r\n    }\r\n\r\n    .News2 ul li.page-item a {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        color: #121212;\r\n        font-size: rem(2);\r\n    }\r\n\r\n    .News2 ul li.page-item.active a {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        background-color: #dd7c35;\r\n        border-color: #dd7c35;\r\n    }\r\n\r\n    .page-item:first-child .page-link {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        background-color: #dd7c35;\r\n        border-color: #dd7c35;\r\n    }\r\n\r\n    .page-item:last-child .page-link {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        background-color: #dd7c35;\r\n        border-color: #dd7c35;\r\n    }\r\n\r\n    /* NewsIndex */\r\n\r\n    .NewsIndex .card {\r\n        display: flex;\r\n        flex-direction: column;\r\n        margin: 15px 0px;\r\n    }\r\n\r\n    .NewsIndex .card h1 {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        font-size: 16px;\r\n        font-weight: bold;\r\n        text-align: left;\r\n        color: #dd7c35;\r\n        margin-left: 10px;\r\n        margin-right: 10px;\r\n        margin-top: 20px;\r\n    }\r\n\r\n    .NewsIndex .card img {\r\n        width: 80%;\r\n        height: 20%;\r\n        align-items: center;\r\n        margin: 15px 10px;\r\n        position: relative;\r\n        left: 7%;\r\n        border-radius: 10px;\r\n    }\r\n\r\n    .NewsIndex .card section article {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        font-size: 16px;\r\n        text-align: left;\r\n        color: #c87941;\r\n        margin-left: 15px;\r\n        margin-right: 15px;\r\n    }\r\n\r\n    .NewsIndex .card section span {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        font-size: 18px;\r\n        text-align: left;\r\n        margin-left: 15px;\r\n        margin-right: 15px;\r\n    }\r\n\r\n    /* Download Page */\r\n    /* Download1 */\r\n\r\n    .Download1 h1 {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        font-size: 45px;\r\n        font-weight: bold;\r\n        text-align: center;\r\n        color: #dd7c35;\r\n    }\r\n\r\n    /* Download2 */\r\n\r\n    .Download2 {\r\n        margin-top: 20px;\r\n        margin-bottom: 20px;\r\n    }\r\n\r\n    .Download2 nav .nav-tabs {\r\n        flex-direction: column;\r\n        margin-bottom: 10px;\r\n    }\r\n\r\n    .Download2 nav .nav-tabs button {\r\n        margin-bottom: 5px;\r\n        border-radius: 15px;\r\n    }\r\n\r\n    .Download2 nav .nav-tabs button:hover {\r\n        margin-bottom: 5px;\r\n        border-radius: 15px;\r\n    }\r\n\r\n    /* Download2Element1 */\r\n\r\n    .Download2Element1 .card h1 {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        color: #dd7c35;\r\n        font-size: 1.5rem;\r\n        font-weight: bold;\r\n        text-align: center;\r\n        margin: 10px 10px 10px 10px;\r\n    }\r\n\r\n\r\n    .Download2Element1 .card section {\r\n        flex-direction: column;\r\n    }\r\n\r\n\r\n    /* Download2Element2 */\r\n\r\n    .Download2Element2 .card h1 {\r\n        font-size: 1.5rem;\r\n        margin-right: 15px;\r\n        margin-left: 15px;\r\n    }\r\n\r\n    .Download2Element2 .card section {\r\n        display: flex;\r\n        flex-direction: column;\r\n    }\r\n\r\n    /* Register1 */\r\n\r\n    .Register1 .card {\r\n        width: 95%;\r\n    }\r\n\r\n    /* Login1 */\r\n\r\n    .Login1 .card {\r\n        width: 90%;\r\n    }\r\n\r\n    /* Dashboard1 */\r\n\r\n    .Dashboard1 {\r\n        display: flex;\r\n        flex-direction: column;\r\n        font-family: 'helmetregular', sans-serif;\r\n        gap: 1rem;\r\n    }\r\n\r\n    .Dashboard1 .nav-pills {\r\n        width: 100%;\r\n    }\r\n\r\n    .Dashboard1 .tab-content {\r\n        width: 100%;\r\n    }\r\n\r\n    /* Dashboard1Character1 */\r\n\r\n    .Dashboard1Character1 .card {\r\n        padding: 10px 10px;\r\n\r\n    }\r\n\r\n    .nav {\r\n        display: flex;\r\n        flex-direction: column;\r\n    }\r\n\r\n    .mt60 {\r\n        margin-top: 0;\r\n    }\r\n\r\n    .cff-status {\r\n        margin-top: 10px;\r\n        margin-bottom: 20px;\r\n    }\r\n}\r\n\r\n@media (min-width: 768px) and (max-width: 1024px) {\r\n    .Home1 h1 {\r\n        font-size: 70px;\r\n        line-height: 3.5rem;\r\n    }\r\n\r\n    /* Home1 */\r\n\r\n    .Home1 p {\r\n        margin-top: 15px;\r\n        font-size: 20px;\r\n    }\r\n\r\n    .btn-outline-light {\r\n        width: 80%;\r\n        margin-top: 20px;\r\n        font-size: 20px;\r\n        font-style: italic;\r\n        transition-duration: 1ms;\r\n    }\r\n\r\n    .btn-outline-light:hover {\r\n        width: 80%;\r\n        margin-top: 20px;\r\n        font-size: 20px;\r\n        font-style: italic;\r\n        filter: drop-shadow(2px 2px 10px #dd7c35);\r\n    }\r\n\r\n    /* Home2 */\r\n\r\n    .Home2 {\r\n        height: 700px;\r\n    }\r\n\r\n    .Home2 h1 {\r\n        font-size: 50px;\r\n        line-height: 2.5rem;\r\n        width: 100%;\r\n    }\r\n\r\n    .Home2 p {\r\n        margin-top: 20px;\r\n        font-size: 20px;\r\n        width: 100%;\r\n    }\r\n\r\n    .Home2 section img {\r\n        width: 70%;\r\n        height: 35%;\r\n    }\r\n\r\n    .Home2 section img:first-child {\r\n        top: 2rem;\r\n        left: 1rem;\r\n    }\r\n\r\n    .Home2 section img:last-child {\r\n        top: -15rem;\r\n        left: 7.5rem;\r\n    }\r\n\r\n    /* Home3 */\r\n\r\n    .Home3 {\r\n        height: 500px;\r\n    }\r\n\r\n    .Home3 h1 {\r\n        font-size: 50px;\r\n        line-height: 2.5rem;\r\n    }\r\n\r\n    .Home3 p {\r\n        margin-top: 20px;\r\n        font-size: 20px;\r\n    }\r\n\r\n    .Home3 .card {\r\n        width: 90%;\r\n    }\r\n\r\n    /* Home4 */\r\n\r\n    .Home4 h1 {\r\n        margin: 2rem auto;\r\n        font-family: \"helmetregular\", sans-serif;\r\n        font-size: 45px;\r\n        font-weight: bold;\r\n        text-align: center;\r\n    }\r\n\r\n    .accordion-button {\r\n        font-size: 18px;\r\n        font-weight: 400;\r\n    }\r\n\r\n    /* Register1 */\r\n\r\n    .Register1 .card {\r\n        margin: 30px auto;\r\n        padding: 20px 30px;\r\n        width: 80%;\r\n        font-family: 'helmetregular', sans-serif;\r\n        background: linear-gradient(90deg,\r\n                rgba(23, 23, 23, 1) 30%,\r\n                rgba(221, 124, 53, 1) 200%);\r\n        border: none;\r\n    }\r\n\r\n    /* Login1 */\r\n\r\n    .Login1 .card {\r\n        margin: 30px auto;\r\n        padding: 20px 30px;\r\n        width: 80%;\r\n        font-family: 'helmetregular', sans-serif;\r\n        background: linear-gradient(90deg,\r\n                rgba(23, 23, 23, 1) 30%,\r\n                rgba(221, 124, 53, 1) 200%);\r\n        border: none;\r\n    }\r\n}\r\n\r\n@media (min-width: 481px) and (max-width: 767px) {\r\n    .Home1 h1 {\r\n        font-size: 70px;\r\n        line-height: 3.5rem;\r\n    }\r\n\r\n    /* Home1 */\r\n\r\n    .Home1 p {\r\n        margin-top: 15px;\r\n        font-size: 20px;\r\n    }\r\n\r\n    .btn-outline-light {\r\n        width: 80%;\r\n        margin-top: 20px;\r\n        font-size: 20px;\r\n        font-style: italic;\r\n        transition-duration: 1ms;\r\n    }\r\n\r\n    .btn-outline-light:hover {\r\n        width: 80%;\r\n        margin-top: 20px;\r\n        font-size: 20px;\r\n        font-style: italic;\r\n        filter: drop-shadow(2px 2px 10px #dd7c35);\r\n    }\r\n\r\n    /* Home2 */\r\n\r\n    .Home2 {\r\n        height: 600px;\r\n    }\r\n\r\n    .Home2 h1 {\r\n        font-size: 50px;\r\n        line-height: 2.5rem;\r\n        width: 100%;\r\n    }\r\n\r\n    .Home2 p {\r\n        margin-top: 20px;\r\n        font-size: 20px;\r\n        width: 100%;\r\n    }\r\n\r\n    .Home2 section img {\r\n        width: 70%;\r\n        height: 35%;\r\n    }\r\n\r\n    .Home2 section img:first-child {\r\n        top: 2rem;\r\n        left: 1rem;\r\n    }\r\n\r\n    .Home2 section img:last-child {\r\n        top: -5rem;\r\n        left: 4.5rem;\r\n    }\r\n\r\n    /* Home3 */\r\n\r\n    .Home3 {\r\n        height: 600px;\r\n    }\r\n\r\n    .Home3 h1 {\r\n        font-size: 50px;\r\n        line-height: 2.5rem;\r\n    }\r\n\r\n    .Home3 p {\r\n        margin-top: 20px;\r\n        font-size: 20px;\r\n    }\r\n\r\n    .Home3 .card {\r\n        width: 90%;\r\n    }\r\n\r\n    /* Home4 */\r\n\r\n    .Home4 h1 {\r\n        margin: 2rem auto;\r\n        font-family: \"helmetregular\", sans-serif;\r\n        font-size: 45px;\r\n        font-weight: bold;\r\n        text-align: center;\r\n    }\r\n\r\n    .accordion-button {\r\n        font-size: 18px;\r\n        font-weight: 400;\r\n    }\r\n\r\n    /* Download1 */\r\n\r\n    .Download1 h1 {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        font-size: 40px;\r\n        font-weight: bold;\r\n        text-align: center;\r\n        color: #dd7c35;\r\n    }\r\n\r\n    /* Download2 */\r\n\r\n    .Download2 {\r\n        margin-top: 20px;\r\n        margin-bottom: 20px;\r\n    }\r\n\r\n    .Download2 nav .nav-tabs {\r\n        flex-direction: column;\r\n        margin-bottom: 10px;\r\n    }\r\n\r\n    .Download2 nav .nav-tabs button {\r\n        margin-bottom: 5px;\r\n        border-radius: 15px;\r\n    }\r\n\r\n    .Download2 nav .nav-tabs button:hover {\r\n        margin-bottom: 5px;\r\n        border-radius: 15px;\r\n    }\r\n\r\n    /* Download2Element1 */\r\n\r\n    .Download2Element1 .card h1 {\r\n        font-size: 1.5rem;\r\n        margin-right: 15px;\r\n        margin-left: 15px;\r\n    }\r\n\r\n    .Download2Element1 .card section {\r\n        display: flex;\r\n        flex-direction: column;\r\n    }\r\n\r\n    /* Download2Element2 */\r\n\r\n    .Download2Element2 .card h1 {\r\n        font-size: 1.5rem;\r\n        margin-right: 15px;\r\n        margin-left: 15px;\r\n    }\r\n\r\n    .Download2Element2 .card section {\r\n        display: flex;\r\n        flex-direction: column;\r\n    }\r\n\r\n    /* Register1 */\r\n\r\n    .Register1 .card {\r\n        margin: 30px auto;\r\n        padding: 20px 30px;\r\n        width: 80%;\r\n        font-family: 'helmetregular', sans-serif;\r\n        background: linear-gradient(90deg,\r\n                rgba(23, 23, 23, 1) 30%,\r\n                rgba(221, 124, 53, 1) 200%);\r\n        border: none;\r\n    }\r\n\r\n    /* Login1 */\r\n\r\n    .Login1 .card {\r\n        margin: 30px auto;\r\n        padding: 20px 30px;\r\n        width: 80%;\r\n        font-family: 'helmetregular', sans-serif;\r\n        background: linear-gradient(90deg,\r\n                rgba(23, 23, 23, 1) 30%,\r\n                rgba(221, 124, 53, 1) 200%);\r\n        border: none;\r\n    }\r\n\r\n    /* Dashboard1 */\r\n\r\n    .Dashboard1 {\r\n        display: flex;\r\n        flex-direction: column;\r\n        font-family: 'helmetregular', sans-serif;\r\n        gap: 1rem;\r\n    }\r\n\r\n    .Dashboard1 .nav-pills {\r\n        width: 100%;\r\n    }\r\n\r\n    .Dashboard1 .tab-content {\r\n        width: 100%;\r\n    }\r\n\r\n    /* Dashboard1Character1 */\r\n\r\n    .Dashboard1Character1 .card {\r\n        padding: 10px 10px;\r\n    }\r\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@font-face {\r\n    font-family: \"helmetregular\";\r\n    src: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") format(\"woff2\"),\r\n        url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ") format(\"woff\");\r\n    font-weight: normal;\r\n    font-style: normal;\r\n}\r\n\r\n\r\n/* Standart Page Backround */\r\n.pageBG {\r\n    background-color: #121212;\r\n    background-size: fit-content;\r\n    overflow: hidden;\r\n    max-height: 100%;\r\n}\r\n\r\n/* Spinner */\r\n.Puteran .spinner-border {\r\n    width: 12rem;\r\n    height: 12rem;\r\nmargin: 50rem 50rem;\r\n}\r\n\r\n.Puteran span {\r\n    color: #dd7c35;\r\n    font-family: \"helmetregular\";\r\n    font-size: 2rem;\r\n    position: re;\r\n    top: 505px;\r\n    left: 666px;\r\n}\r\n\r\n/* Navigation bar Styling */\r\n\r\n.navbar {\r\n    background: linear-gradient(90deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    position: -webkit-sticky;\r\n    position: sticky;\r\n    top: 0;\r\n    z-index: 3;\r\n}\r\n\r\n.navbar-light .navbar-nav .nav-link {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-weight: normal;\r\n    font-size: 19px;\r\n    color: #ebebeb;\r\n    border-bottom: 4px groove transparent;\r\n    border-radius: 4px;\r\n    letter-spacing: 0.5px;\r\n}\r\n\r\n.navbar-light .navbar-nav .nav-link:hover {\r\n    transition-duration: 2ms;\r\n    color: #dd7c35;\r\n    border-bottom: 4px groove #dd7c35;\r\n    border-radius: 4px;\r\n    filter: drop-shadow(2px 5px 30px #dd7c35);\r\n}\r\n\r\n.navbar .navbar-nav .dropdown-menu {\r\n    background: linear-gradient(20deg,\r\n            rgba(23, 23, 23, 1) 10%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n}\r\n\r\n.btn-primary {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-weight: 400;\r\n    font-size: 18px;\r\n    color: #ebebeb;\r\n    background-color: #dd7c35;\r\n    text-align: center;\r\n    border-color: #dd7c35;\r\n    box-shadow: none;\r\n    padding: 3px 30px;\r\n    line-height: 2;\r\n}\r\n\r\n.btn-primary:hover {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-weight: 400;\r\n    font-size: 18px;\r\n    text-align: center;\r\n    color: #ebebeb;\r\n    background-color: #dd7c35;\r\n    border-color: #dd7c35;\r\n    padding: 3px 30px;\r\n    line-height: 2;\r\n    filter: drop-shadow(2px 5px 30px #dd7c35);\r\n    transform: scale(1.1);\r\n}\r\n\r\n.btn.btn-primary:active:focus {\r\n    box-shadow: 3px 3px 20px #dd7c35;\r\n}\r\n\r\na.btn.btn-primary:active:focus {\r\n    box-shadow: 3px 3px 20px #dd7c35;\r\n}\r\n\r\n.btn-primary:focus {\r\n    box-shadow: 3px 3px 20px #dd7c35;\r\n    background-color: #dd7c35;\r\n    border-color: #dd7c35;\r\n}\r\n\r\n.btn-outline-secondary {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-weight: 400;\r\n    font-size: 18px;\r\n    text-align: center;\r\n    color: #dd7c35;\r\n    background-color: #212121;\r\n    border-color: #212121;\r\n    padding: 3px 25px;\r\n    line-height: 2;\r\n}\r\n\r\n.btn-outline-secondary:hover {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-weight: 400;\r\n    font-size: 18px;\r\n    text-align: center;\r\n    color: #dd7c35;\r\n    background-color: #212121;\r\n    border-color: #212121;\r\n    padding: 3px 25px;\r\n    line-height: 2;\r\n    filter: drop-shadow(2px 5px 30px #212121);\r\n    transform: scale(1.1);\r\n}\r\n\r\n.btn-outline-secondary:active:focus {\r\n    box-shadow: none;\r\n}\r\n\r\n.btn-outline-secondary:focus {\r\n    box-shadow: none;\r\n}\r\n\r\n/* Home1 */\r\n\r\n.Home1 {\r\n    margin-top: 60px;\r\n    align-items: center;\r\n    display: flex;\r\n    flex-direction: column;\r\n    height: 600px;\r\n}\r\n\r\n.Home1 h1 {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 110px;\r\n    font-weight: bold;\r\n    text-align: center;\r\n    display: flex;\r\n    flex-direction: column;\r\n    line-height: 6rem;\r\n}\r\n\r\n.Home1 p {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    text-shadow: 1px 1px 1px rgb(14, 13, 13);\r\n    margin-top: 20px;\r\n    font-size: 25px;\r\n    font-weight: 400;\r\n    text-align: center;\r\n    color: rgb(236, 232, 232);\r\n    width: 100%;\r\n}\r\n\r\n.btn-outline-light {\r\n    background-color: white;\r\n    font-weight: 600;\r\n    color: #dd7c35;\r\n    width: 40%;\r\n    margin-top: 30px;\r\n    font-size: 40px;\r\n    font-style: italic;\r\n    transition-duration: 1ms;\r\n}\r\n\r\n.btn-outline-light:hover {\r\n    background-color: #dd7c35;\r\n    font-weight: 600;\r\n    color: #eaeaea;\r\n    border-color: #dd7c35;\r\n    width: 40%;\r\n    margin-top: 30px;\r\n    font-size: 40px;\r\n    font-style: italic;\r\n    filter: drop-shadow(2px 2px 10px #dd7c35);\r\n}\r\n\r\n/* Home2 */\r\n\r\n.Home2 {\r\n    height: 840px;\r\n}\r\n\r\n.Home2 h1 {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 90px;\r\n    font-weight: bold;\r\n    text-align: center;\r\n}\r\n\r\n.Home2 p {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    text-shadow: 1px 1px 1px rgb(14, 13, 13);\r\n    margin-top: 5px;\r\n    font-size: 25px;\r\n    font-weight: 400;\r\n    text-align: center;\r\n    color: rgb(236, 232, 232);\r\n    width: 100%;\r\n}\r\n\r\n.menuActive {\r\n    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.05) inset, 0 0 15px #dd7c35;\r\n    z-index: 3;\r\n}\r\n\r\n\r\n.Home2 section img:first-child {\r\n    position: relative;\r\n    border-radius: 10px;\r\n    width: 80%;\r\n}\r\n\r\n.Home2 section img:active {\r\n    filter: drop-shadow(2px 2px 10px #dd7c35);\r\n    transform: scale(1.05);\r\n}\r\n\r\n.Home2 section img:last-child {\r\n    border-radius: 10px;\r\n    position: relative;\r\n    top: -400px;\r\n    left: 16.5rem;\r\n    width: 80%;\r\n}\r\n\r\n.Home2 section img:last-child:active {\r\n    filter: drop-shadow(2px 2px 10px #dd7c35);\r\n    transform: scale(1.05);\r\n}\r\n/* Home3 */\r\n\r\n.Home3 {\r\n    height: 580px;\r\n}\r\n\r\n.Home3 h1 {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 90px;\r\n    font-weight: bold;\r\n    text-align: center;\r\n}\r\n\r\n.Home3 p {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    text-shadow: 1px 1px 1px rgb(14, 13, 13);\r\n    margin-top: 5px;\r\n    font-size: 25px;\r\n    font-weight: 400;\r\n    text-align: center;\r\n    color: rgb(236, 232, 232);\r\n    width: 100%;\r\n}\r\n\r\n.Home3 .ownerCFL {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    gap: 1rem;\r\n}\r\n\r\n.Home3 .card {\r\n    border: none;\r\n    width: 40%;\r\n    background: linear-gradient(313deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    height: -webkit-max-content;\r\n    height: -moz-max-content;\r\n    height: max-content;\r\n    border-radius: 20px;\r\n}\r\n\r\n.Home3 .card img {\r\n    border-top-left-radius: 20px;\r\n    border-top-right-radius: 20px;\r\n}\r\n\r\n.Home3 .card section {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n    margin: 15px 15px;\r\n}\r\n\r\n.Home3 .card section h4 {\r\n    font-size: 25px;\r\n    color: #dd7c35;\r\n}\r\n\r\n.carousel-indicators {\r\n    margin: -5rem auto;\r\n}\r\n\r\n.carousel-control-next,\r\n.carousel-control-prev {\r\n    display: none;\r\n}\r\n\r\n/* Home4 */\r\n\r\n.Home4 {\r\n    margin-bottom: 30px;\r\n}\r\n\r\n.Home4 h1 {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 90px;\r\n    font-weight: bold;\r\n    text-align: center;\r\n}\r\n\r\n.accordion-item {\r\n    background: transparent;\r\n}\r\n\r\n.accordion-button {\r\n    background: linear-gradient(90deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    color: #eaeaea;\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 20px;\r\n    font-weight: 400;\r\n}\r\n\r\n.accordion-button:not(.collapsed) {\r\n    color: #dd7c35\r\n}\r\n\r\n.accordion-button:active {\r\n    box-shadow: 0 0 0 0.25rem #dd7c35;\r\n    color: #dd7c35;\r\n}\r\n\r\n.accordion-button:focus {\r\n    box-shadow: 0 0 0 0.25rem #dd7c35;\r\n    color: #dd7c35;\r\n}\r\n\r\n.accordion-body {\r\n    background: linear-gradient(90deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    color: #eaeaea;\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 18px;\r\n}\r\n\r\n/* NewsPage */\r\n/* News1 */\r\n\r\n.News1 h1 {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 90px;\r\n    font-weight: bold;\r\n    text-align: center;\r\n    color: #dd7c35;\r\n}\r\n\r\n/* News2 */\r\n\r\n.News2 .card {\r\n    display: flex;\r\n    flex-direction: row;\r\n    gap: 20px;\r\n    background-color: #eaeaea;\r\n    border: none;\r\n    margin: 15px 15px;\r\n    border-radius: 10px;\r\n    box-shadow: 3px 3px 20px #212121;\r\n}\r\n\r\n.News2 .card img {\r\n    width: 20%;\r\n    margin: 0;\r\n    border-bottom-left-radius: 10px;\r\n    border-top-left-radius: 10px;\r\n}\r\n\r\n.News2 .card section h2 {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 30px;\r\n    font-weight: bold;\r\n    text-align: left;\r\n    color: #dd7c35;\r\n    margin-top: 10px;\r\n}\r\n\r\n.News2 .card section h2 a {\r\n    text-decoration: none;\r\n    color: #dd7c35;\r\n}\r\n\r\n.News2 .card section p {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 16px;\r\n    text-align: left;\r\n    color: #c87941;\r\n    text-overflow: ellipsis;\r\n    word-wrap: break-word;\r\n    overflow: hidden;\r\n    max-height: 2em;\r\n    line-height: 1.8em;\r\n    width: 80%;\r\n}\r\n\r\n.News2 .card section span {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    text-align: left;\r\n    color: #665f59;\r\n}\r\n\r\n.News2 .pagination {\r\n    margin: 15px 15px 15px 15px\r\n}\r\n\r\n.News2 ul li.page-item a {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    color: #121212;\r\n    font-size: 1em;\r\n}\r\n\r\n.News2 ul li.page-item.active a {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    background-color: #dd7c35;\r\n    color: #121212;\r\n    border: none;\r\n}\r\n\r\n.page-item:first-child .page-link {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    background-color: #dd7c35;\r\n    border: none;\r\n    color: #ebebeb;\r\n}\r\n\r\n.page-item:last-child .page-link {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    background-color: #dd7c35;\r\n    border: none;\r\n    color: #ebebeb;\r\n}\r\n\r\n/* NewsIndex */\r\n\r\n.NewsIndex .card {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin: 15px 15px;\r\n}\r\n\r\n.NewsIndex .card h1 {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 40px;\r\n    font-weight: bold;\r\n    text-align: left;\r\n    color: #dd7c35;\r\n    margin-left: 20px;\r\n    margin-top: 10px;\r\n}\r\n\r\n.NewsIndex .card img {\r\n    width: 50%;\r\n    height: 20%;\r\n    align-items: center;\r\n    margin: 15px 10px 20px 20px;\r\n    position: relative;\r\n    left: 25%;\r\n    border-radius: 10px;\r\n}\r\n\r\n.NewsIndex .card section article {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 20px;\r\n    text-align: left;\r\n    color: #c87941;\r\n    margin-left: 20px;\r\n    margin-right: 20px;\r\n}\r\n\r\n.NewsIndex .card section span {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 18px;\r\n    text-align: left;\r\n    margin-left: 20px;\r\n    width: 100%;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n/* Download Page */\r\n/* Download1 */\r\n\r\n.Download1 h1 {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 90px;\r\n    font-weight: bold;\r\n    text-align: center;\r\n    color: #dd7c35;\r\n}\r\n\r\n/* Download2 */\r\n\r\n.Download2 {\r\n    margin-top: 20px;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.Download2 nav .nav-tabs {\r\n    border: none;\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: center;\r\n}\r\n\r\n.Download2 nav .nav-tabs button {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-weight: bold;\r\n    background-color: #dd7c35;\r\n    border: none;\r\n    color: #eaeaea;\r\n    border-top-left-radius: 10px;\r\n    border-top-right-radius: 10px;\r\n}\r\n\r\n.Download2 nav .nav-tabs button.active {\r\n    color: #dd7c35;\r\n    border: none;\r\n    border-top-left-radius: 10px;\r\n    border-top-right-radius: 10px;\r\n}\r\n\r\n/* Download2Element1 */\r\n\r\n.Download2Element1 .card {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-radius: 15px;\r\n    background: linear-gradient(313deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    border: none;\r\n}\r\n\r\n.Download2Element1 .card h1 {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    color: #dd7c35;\r\n    font-size: 1.5rem;\r\n    font-weight: bold;\r\n    text-align: center;\r\n    margin: 10px 10px 10px 10px;\r\n}\r\n\r\n.Download2Element1 .card section .col button {\r\n    width: 100%;\r\n    padding: 10px 10px;\r\n    text-decoration: none;\r\n    border-radius: 10px;\r\n    background: #212121;\r\n    border: #212121;\r\n    box-shadow: 3px 3px 20px #212121;\r\n}\r\n\r\n.Download2Element1 .card section .col button:hover {\r\n    background: #dd7c35;\r\n    border: #dd7c35;\r\n    color: #eaeaea;\r\n    box-shadow: 3px 3px 20px #dd7c35;\r\n    transform: scaleY(1.2);\r\n}\r\n\r\n.Download2Element1 .card section .col button a {\r\n    text-decoration: none;\r\n    color: white;\r\n    font-family: \"helmetregular\", sans-serif;\r\n    letter-spacing: 3px;\r\n    font-weight: bold;\r\n}\r\n\r\n.Download2Element1 .card section .col button a:hover {\r\n    color: #eaeaea;\r\n}\r\n\r\n.Download2Element1 .card section {\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.Download2Element1 .col {\r\n    padding: 1.5rem 2.5rem;\r\n}\r\n\r\n.Download2Element1 table {\r\n    width: 100%;\r\n    margin-bottom: 2rem;\r\n    border-bottom: 1px solid #dd7c35;\r\n}\r\n\r\n.Download2Element1 table th {\r\n    padding: 15px 0;\r\n    font-weight: normal;\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 1.2rem;\r\n    text-align: left;\r\n    color: white;\r\n}\r\n\r\n.Download2Element1 table td {\r\n    padding: 15px 0;\r\n    font-weight: normal;\r\n    font-family: \"helmetregular\", sans-serif;\r\n    color: #c87941;\r\n    font-size: 1.2rem;\r\n    text-align: right;\r\n    letter-spacing: 3px;\r\n}\r\n\r\n.Download2Element1 table tr {\r\n    border-top: 1px solid #dd7c35;\r\n}\r\n\r\n.Download2Element1 tbody {\r\n    box-sizing: border-box;\r\n}\r\n\r\n/* Download2Element2 */\r\n\r\n.Download2Element2 .card {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-radius: 15px;\r\n    background: linear-gradient(313deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    border: none;\r\n}\r\n\r\n.Download2Element2 .card h1 {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    color: #dd7c35;\r\n    font-size: 1.5rem;\r\n    font-weight: bold;\r\n    text-align: center;\r\n    margin: 10px 10px 10px 10px;\r\n}\r\n\r\n.Download2Element2 .card section .col button {\r\n    width: 100%;\r\n    padding: 10px 10px;\r\n    text-decoration: none;\r\n    border-radius: 10px;\r\n    background: #212121;\r\n    border: #212121;\r\n    box-shadow: 3px 3px 20px #212121;\r\n}\r\n\r\n.Download2Element2 .card section .col button:hover {\r\n    background: #dd7c35;\r\n    border: #dd7c35;\r\n    color: #eaeaea;\r\n    box-shadow: 3px 3px 20px #dd7c35;\r\n    transform: scaleY(1.2);\r\n}\r\n\r\n.Download2Element2 .card section .col button a {\r\n    text-decoration: none;\r\n    color: white;\r\n    font-family: \"helmetregular\", sans-serif;\r\n    letter-spacing: 3px;\r\n    font-weight: bold;\r\n}\r\n\r\n.Download2Element2 .card section .col button a:hover {\r\n    color: #eaeaea;\r\n}\r\n\r\n.Download2Element2 .card section {\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.Download2Element2 .col {\r\n    padding: 1.5rem 2.5rem;\r\n}\r\n\r\n.Download2Element2 table {\r\n    width: 100%;\r\n    margin-bottom: 2rem;\r\n    border-bottom: 1px solid #dd7c35;\r\n}\r\n\r\n.Download2Element2 table th {\r\n    padding: 15px 0;\r\n    font-weight: normal;\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 1.2rem;\r\n    text-align: left;\r\n    color: white;\r\n}\r\n\r\n.Download2Element2 table td {\r\n    padding: 15px 0;\r\n    font-weight: normal;\r\n    font-family: \"helmetregular\", sans-serif;\r\n    color: #c87941;\r\n    font-size: 1.2rem;\r\n    text-align: right;\r\n    letter-spacing: 3px;\r\n}\r\n\r\n.Download2Element2 table tr {\r\n    border-top: 1px solid #dd7c35;\r\n}\r\n\r\n.Download2Element2 tbody {\r\n    box-sizing: border-box;\r\n}\r\n\r\n/* Download2Element3 */\r\n\r\n.Download2Element3 .card h1 {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    color: #dd7c35;\r\n    font-size: 1.5rem;\r\n    font-weight: bold;\r\n    text-align: center;\r\n    margin: 10px 10px 10px 10px;\r\n}\r\n\r\n.Download2Element3 .nav-pills {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-weight: bold;\r\n    background-color: #dd7c35;\r\n    color: #eaeaea;\r\n}\r\n\r\n.Download2Element3 .nav-pills .nav-link {\r\n    padding: 16% 26%;\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-weight: bold;\r\n    font-size: 20px;\r\n    border-radius: 0px;\r\n    background-color: #dd7c35;\r\n    color: #eaeaea;\r\n    border: 2px solid #dd7c35;\r\n}\r\n\r\n.Download2Element3 .nav-pills .nav-link.active {\r\n    background-color: #eaeaea;\r\n    border: 2px solid #eaeaea;\r\n    color: #dd7c35;\r\n}\r\n\r\n.Download2Element3 .card {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-radius: 15px;\r\n    background: linear-gradient(313deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    border: none;\r\n}\r\n\r\n.Download2Element3 .card .tab-pane {\r\n    margin: 10px 10px;\r\n}\r\n\r\n.Download2Element3 .card .tab-pane ul li:first-child {\r\n    font-family: \"helmetregular\";\r\n    color: #dd7c35;\r\n    font-size: 25px;\r\n    font-weight: bold;\r\n    text-align: left;\r\n    list-style-type: none;\r\n}\r\n\r\n.Download2Element3 .card .tab-pane ul li {\r\n    font-family: \"helmetregular\";\r\n    color: #dd7c35;\r\n    font-size: 20px;\r\n    font-weight: normal;\r\n    text-align: left;\r\n    list-style-type: none;\r\n}\r\n\r\n/* Register1 */\r\n\r\n.Register1 .card {\r\n    margin: 30px auto;\r\n    padding: 20px 30px;\r\n    width: 60%;\r\n    font-family: 'helmetregular', sans-serif;\r\n    background: linear-gradient(90deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    border: none;\r\n}\r\n\r\n.Register1 .card h1 {\r\n    font-size: 3rem;\r\n    color: #d37c35;\r\n    font-weight: bold;\r\n    letter-spacing: 1px;\r\n}\r\n\r\n.Register1 .card button {\r\n    margin: 3px;\r\n    padding: 2px 25px;\r\n}\r\n\r\n.Register1 .card .form-control {\r\n    height: 3rem;\r\n    background: #eaeaea;\r\n}\r\n\r\n.Register1 .card .form-control:focus {\r\n    height: 3rem;\r\n    background: #eaeaea;\r\n    box-shadow: 0 0 0 0.25rem #dd7c35;\r\n}\r\n\r\n.Register1 .card .form-floating span {\r\n    margin-left: 3px;\r\n    margin-top: 2px;\r\n    color: #e21313;\r\n}\r\n\r\n\r\n.Register1 .card .form-floating label {\r\n    padding: 12px .75rem;\r\n}\r\n\r\n.Register1 section p {\r\n    color: darkgrey;\r\n    font-size: 16px;\r\n}\r\n\r\n.Register1 section p a {\r\n    color: #dd7c35;\r\n    ;\r\n}\r\n\r\n/* Login1 */\r\n\r\n.Login1 .card {\r\n    margin: 50px auto;\r\n    padding: 20px 30px;\r\n    width: 40%;\r\n    font-family: 'helmetregular', sans-serif;\r\n    background: linear-gradient(90deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    border: none;\r\n}\r\n\r\n.Login1 .card h1 {\r\n    font-size: 3rem;\r\n    color: #d37c35;\r\n    font-weight: bold;\r\n    letter-spacing: 1px;\r\n}\r\n\r\n.Login1 .card button {\r\n    margin: 3px;\r\n    padding: 2px 25px;\r\n}\r\n\r\n.Login1 .card .form-control {\r\n    height: 3rem;\r\n    background: #eaeaea;\r\n}\r\n\r\n.Login1 .card .form-control:focus {\r\n    box-shadow: 0 0 0 0.25rem #dd7c35;\r\n}\r\n\r\n.Login1 .card .form-floating span {\r\n    margin-left: 3px;\r\n    margin-top: 2px;\r\n    color: #e21313;\r\n}\r\n\r\n\r\n.Login1 .card .form-floating label {\r\n    padding: 12px .75rem;\r\n}\r\n\r\n.Login1 section p {\r\n    color: darkgrey;\r\n    font-size: 16px;\r\n}\r\n\r\n.Login1 section p a {\r\n    color: #dd7c35;\r\n}\r\n\r\n.Login1 section span {\r\n    margin-left: 3px;\r\n    color: #e21313;\r\n}\r\n\r\n\r\n/* Dashboard1 */\r\n\r\n.Dashboard1 {\r\n    display: flex;\r\n    flex-direction: row;\r\n    font-family: 'helmetregular', sans-serif;\r\n    padding: 2rem 2rem;\r\n    gap: 1rem;\r\n}\r\n\r\n.Dashboard1 .nav-pills {\r\n    display: flex;\r\n    flex-direction: column;\r\n    gap: 1rem;\r\n    width: 30%;\r\n}\r\n\r\n.Dashboard1 .nav-pills .card {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    padding: 20px 20px;\r\n    background: linear-gradient(90deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    border: none;\r\n    color: #dd7c35;\r\n}\r\n\r\n.Dashboard1 .nav-pills .card>* {\r\n    margin-bottom: 5px;\r\n}\r\n\r\n.Dashboard1 .nav-pills .card img {\r\n    border-radius: 10px;\r\n}\r\n\r\n.Dashboard1 .nav-pills button {\r\n    padding: 15px;\r\n    border: 1px solid #d37c35;\r\n    color: #d37c35;\r\n}\r\n\r\n.Dashboard1 .nav-pills button.active {\r\n    background: #d37c35;\r\n    color: #eaeaea;\r\n}\r\n\r\n.Dashboard1 .nav-pills button:hover {\r\n    background: #d37c35;\r\n    color: #eaeaea;\r\n}\r\n\r\n.Dashboard1 .nav-pills .card button {\r\n    padding: 5px 30px;\r\n    border: 1px solid #d37c35;\r\n    color: #d37c35;\r\n}\r\n\r\n.Dashboard1 .nav-pills .card button:hover {\r\n    background: #d37c35;\r\n    color: #eaeaea;\r\n}\r\n\r\n.Dashboard1 .nav-pills .card span {\r\n    margin-top: 10px;\r\n    font-size: 1.05rem;\r\n}\r\n\r\n.Dashboard1 .tab-content {\r\n    width: 70%;\r\n}\r\n\r\n/* Dashboard1Profile */\r\n\r\n.Dashboard1Profile h4 {\r\n    color: #d37c35\r\n}\r\n\r\n.Dashboard1Profile p {\r\n    color: #eaeaea;\r\n}\r\n\r\n.Dashboard1Profile p span {\r\n    font-style: oblique;\r\n}\r\n\r\n.Dashboard1Profile ul li button {\r\n    color: #dd7c35;\r\n}\r\n\r\n.Dashboard1Profile ul li button:hover {\r\n    color: #dd7c35;\r\n    ;\r\n}\r\n\r\n.Dashboard1Profile .tab-content {\r\n    width: 100%;\r\n}\r\n\r\n/* Dashboard1Profile1 */\r\n\r\n.Dashboard1Profile1 .card {\r\n    padding: 15px 20px;\r\n    background: linear-gradient(250deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    border: none;\r\n}\r\n\r\n.Dashboard1Profile1 .card>* {\r\n    color: #dd7c35;\r\n    margin-bottom: 10px;\r\n\r\n}\r\n\r\n.Dashboard1Profile1 .card button {\r\n    border: 1px solid #dd7c35;\r\n    width: 50%;\r\n    margin: 0 auto;\r\n\r\n}\r\n\r\n.Dashboard1Profile1 .card button:focus {\r\n    box-shadow: 0 0 0 1px #dd7c35;\r\n\r\n}\r\n\r\n.Dashboard1Profile1 .card button:hover {\r\n    border: 1px solid #dd7c35;\r\n    color: #eaeaea;\r\n    background: #dd7c35;\r\n\r\n}\r\n\r\n/* Dashboard1Profile1Update */\r\n\r\n.Dashboard1Profile1Update .card {\r\n    padding: 15px 20px;\r\n    background: linear-gradient(250deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    border: none;\r\n}\r\n\r\n.Dashboard1Profile1Update .card>* {\r\n    color: #dd7c35;\r\n    margin-bottom: 10px;\r\n\r\n}\r\n\r\n.Dashboard1Profile1Update .card button {\r\n    border: 1px solid #dd7c35;\r\n    width: 50%;\r\n    margin: 0 auto;\r\n\r\n}\r\n\r\n.Dashboard1Profile1Update .card button:focus {\r\n    box-shadow: 0 0 0 1px #dd7c35;\r\n\r\n}\r\n\r\n.Dashboard1Profile1Update .card button:hover {\r\n    border: 1px solid #dd7c35;\r\n    color: #eaeaea;\r\n    background: #dd7c35;\r\n\r\n}\r\n\r\n/* Dashboard1Character */\r\n\r\n.Dashboard1Character h4 {\r\n    color: #d37c35\r\n}\r\n\r\n.Dashboard1Character p {\r\n    color: #eaeaea;\r\n}\r\n\r\n.Dashboard1Character p span {\r\n    font-style: oblique;\r\n}\r\n\r\n.Dashboard1Character ul li button {\r\n    color: #dd7c35;\r\n}\r\n\r\n.Dashboard1Character ul li button:hover {\r\n    color: #dd7c35;\r\n    ;\r\n}\r\n\r\n.Dashboard1Character .tab-content {\r\n    width: 100%;\r\n}\r\n\r\n/* Dashboard1Character1 */\r\n\r\n.Dashboard1Character1 .card {\r\n    padding: 30px 30px;\r\n    background: linear-gradient(250deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    border: none;\r\n}\r\n\r\n.Dashboard1Character1 .card>* {\r\n    color: #dd7c35;\r\n    margin-bottom: 10px;\r\n\r\n}\r\n\r\n.Dashboard1Character1 .card button {\r\n    border: 1px solid #dd7c35;\r\n    width: 50%;\r\n    margin: 0 auto;\r\n\r\n}\r\n\r\n.Dashboard1Character1 .card button:focus {\r\n    box-shadow: 0 0 0 1px #dd7c35;\r\n\r\n}\r\n\r\n.Dashboard1Character1 .card button:hover {\r\n    border: 1px solid #dd7c35;\r\n    color: #eaeaea;\r\n    background: #dd7c35;\r\n\r\n}\r\n\r\n/* Footer Cus */\r\n\r\n.footerBG {\r\n    background: linear-gradient(90deg,\r\n            rgba(23, 23, 23, 1) 30%,\r\n            rgba(221, 124, 53, 1) 200%);\r\n    width: 100%;\r\n    position: static;\r\n    bottom: 0;\r\n}\r\n\r\n.footer-menu .nav-link {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-weight: normal;\r\n    font-size: 19px;\r\n    color: #ebebeb;\r\n    border-bottom: 4px groove transparent;\r\n    border-radius: 4px;\r\n    letter-spacing: 0.5px;\r\n}\r\n\r\n.footer-menu .nav-link:hover {\r\n    transition-duration: 2ms;\r\n    color: #dd7c35;\r\n    border-bottom: 4px groove #dd7c35;\r\n    border-radius: 4px;\r\n    filter: drop-shadow(2px 5px 30px #dd7c35);\r\n}\r\n\r\n.mt60 {\r\n    margin-top: 10px;\r\n    font-size: 17px;\r\n    color: #dd7c35;\r\n    margin-left: 16px;\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-weight: 200;\r\n    width: 100%;\r\n}\r\n\r\n.cff-status {\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-weight: 600;\r\n    font-size: 20px;\r\n    font-style: italic;\r\n    color: #ebebeb;\r\n    margin-top: 30px;\r\n    display: flex;\r\n    margin-left: 16px;\r\n}\r\n\r\n.cff-status-indicator {\r\n    background-color: #ff0000;\r\n    box-shadow: 0 0 25px #ff0000;\r\n    width: 1.5rem;\r\n    height: 1.5rem;\r\n    border-radius: 0.9375rem;\r\n    margin: 0.1875rem 0.625rem 0;\r\n}\r\n\r\n.footer-line {\r\n    border-bottom: 3px solid #dd7c35;\r\n    border-radius: 5px;\r\n}\r\n\r\n.footer-under {\r\n    margin-top: 15px;\r\n}\r\n\r\n.footer-under .col {\r\n    color: #eaeaea;\r\n}\r\n\r\n/* Term And Conditions */\r\n.TNC h1{\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 90px;\r\n    font-weight: bold;\r\n    text-align: center;\r\n    color: #dd7c35;\r\n}\r\n\r\n#terms-conditions-page {\r\n    margin: 30px auto;\r\n    font-family: 'helmetregular', sans-serif;\r\n    font-size: large;\r\n    color: #dd7c35;\r\n    text-align: justify;\r\n}\r\n\r\n/* Privacy */\r\n.Privacy h1{\r\n    font-family: \"helmetregular\", sans-serif;\r\n    font-size: 90px;\r\n    font-weight: bold;\r\n    text-align: center;\r\n    color: #dd7c35;\r\n}\r\n\r\n#privacy-policy-page {\r\n    margin: 30px auto;\r\n    font-family: 'helmetregular', sans-serif;\r\n    font-size: large;\r\n    color: #dd7c35;\r\n    text-align: justify;\r\n}\r\n\r\n@media (max-width: 480px) {\r\n    .navbar {\r\n        height: auto;\r\n    }\r\n\r\n    .Home1 h1 {\r\n        font-size: 45px;\r\n        line-height: 2.5rem;\r\n        width: 100%;\r\n    }\r\n\r\n    /* Home1 */\r\n\r\n    .Home1 p {\r\n        margin-top: 10px;\r\n        font-size: 18px;\r\n        width: 100%;\r\n    }\r\n\r\n    .btn-outline-light {\r\n        width: 80%;\r\n        margin-top: 20px;\r\n        font-size: 20px;\r\n        font-style: italic;\r\n        transition-duration: 1ms;\r\n    }\r\n\r\n    .btn-outline-light:hover {\r\n        width: 80%;\r\n        margin-top: 20px;\r\n        font-size: 20px;\r\n        font-style: italic;\r\n        filter: drop-shadow(2px 2px 10px #dd7c35);\r\n    }\r\n\r\n    /* Home2 */\r\n\r\n    .Home2 {\r\n        height: 500px;\r\n    }\r\n\r\n    .Home2 h1 {\r\n        font-size: 45px;\r\n        line-height: 2.5rem;\r\n        width: 100%;\r\n    }\r\n\r\n    .Home2 p {\r\n        margin-top: 20px;\r\n        font-size: 18px;\r\n        width: 100%;\r\n    }\r\n\r\n    .Home2 section img {\r\n        width: 70%;\r\n        height: 35%;\r\n    }\r\n\r\n    .Home2 section img:first-child {\r\n        top: 2rem;\r\n        left: 1rem;\r\n    }\r\n\r\n    .Home2 section img:last-child {\r\n        top: -5rem;\r\n        left: 5.5rem;\r\n    }\r\n\r\n    /* Home3 */\r\n\r\n    .Home3 {\r\n        height: 600px;\r\n    }\r\n\r\n    .Home3 h1 {\r\n        font-size: 45px;\r\n        line-height: 2.5rem;\r\n        width: 100%;\r\n    }\r\n\r\n    .Home3 p {\r\n        margin-top: 20px;\r\n        font-size: 18px;\r\n        width: 100%;\r\n    }\r\n\r\n    .Home3 .card {\r\n        width: 100%;\r\n    }\r\n\r\n    /* Home4 */\r\n\r\n    .Home4 h1 {\r\n        margin-top: 20px;\r\n        font-family: \"helmetregular\", sans-serif;\r\n        font-size: 45px;\r\n        font-weight: bold;\r\n        text-align: center;\r\n    }\r\n\r\n    .accordion-button {\r\n        font-size: 18px;\r\n        font-weight: 400;\r\n    }\r\n\r\n    /* News1 */\r\n\r\n    .News1 h1 {\r\n        font-size: 50px;\r\n    }\r\n\r\n    /* News2 */\r\n\r\n    .News2 .card {\r\n        gap: 5px;\r\n        margin: 20px 0px;\r\n        box-shadow: 3px 3px 20px #212121;\r\n    }\r\n\r\n    .News2 .card img {\r\n        width: 35%;\r\n        border-bottom-left-radius: 10px;\r\n        border-top-left-radius: 10px;\r\n    }\r\n\r\n    .News2 .card section {\r\n        line-height: 33px;\r\n    }\r\n\r\n    .News2 .card section h2 {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        font-size: 14px;\r\n        font-weight: bold;\r\n        text-align: left;\r\n        color: #dd7c35;\r\n        margin-top: 5px;\r\n    }\r\n\r\n    .News2 .card section h2 a {\r\n        text-decoration: none;\r\n        color: #dd7c35;\r\n    }\r\n\r\n    .News2 .card section p {\r\n        display: none;\r\n    }\r\n\r\n    .News2 .card section span {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        text-align: left;\r\n        color: #665f59;\r\n    }\r\n\r\n    .News2 ul li.page-item a {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        color: #121212;\r\n        font-size: rem(2);\r\n    }\r\n\r\n    .News2 ul li.page-item.active a {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        background-color: #dd7c35;\r\n        border-color: #dd7c35;\r\n    }\r\n\r\n    .page-item:first-child .page-link {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        background-color: #dd7c35;\r\n        border-color: #dd7c35;\r\n    }\r\n\r\n    .page-item:last-child .page-link {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        background-color: #dd7c35;\r\n        border-color: #dd7c35;\r\n    }\r\n\r\n    /* NewsIndex */\r\n\r\n    .NewsIndex .card {\r\n        display: flex;\r\n        flex-direction: column;\r\n        margin: 15px 0px;\r\n    }\r\n\r\n    .NewsIndex .card h1 {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        font-size: 16px;\r\n        font-weight: bold;\r\n        text-align: left;\r\n        color: #dd7c35;\r\n        margin-left: 10px;\r\n        margin-right: 10px;\r\n        margin-top: 20px;\r\n    }\r\n\r\n    .NewsIndex .card img {\r\n        width: 80%;\r\n        height: 20%;\r\n        align-items: center;\r\n        margin: 15px 10px;\r\n        position: relative;\r\n        left: 7%;\r\n        border-radius: 10px;\r\n    }\r\n\r\n    .NewsIndex .card section article {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        font-size: 16px;\r\n        text-align: left;\r\n        color: #c87941;\r\n        margin-left: 15px;\r\n        margin-right: 15px;\r\n    }\r\n\r\n    .NewsIndex .card section span {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        font-size: 18px;\r\n        text-align: left;\r\n        margin-left: 15px;\r\n        margin-right: 15px;\r\n    }\r\n\r\n    /* Download Page */\r\n    /* Download1 */\r\n\r\n    .Download1 h1 {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        font-size: 45px;\r\n        font-weight: bold;\r\n        text-align: center;\r\n        color: #dd7c35;\r\n    }\r\n\r\n    /* Download2 */\r\n\r\n    .Download2 {\r\n        margin-top: 20px;\r\n        margin-bottom: 20px;\r\n    }\r\n\r\n    .Download2 nav .nav-tabs {\r\n        flex-direction: column;\r\n        margin-bottom: 10px;\r\n    }\r\n\r\n    .Download2 nav .nav-tabs button {\r\n        margin-bottom: 5px;\r\n        border-radius: 15px;\r\n    }\r\n\r\n    .Download2 nav .nav-tabs button:hover {\r\n        margin-bottom: 5px;\r\n        border-radius: 15px;\r\n    }\r\n\r\n    /* Download2Element1 */\r\n\r\n    .Download2Element1 .card h1 {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        color: #dd7c35;\r\n        font-size: 1.5rem;\r\n        font-weight: bold;\r\n        text-align: center;\r\n        margin: 10px 10px 10px 10px;\r\n    }\r\n\r\n\r\n    .Download2Element1 .card section {\r\n        flex-direction: column;\r\n    }\r\n\r\n\r\n    /* Download2Element2 */\r\n\r\n    .Download2Element2 .card h1 {\r\n        font-size: 1.5rem;\r\n        margin-right: 15px;\r\n        margin-left: 15px;\r\n    }\r\n\r\n    .Download2Element2 .card section {\r\n        display: flex;\r\n        flex-direction: column;\r\n    }\r\n\r\n    /* Register1 */\r\n\r\n    .Register1 .card {\r\n        width: 95%;\r\n    }\r\n\r\n    /* Login1 */\r\n\r\n    .Login1 .card {\r\n        width: 90%;\r\n    }\r\n\r\n    /* Dashboard1 */\r\n\r\n    .Dashboard1 {\r\n        display: flex;\r\n        flex-direction: column;\r\n        font-family: 'helmetregular', sans-serif;\r\n        gap: 1rem;\r\n    }\r\n\r\n    .Dashboard1 .nav-pills {\r\n        width: 100%;\r\n    }\r\n\r\n    .Dashboard1 .tab-content {\r\n        width: 100%;\r\n    }\r\n\r\n    /* Dashboard1Character1 */\r\n\r\n    .Dashboard1Character1 .card {\r\n        padding: 10px 10px;\r\n\r\n    }\r\n\r\n    .nav {\r\n        display: flex;\r\n        flex-direction: column;\r\n    }\r\n\r\n    .mt60 {\r\n        margin-top: 0;\r\n    }\r\n\r\n    .cff-status {\r\n        margin-top: 10px;\r\n        margin-bottom: 20px;\r\n    }\r\n}\r\n\r\n@media (min-width: 768px) and (max-width: 1024px) {\r\n    .Home1 h1 {\r\n        font-size: 70px;\r\n        line-height: 3.5rem;\r\n    }\r\n\r\n    /* Home1 */\r\n\r\n    .Home1 p {\r\n        margin-top: 15px;\r\n        font-size: 20px;\r\n    }\r\n\r\n    .btn-outline-light {\r\n        width: 80%;\r\n        margin-top: 20px;\r\n        font-size: 20px;\r\n        font-style: italic;\r\n        transition-duration: 1ms;\r\n    }\r\n\r\n    .btn-outline-light:hover {\r\n        width: 80%;\r\n        margin-top: 20px;\r\n        font-size: 20px;\r\n        font-style: italic;\r\n        filter: drop-shadow(2px 2px 10px #dd7c35);\r\n    }\r\n\r\n    /* Home2 */\r\n\r\n    .Home2 {\r\n        height: 700px;\r\n    }\r\n\r\n    .Home2 h1 {\r\n        font-size: 50px;\r\n        line-height: 2.5rem;\r\n        width: 100%;\r\n    }\r\n\r\n    .Home2 p {\r\n        margin-top: 20px;\r\n        font-size: 20px;\r\n        width: 100%;\r\n    }\r\n\r\n    .Home2 section img {\r\n        width: 70%;\r\n        height: 35%;\r\n    }\r\n\r\n    .Home2 section img:first-child {\r\n        top: 2rem;\r\n        left: 1rem;\r\n    }\r\n\r\n    .Home2 section img:last-child {\r\n        top: -15rem;\r\n        left: 7.5rem;\r\n    }\r\n\r\n    /* Home3 */\r\n\r\n    .Home3 {\r\n        height: 500px;\r\n    }\r\n\r\n    .Home3 h1 {\r\n        font-size: 50px;\r\n        line-height: 2.5rem;\r\n    }\r\n\r\n    .Home3 p {\r\n        margin-top: 20px;\r\n        font-size: 20px;\r\n    }\r\n\r\n    .Home3 .card {\r\n        width: 90%;\r\n    }\r\n\r\n    /* Home4 */\r\n\r\n    .Home4 h1 {\r\n        margin: 2rem auto;\r\n        font-family: \"helmetregular\", sans-serif;\r\n        font-size: 45px;\r\n        font-weight: bold;\r\n        text-align: center;\r\n    }\r\n\r\n    .accordion-button {\r\n        font-size: 18px;\r\n        font-weight: 400;\r\n    }\r\n\r\n    /* Register1 */\r\n\r\n    .Register1 .card {\r\n        margin: 30px auto;\r\n        padding: 20px 30px;\r\n        width: 80%;\r\n        font-family: 'helmetregular', sans-serif;\r\n        background: linear-gradient(90deg,\r\n                rgba(23, 23, 23, 1) 30%,\r\n                rgba(221, 124, 53, 1) 200%);\r\n        border: none;\r\n    }\r\n\r\n    /* Login1 */\r\n\r\n    .Login1 .card {\r\n        margin: 30px auto;\r\n        padding: 20px 30px;\r\n        width: 80%;\r\n        font-family: 'helmetregular', sans-serif;\r\n        background: linear-gradient(90deg,\r\n                rgba(23, 23, 23, 1) 30%,\r\n                rgba(221, 124, 53, 1) 200%);\r\n        border: none;\r\n    }\r\n}\r\n\r\n@media (min-width: 481px) and (max-width: 767px) {\r\n    .Home1 h1 {\r\n        font-size: 70px;\r\n        line-height: 3.5rem;\r\n    }\r\n\r\n    /* Home1 */\r\n\r\n    .Home1 p {\r\n        margin-top: 15px;\r\n        font-size: 20px;\r\n    }\r\n\r\n    .btn-outline-light {\r\n        width: 80%;\r\n        margin-top: 20px;\r\n        font-size: 20px;\r\n        font-style: italic;\r\n        transition-duration: 1ms;\r\n    }\r\n\r\n    .btn-outline-light:hover {\r\n        width: 80%;\r\n        margin-top: 20px;\r\n        font-size: 20px;\r\n        font-style: italic;\r\n        filter: drop-shadow(2px 2px 10px #dd7c35);\r\n    }\r\n\r\n    /* Home2 */\r\n\r\n    .Home2 {\r\n        height: 600px;\r\n    }\r\n\r\n    .Home2 h1 {\r\n        font-size: 50px;\r\n        line-height: 2.5rem;\r\n        width: 100%;\r\n    }\r\n\r\n    .Home2 p {\r\n        margin-top: 20px;\r\n        font-size: 20px;\r\n        width: 100%;\r\n    }\r\n\r\n    .Home2 section img {\r\n        width: 70%;\r\n        height: 35%;\r\n    }\r\n\r\n    .Home2 section img:first-child {\r\n        top: 2rem;\r\n        left: 1rem;\r\n    }\r\n\r\n    .Home2 section img:last-child {\r\n        top: -5rem;\r\n        left: 4.5rem;\r\n    }\r\n\r\n    /* Home3 */\r\n\r\n    .Home3 {\r\n        height: 600px;\r\n    }\r\n\r\n    .Home3 h1 {\r\n        font-size: 50px;\r\n        line-height: 2.5rem;\r\n    }\r\n\r\n    .Home3 p {\r\n        margin-top: 20px;\r\n        font-size: 20px;\r\n    }\r\n\r\n    .Home3 .card {\r\n        width: 90%;\r\n    }\r\n\r\n    /* Home4 */\r\n\r\n    .Home4 h1 {\r\n        margin: 2rem auto;\r\n        font-family: \"helmetregular\", sans-serif;\r\n        font-size: 45px;\r\n        font-weight: bold;\r\n        text-align: center;\r\n    }\r\n\r\n    .accordion-button {\r\n        font-size: 18px;\r\n        font-weight: 400;\r\n    }\r\n\r\n    /* Download1 */\r\n\r\n    .Download1 h1 {\r\n        font-family: \"helmetregular\", sans-serif;\r\n        font-size: 40px;\r\n        font-weight: bold;\r\n        text-align: center;\r\n        color: #dd7c35;\r\n    }\r\n\r\n    /* Download2 */\r\n\r\n    .Download2 {\r\n        margin-top: 20px;\r\n        margin-bottom: 20px;\r\n    }\r\n\r\n    .Download2 nav .nav-tabs {\r\n        flex-direction: column;\r\n        margin-bottom: 10px;\r\n    }\r\n\r\n    .Download2 nav .nav-tabs button {\r\n        margin-bottom: 5px;\r\n        border-radius: 15px;\r\n    }\r\n\r\n    .Download2 nav .nav-tabs button:hover {\r\n        margin-bottom: 5px;\r\n        border-radius: 15px;\r\n    }\r\n\r\n    /* Download2Element1 */\r\n\r\n    .Download2Element1 .card h1 {\r\n        font-size: 1.5rem;\r\n        margin-right: 15px;\r\n        margin-left: 15px;\r\n    }\r\n\r\n    .Download2Element1 .card section {\r\n        display: flex;\r\n        flex-direction: column;\r\n    }\r\n\r\n    /* Download2Element2 */\r\n\r\n    .Download2Element2 .card h1 {\r\n        font-size: 1.5rem;\r\n        margin-right: 15px;\r\n        margin-left: 15px;\r\n    }\r\n\r\n    .Download2Element2 .card section {\r\n        display: flex;\r\n        flex-direction: column;\r\n    }\r\n\r\n    /* Register1 */\r\n\r\n    .Register1 .card {\r\n        margin: 30px auto;\r\n        padding: 20px 30px;\r\n        width: 80%;\r\n        font-family: 'helmetregular', sans-serif;\r\n        background: linear-gradient(90deg,\r\n                rgba(23, 23, 23, 1) 30%,\r\n                rgba(221, 124, 53, 1) 200%);\r\n        border: none;\r\n    }\r\n\r\n    /* Login1 */\r\n\r\n    .Login1 .card {\r\n        margin: 30px auto;\r\n        padding: 20px 30px;\r\n        width: 80%;\r\n        font-family: 'helmetregular', sans-serif;\r\n        background: linear-gradient(90deg,\r\n                rgba(23, 23, 23, 1) 30%,\r\n                rgba(221, 124, 53, 1) 200%);\r\n        border: none;\r\n    }\r\n\r\n    /* Dashboard1 */\r\n\r\n    .Dashboard1 {\r\n        display: flex;\r\n        flex-direction: column;\r\n        font-family: 'helmetregular', sans-serif;\r\n        gap: 1rem;\r\n    }\r\n\r\n    .Dashboard1 .nav-pills {\r\n        width: 100%;\r\n    }\r\n\r\n    .Dashboard1 .tab-content {\r\n        width: 100%;\r\n    }\r\n\r\n    /* Dashboard1Character1 */\r\n\r\n    .Dashboard1Character1 .card {\r\n        padding: 10px 10px;\r\n    }\r\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8975,7 +9184,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var cookie__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cookie */ "./node_modules/universal-cookie/node_modules/cookie/index.js");
+/* harmony import */ var cookie__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cookie */ "./node_modules/cookie/index.js");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils */ "./node_modules/universal-cookie/es6/utils.js");
 var __assign = (undefined && undefined.__assign) || function () {
     __assign = Object.assign || function(t) {
@@ -9094,7 +9303,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "parseCookies": () => (/* binding */ parseCookies),
 /* harmony export */   "readCookie": () => (/* binding */ readCookie)
 /* harmony export */ });
-/* harmony import */ var cookie__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cookie */ "./node_modules/universal-cookie/node_modules/cookie/index.js");
+/* harmony import */ var cookie__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cookie */ "./node_modules/cookie/index.js");
 
 function hasDocumentCookie() {
     // Can we get/set cookies on document.cookie?
@@ -9147,219 +9356,6 @@ function cleanupCookieValue(value) {
         return value.substr(2);
     }
     return value;
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/universal-cookie/node_modules/cookie/index.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/universal-cookie/node_modules/cookie/index.js ***!
-  \********************************************************************/
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-/*!
- * cookie
- * Copyright(c) 2012-2014 Roman Shtylman
- * Copyright(c) 2015 Douglas Christopher Wilson
- * MIT Licensed
- */
-
-
-
-/**
- * Module exports.
- * @public
- */
-
-exports.parse = parse;
-exports.serialize = serialize;
-
-/**
- * Module variables.
- * @private
- */
-
-var decode = decodeURIComponent;
-var encode = encodeURIComponent;
-
-/**
- * RegExp to match field-content in RFC 7230 sec 3.2
- *
- * field-content = field-vchar [ 1*( SP / HTAB ) field-vchar ]
- * field-vchar   = VCHAR / obs-text
- * obs-text      = %x80-FF
- */
-
-var fieldContentRegExp = /^[\u0009\u0020-\u007e\u0080-\u00ff]+$/;
-
-/**
- * Parse a cookie header.
- *
- * Parse the given cookie header string into an object
- * The object has the various cookies as keys(names) => values
- *
- * @param {string} str
- * @param {object} [options]
- * @return {object}
- * @public
- */
-
-function parse(str, options) {
-  if (typeof str !== 'string') {
-    throw new TypeError('argument str must be a string');
-  }
-
-  var obj = {}
-  var opt = options || {};
-  var pairs = str.split(';')
-  var dec = opt.decode || decode;
-
-  for (var i = 0; i < pairs.length; i++) {
-    var pair = pairs[i];
-    var index = pair.indexOf('=')
-
-    // skip things that don't look like key=value
-    if (index < 0) {
-      continue;
-    }
-
-    var key = pair.substring(0, index).trim()
-
-    // only assign once
-    if (undefined == obj[key]) {
-      var val = pair.substring(index + 1, pair.length).trim()
-
-      // quoted values
-      if (val[0] === '"') {
-        val = val.slice(1, -1)
-      }
-
-      obj[key] = tryDecode(val, dec);
-    }
-  }
-
-  return obj;
-}
-
-/**
- * Serialize data into a cookie header.
- *
- * Serialize the a name value pair into a cookie string suitable for
- * http headers. An optional options object specified cookie parameters.
- *
- * serialize('foo', 'bar', { httpOnly: true })
- *   => "foo=bar; httpOnly"
- *
- * @param {string} name
- * @param {string} val
- * @param {object} [options]
- * @return {string}
- * @public
- */
-
-function serialize(name, val, options) {
-  var opt = options || {};
-  var enc = opt.encode || encode;
-
-  if (typeof enc !== 'function') {
-    throw new TypeError('option encode is invalid');
-  }
-
-  if (!fieldContentRegExp.test(name)) {
-    throw new TypeError('argument name is invalid');
-  }
-
-  var value = enc(val);
-
-  if (value && !fieldContentRegExp.test(value)) {
-    throw new TypeError('argument val is invalid');
-  }
-
-  var str = name + '=' + value;
-
-  if (null != opt.maxAge) {
-    var maxAge = opt.maxAge - 0;
-
-    if (isNaN(maxAge) || !isFinite(maxAge)) {
-      throw new TypeError('option maxAge is invalid')
-    }
-
-    str += '; Max-Age=' + Math.floor(maxAge);
-  }
-
-  if (opt.domain) {
-    if (!fieldContentRegExp.test(opt.domain)) {
-      throw new TypeError('option domain is invalid');
-    }
-
-    str += '; Domain=' + opt.domain;
-  }
-
-  if (opt.path) {
-    if (!fieldContentRegExp.test(opt.path)) {
-      throw new TypeError('option path is invalid');
-    }
-
-    str += '; Path=' + opt.path;
-  }
-
-  if (opt.expires) {
-    if (typeof opt.expires.toUTCString !== 'function') {
-      throw new TypeError('option expires is invalid');
-    }
-
-    str += '; Expires=' + opt.expires.toUTCString();
-  }
-
-  if (opt.httpOnly) {
-    str += '; HttpOnly';
-  }
-
-  if (opt.secure) {
-    str += '; Secure';
-  }
-
-  if (opt.sameSite) {
-    var sameSite = typeof opt.sameSite === 'string'
-      ? opt.sameSite.toLowerCase() : opt.sameSite;
-
-    switch (sameSite) {
-      case true:
-        str += '; SameSite=Strict';
-        break;
-      case 'lax':
-        str += '; SameSite=Lax';
-        break;
-      case 'strict':
-        str += '; SameSite=Strict';
-        break;
-      case 'none':
-        str += '; SameSite=None';
-        break;
-      default:
-        throw new TypeError('option sameSite is invalid');
-    }
-  }
-
-  return str;
-}
-
-/**
- * Try decoding a string using a decoding function.
- *
- * @param {string} str
- * @param {function} decode
- * @private
- */
-
-function tryDecode(str, decode) {
-  try {
-    return decode(str);
-  } catch (e) {
-    return str;
-  }
 }
 
 

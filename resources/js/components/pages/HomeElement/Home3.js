@@ -26,7 +26,8 @@ function Home3() {
                     Crossfire Legacy is managed and maintained by a couple of fellows who have dedicated their lives to supporting the community.
                     </p>
                     <Carousel>
-                        <Carousel.Item interval={1000}>
+                        <Carousel.Item>
+                        <div className="ownerCFL">    
                             <Card>
                                 <img
                                     variant="top"
@@ -61,8 +62,10 @@ function Home3() {
                                         </a>
                                 </section>
                             </Card>
+                        </div>    
                         </Carousel.Item>
-                        <Carousel.Item interval={1000}>
+                        <Carousel.Item>
+                        <div className="ownerCFL">   
                             <Card>
                                 <img
                                     variant="top"
@@ -97,8 +100,10 @@ function Home3() {
                                         </a>
                                 </section>
                             </Card>
+                        </div>    
                         </Carousel.Item>
-                        <Carousel.Item interval={1000}>
+                        <Carousel.Item>
+                        <div className="ownerCFL">   
                             <Card>
                                 <img
                                     variant="top"
@@ -133,8 +138,10 @@ function Home3() {
                                         </a>
                                 </section>
                             </Card>
+                        </div>    
                         </Carousel.Item>
                         <Carousel.Item>
+                        <div className="ownerCFL">       
                             <Card>
                                 <img
                                     variant="top"
@@ -169,6 +176,7 @@ function Home3() {
                                         </a>
                                 </section>
                             </Card>
+                        </div>    
                         </Carousel.Item>
                     </Carousel>
                 </>
@@ -182,7 +190,7 @@ function Home3() {
                     Crossfire Legacy is managed and maintained by a couple of fellows who have dedicated their lives to supporting the community.
                 </p>
                 <Carousel>
-                    <Carousel.Item interval={1000}>
+                    <Carousel.Item>
                         <Card>
                             <img
                                 variant="top"
@@ -201,7 +209,7 @@ function Home3() {
                             </section>
                         </Card> 
                     </Carousel.Item>
-                    <Carousel.Item interval={1000}>
+                    <Carousel.Item>
                         <Card>
                             <img
                                 variant="top"
@@ -220,7 +228,7 @@ function Home3() {
                             </section>
                         </Card> 
                     </Carousel.Item>
-                    <Carousel.Item interval={1000}>
+                    <Carousel.Item>
                         <Card>
                             <img
                                 variant="top"
@@ -239,7 +247,7 @@ function Home3() {
                             </section>
                         </Card> 
                     </Carousel.Item>
-                    <Carousel.Item interval={1000}>
+                    <Carousel.Item>
                         <Card>
                             <img
                                 variant="top"
@@ -258,7 +266,7 @@ function Home3() {
                             </section>
                         </Card> 
                     </Carousel.Item>
-                    <Carousel.Item interval={1000}>
+                    <Carousel.Item>
                         <Card>
                             <img
                                 variant="top"
@@ -277,7 +285,7 @@ function Home3() {
                             </section>
                         </Card> 
                     </Carousel.Item>
-                    <Carousel.Item interval={1000}>
+                    <Carousel.Item>
                         <Card>
                             <img
                                 variant="top"
@@ -296,7 +304,7 @@ function Home3() {
                             </section>
                         </Card> 
                     </Carousel.Item>
-                    <Carousel.Item interval={1000}>
+                    <Carousel.Item>
                         <Card>
                             <img
                                 variant="top"

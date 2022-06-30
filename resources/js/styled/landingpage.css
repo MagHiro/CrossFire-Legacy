@@ -19,8 +19,7 @@
 .Puteran .spinner-border {
     width: 12rem;
     height: 12rem;
-    position: relative;
-    margin: 200px auto;
+margin: 50rem 50rem;
 }
 
 .Puteran span {
@@ -220,6 +219,12 @@ a.btn.btn-primary:active:focus {
     width: 100%;
 }
 
+.menuActive {
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.05) inset, 0 0 15px #dd7c35;
+    z-index: 3;
+}
+
+
 .Home2 section img:first-child {
     position: relative;
     border-radius: 10px;
@@ -235,7 +240,7 @@ a.btn.btn-primary:active:focus {
     border-radius: 10px;
     position: relative;
     top: -400px;
-    left: 270px;
+    left: 16.5rem;
     width: 80%;
 }
 
@@ -243,11 +248,6 @@ a.btn.btn-primary:active:focus {
     filter: drop-shadow(2px 2px 10px #dd7c35);
     transform: scale(1.05);
 }
-
-.gambar {
-    z-index: 1;
-}
-
 /* Home3 */
 
 .Home3 {
@@ -272,22 +272,11 @@ a.btn.btn-primary:active:focus {
     width: 100%;
 }
 
-.carousel-item {
-    backface-visibility: visible;
-    position: relative;
-    display: none;
-    float: left;
-    width: 100%;
-    margin-right: -100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    transition: transform 0.6s ease-in-out;
-}
-
-.carousel-item.active {
-    backface-visibility: visible;
+.Home3 .ownerCFL {
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
+    gap: 1rem;
 }
 
 .Home3 .card {
@@ -351,6 +340,20 @@ a.btn.btn-primary:active:focus {
     font-family: "helmetregular", sans-serif;
     font-size: 20px;
     font-weight: 400;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #dd7c35
+}
+
+.accordion-button:active {
+    box-shadow: 0 0 0 0.25rem #dd7c35;
+    color: #dd7c35;
+}
+
+.accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem #dd7c35;
+    color: #dd7c35;
 }
 
 .accordion-body {
@@ -1318,7 +1321,7 @@ a.btn.btn-primary:active:focus {
 
     .Home2 section img:last-child {
         top: -5rem;
-        left: 3.5rem;
+        left: 5.5rem;
     }
 
     /* Home3 */
@@ -1340,7 +1343,7 @@ a.btn.btn-primary:active:focus {
     }
 
     .Home3 .card {
-        width: 90%;
+        width: 100%;
     }
 
     /* Home4 */
